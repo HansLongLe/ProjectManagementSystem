@@ -11,6 +11,11 @@ public class Requirement
     private int hoursWorked;
     private Deadline deadline;
     ArrayList<Task> tasks;
+
+    /**
+     * This is the constructor.
+     * @param task The requirement has to have at least one task.
+     */
     public Requirement(String name, int ID,String description, int estimatedTime, int priority, Deadline deadline, Task task)
     {
         this.name = name;
@@ -32,6 +37,7 @@ public class Requirement
     {
         tasks.remove(task);
     }
+
     public int hoursWorkedOnRequirement()
     {
         int hoursWorkedInTotal = 0;
@@ -71,9 +77,6 @@ public class Requirement
         if (estimatedTime >0)
         {
             this.estimatedTime = estimatedTime;
-        }
-        else {
-            System.out.println("Write number bigger than 0");
         }
     }
 
