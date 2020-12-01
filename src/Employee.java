@@ -66,7 +66,7 @@ public abstract class Employee
     this.employeeID = employeeID;
   }
 
-  @Override public String toString()
+  public String toString()
   {
     return "The employee " + firstName + " " + lastName + " is a " + position + ". They are payed " + salary + "$\n ID: " + employeeID;
   }
@@ -84,10 +84,28 @@ public abstract class Employee
           employeeID==other.employeeID;
   }
 
+  /**
+   * This is an abstract method that will show all the employees' information.
+   * @param name for the name of an Employee.
+   * @return returns the information about an Employee.
+   */
   public abstract Employee showEmployeeInfo(String name);
 
   // abstract methods that will be created
+
+  /**
+   * This is an abstract method that will the project's info.
+   * @param ID of the project we are looking for.
+   * @return a project with all its info.
+   */
   public abstract Project viewProjectInfo(int ID);
+
+
+  /**
+   * This is an abstract method that will the project's info.
+   * @param name of the project we are looking for.
+   * @return a project with all its info.
+   */
   public abstract Project viewProjectInfo(String name);
 
 }
