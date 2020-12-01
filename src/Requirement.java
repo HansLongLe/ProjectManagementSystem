@@ -43,7 +43,7 @@ public class Requirement
         int hoursWorkedInTotal = 0;
         for (int i =0; i<tasks.size(); i++)
         {
-            hoursWorkedInTotal += tasks.get(i).getHoursWorked;
+            hoursWorkedInTotal += tasks.get(i).getHoursWorked();
         }
         return hoursWorkedInTotal;
     }
