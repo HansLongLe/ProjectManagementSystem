@@ -12,7 +12,7 @@ public class Project
   private Deadline deadline;
 
 
-  public Project (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline,){
+  public Project (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline){
     this.name = name;
     this.ID = ID;
     this.description = description;
@@ -128,7 +128,7 @@ public class Project
         status.equals(other.status) &&
         hoursWorked==other.hoursWorked &&
         requirements.equals(other.requirements) &&
-        deadline.equals(other.deadline) &&
+        deadline.equals(other.deadline);
 
   }
   public String toString(){
