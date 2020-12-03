@@ -8,11 +8,6 @@ public class ProjectCreator extends Employee
 
     /**
      *
-     * @param firstName
-     * @param lastName
-     * @param position
-     * @param salary
-     * @param employeeID
      * all parameters to the super class constructor
      */
     public ProjectCreator(String firstName, String lastName, String position, double salary, int employeeID)
