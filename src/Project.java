@@ -88,6 +88,7 @@ public class Project
     this.status = status;
   }
 
+
 /*
 The hours worked on a project are a summ of the hours worked on the requirements
  */
