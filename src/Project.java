@@ -116,7 +116,7 @@ public class Project
 
 
 
-  public boolean equals(Object obj){
+  @Override public boolean equals(Object obj){
     if(!(obj instanceof Project)){
       return false;
     }
@@ -128,7 +128,7 @@ public class Project
         status.equals(other.status) &&
         hoursWorked==other.hoursWorked &&
         requirements.equals(other.requirements) &&
-        deadline.equals(other.deadline) &&
+        deadline.equals(other.deadline);
 
   }
   public String toString(){
