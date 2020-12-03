@@ -86,12 +86,13 @@ public abstract class Employee
 
   /**
    * This is an abstract method that will show all the employees' information.
-   * @param name for the name of an Employee.
+   * @param firstName for the name of an Employee.
+   * @param lastName for the name of an Employee.
    * @return returns the information about an Employee.
    */
   public abstract Employee showEmployeeInfo(String firstName, String lastName);
 
-  // abstract methods that will be created
+
 
   /**
    * This is an abstract method that will the project's info.

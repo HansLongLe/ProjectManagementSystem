@@ -9,38 +9,50 @@ public  class ProjectManagementSystem
     employees = new ArrayList<Employee>();
     projects = new ArrayList<Project>();
   }
-  /*
-  adding projects to project managemnt system
+
+  /**
+   *
+   * @param project that is added to the array list projects
    */
   public void addProject(Project project){
     projects.add(project);
   }
-  /*
-  removing proh=jects from project management system
+
+  /**
+   *
+   * @param project that is removed from the array list projects
    */
   public void removeProject(Project project){
     projects.remove(project);
   }
-  /*
-  adding employees to project management system
+
+  /**
+   *
+   * @param employee that is added to the emploees aray list
    */
   public void addEmployee(Employee employee){
     employees.add(employee);
   }
-  /*
-  removing emplpoyees from project management system
+
+  /**
+   *
+   * @param employee that is removed from the array list of emploees
    */
   public void removeEmployee(Employee employee){
     employees.remove(employee);
   }
-  /*
-  returning an array list of projects
+
+  /**
+   *
+   * @return array list of projects
    */
   public ArrayList<Project> getProjects(){
     return projects;
   }
-  /*
-  returning an array list of employees
+
+  /**
+   *
+   * @return array list of employees
    */
   public ArrayList<Employee> getEmployees(){
     return employees;
