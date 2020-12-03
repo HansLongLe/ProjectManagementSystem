@@ -11,7 +11,9 @@ public class Project
   private ArrayList<Requirement> requirements;
   private Deadline deadline;
 
-
+  /*
+  Constructor for the Project objects
+   */
   public Project (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline){
     this.name = name;
     this.ID = ID;
@@ -79,7 +81,9 @@ public class Project
   {
     this.status = status;
   }
-
+/*
+The hours worked on a project are a summ of the hours worked on the requirements
+ */
  public int getHoursWorked(){
   int h=0;
   for(int i=0; i<requirements.size(); i++){
@@ -115,7 +119,9 @@ public class Project
 
 
 
-
+/*
+the equals method for the Project objects
+ */
   public boolean equals(Object obj){
     if(!(obj instanceof Project)){
       return false;
