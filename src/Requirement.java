@@ -38,6 +38,11 @@ public class Requirement
         tasks.remove(task);
     }
 
+    public ArrayList<Task> getTask()
+    {
+        return tasks;
+    }
+
     public int hoursWorkedOnRequirement()
     {
         int hoursWorkedInTotal = 0;
@@ -123,5 +128,4 @@ public class Requirement
     public Deadline getDeadline() {
         return deadline;
     }
-
 }
