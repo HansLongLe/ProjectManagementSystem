@@ -7,6 +7,11 @@ public class ScrumMaster extends Employee
       super(firstName, lastName, position, salary, employeeID);
     }
 
+  /**
+   * Changing the project from Project Management System.
+   * @param newProject Project we change(replace) with.
+   * @param name Name of the project we would like to replace.
+   */
   public void changeProject(Project newProject, String name)
   {
     for (int i=0; i<projectManagementSystem.getProjects().size(); i++)
@@ -18,6 +23,11 @@ public class ScrumMaster extends Employee
     }
   }
 
+  /**
+   * Changing a requirement from a project.
+   * @param newRequirement Requirement we change(replace) with.
+   * @param name Name of the requirement we change.
+   */
   public void changeRequirement(Requirement newRequirement, String name)
   {
     for (int i=0; i<projectManagementSystem.getProjects().get(i).getRequirements().size(); i++)
@@ -29,6 +39,11 @@ public class ScrumMaster extends Employee
     }
   }
 
+  /**
+   * Changing a task from a requirement.
+   * @param newTask Task we change(replace) with.
+   * @param name Name of the task we change.
+   */
   public void changeTask(Task newTask, String name)
   {
     for (int i=0; i<projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTask().size(); i++)
@@ -40,6 +55,12 @@ public class ScrumMaster extends Employee
     }
   }
 
+  /**
+   * Find employee by first and last name.
+   * @param firstNameEmployee
+   * @param lastNameEmployee
+   * @return Employee with given last and first name.
+   */
   public Employee showEmployeeInfo(String firstNameEmployee, String lastNameEmployee)
   {
     for (int i=0; i<projectManagementSystem.getEmployees().size(); i++)
