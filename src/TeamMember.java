@@ -5,6 +5,11 @@ public class TeamMember extends Employee
     super(firstName, lastName, position, salary, employeeID);
   }
 
+  /**
+   *
+   * @param ID of the project we are looking for.
+   * @return an object of type Project
+   */
    public Project viewProjectInfo(int ID)
   {
     for(int i=0; i<pms.getProjects().size(); i++){
@@ -15,6 +20,11 @@ public class TeamMember extends Employee
     return null;
   }
 
+  /**
+   *
+   * @param name of the project we are looking for.
+   * @return an object of type Project
+   */
    public Project viewProjectInfo(String name)
   {
     for(int i=0; i<pms.getProjects().size(); i++){
@@ -25,6 +35,12 @@ public class TeamMember extends Employee
     return null;
   }
 
+  /**
+   *
+   * @param firstName to check the fisrt name of an employee int the array list
+   * @param lastName to check the last name of an employee in the array list
+   * @return an object of type Employee
+   */
   public Employee showEmployeeInfo(String firstName, String lastName)
   {
    for(int i=0; i<pms.getEmployees().size(); i++){
