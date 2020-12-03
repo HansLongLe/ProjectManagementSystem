@@ -12,7 +12,7 @@ public class Project
   private Deadline deadline;
 
 
-  public Project (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline,){
+  public Project (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline){
     this.name = name;
     this.ID = ID;
     this.description = description;
