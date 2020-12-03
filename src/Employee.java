@@ -89,7 +89,7 @@ public abstract class Employee
    * @param name for the name of an Employee.
    * @return returns the information about an Employee.
    */
-  public abstract Employee showEmployeeInfo(String name);
+  public abstract Employee showEmployeeInfo(String firstName, String lastName);
 
   // abstract methods that will be created
 
