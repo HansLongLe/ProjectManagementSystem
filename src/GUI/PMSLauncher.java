@@ -1,8 +1,12 @@
 package GUI;
 
-public class PMSLauncher
-{
-  public static void main(String[] args){
+import javafx.application.Application;
 
+  public class PMSLauncher
+  {
+    public static void main(String[] args)
+    {
+      Application.launch(ProjectAdapter.class);
+    }
   }
-}
+
