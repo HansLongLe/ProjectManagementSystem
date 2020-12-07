@@ -1,6 +1,6 @@
 package GUI;
 
-public class ProjectManagementSystem
+public class PMSLauncher
 {
   public static void main(String[] args){
 
