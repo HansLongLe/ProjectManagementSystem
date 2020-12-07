@@ -46,14 +46,14 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <VBox prefHeight="333.0" prefWidth="577.0">
+                              <VBox prefHeight="410.0" prefWidth="594.0">
                                  <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="305.0" prefWidth="536.0">
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
                                        <content>
-                                          <VBox prefHeight="305.0" prefWidth="595.0" />
+                                          <VBox prefHeight="347.0" prefWidth="595.0" />
                                        </content>
                                     </ScrollPane>
-                                    <HBox prefHeight="33.0" prefWidth="599.0">
+                                    <HBox prefHeight="27.0" prefWidth="594.0">
                                        <children>
                                           <Button mnemonicParsing="false" text="Add Project">
                                              <HBox.margin>
@@ -235,11 +235,11 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <VBox prefHeight="333.0" prefWidth="577.0">
+                              <VBox prefHeight="413.0" prefWidth="594.0">
                                  <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="305.0" prefWidth="536.0">
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="347.0" prefWidth="594.0">
                                        <content>
-                                          <VBox prefHeight="305.0" prefWidth="595.0" />
+                                          <VBox prefHeight="343.0" prefWidth="577.0" />
                                        </content>
                                     </ScrollPane>
                                     <HBox prefHeight="33.0" prefWidth="599.0">
@@ -434,11 +434,11 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <VBox prefHeight="333.0" prefWidth="577.0">
+                              <VBox prefHeight="417.0" prefWidth="594.0">
                                  <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="305.0" prefWidth="536.0">
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="349.0" prefWidth="594.0">
                                        <content>
-                                          <VBox prefHeight="305.0" prefWidth="595.0" />
+                                          <VBox prefHeight="346.0" prefWidth="595.0" />
                                        </content>
                                     </ScrollPane>
                                     <HBox prefHeight="33.0" prefWidth="599.0">
