@@ -1,3 +1,10 @@
+package Classes;
+
+import Classes.Employee;
+import Classes.Project;
+import Classes.ProjectManagementSystem;
+import Classes.Requirement;
+
 public class ScrumMaster extends Employee
 {
   private static ProjectManagementSystem projectManagementSystem;
@@ -8,8 +15,8 @@ public class ScrumMaster extends Employee
     }
 
   /**
-   * Changing the project from Project Management System.
-   * @param newProject Project we change(replace) with.
+   * Changing the project from Classes.Project Management System.
+   * @param newProject Classes.Project we change(replace) with.
    * @param name Name of the project we would like to replace.
    */
   public void changeProject(Project newProject, String name)
@@ -25,7 +32,7 @@ public class ScrumMaster extends Employee
 
   /**
    * Changing a requirement from a project.
-   * @param newRequirement Requirement we change(replace) with.
+   * @param newRequirement Classes.Requirement we change(replace) with.
    * @param name Name of the requirement we change.
    */
   public void changeRequirement(Requirement newRequirement, String name)
@@ -41,7 +48,7 @@ public class ScrumMaster extends Employee
 
   /**
    * Changing a task from a requirement.
-   * @param newTask Task we change(replace) with.
+   * @param newTask Classes.Task we change(replace) with.
    * @param name Name of the task we change.
    */
   public void changeTask(Task newTask, String name)
@@ -59,7 +66,7 @@ public class ScrumMaster extends Employee
    * Find employee by first and last name.
    * @param firstNameEmployee
    * @param lastNameEmployee
-   * @return Employee with given last and first name.
+   * @return Classes.Employee with given last and first name.
    */
   public Employee showEmployeeInfo(String firstNameEmployee, String lastNameEmployee)
   {
