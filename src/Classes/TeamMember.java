@@ -1,3 +1,9 @@
+package Classes;
+
+import Classes.Employee;
+import Classes.Project;
+import Classes.ProjectManagementSystem;
+
 public class TeamMember extends Employee
 {
   private static ProjectManagementSystem pms;
@@ -8,7 +14,7 @@ public class TeamMember extends Employee
   /**
    *
    * @param ID of the project we are looking for.
-   * @return an object of type Project
+   * @return an object of type Classes.Project
    */
    public Project viewProjectInfo(int ID)
   {
@@ -23,7 +29,7 @@ public class TeamMember extends Employee
   /**
    *
    * @param name of the project we are looking for.
-   * @return an object of type Project
+   * @return an object of type Classes.Project
    */
    public Project viewProjectInfo(String name)
   {
@@ -39,7 +45,7 @@ public class TeamMember extends Employee
    *
    * @param firstName to check the fisrt name of an employee int the array list
    * @param lastName to check the last name of an employee in the array list
-   * @return an object of type Employee
+   * @return an object of type Classes.Employee
    */
   public Employee showEmployeeInfo(String firstName, String lastName)
   {

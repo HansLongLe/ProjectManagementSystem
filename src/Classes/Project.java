@@ -1,3 +1,5 @@
+package Classes;
+
 import java.util.ArrayList;
 
 public class Project
@@ -126,7 +128,7 @@ public class Project
   /**
    *
    * @param obj
-   * @return false if the obj is not an instace of Project
+   * @return false if the obj is not an instace of Classes.Project
    */
   public boolean equals(Object obj){
     if(!(obj instanceof Project)){
@@ -145,6 +147,6 @@ public class Project
 
   }
   public String toString(){
-    return "The project info:\n" + name + "\nID:" + ID +"\nDescription: " + description +"\nEstimated time: " + estimatedTime +"\nStatus: " + status +"\nHours worked " + getHoursWorked() +"\nDeadline: " + deadline + "\nOwned by: " + productOwner;
+    return "The project info:\n" + name + "\nID:" + ID +"\nDescription: " + description +"\nEstimated time: " + estimatedTime +"\nStatus: " + status +"\nHours worked " + getHoursWorked() +"\nClasses.Deadline: " + deadline + "\nOwned by: " + productOwner;
   }
 }

@@ -1,3 +1,5 @@
+package Classes;
+
 public class ProductOwner
 {
   private String firstName;

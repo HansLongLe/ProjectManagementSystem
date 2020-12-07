@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package Classes;
+
+import Classes.Employee;
+import Classes.Project;
 
 public class ProjectCreator extends Employee
 {
@@ -33,7 +36,7 @@ public class ProjectCreator extends Employee
      *
      * @param firstName
      * @param lastName
-     * @return Employee information (if he/she is in the system)
+     * @return Classes.Employee information (if he/she is in the system)
      */
     public Employee showEmployeeInfo(String firstName, String lastName)
     {
