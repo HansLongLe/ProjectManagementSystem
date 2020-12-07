@@ -1,3 +1,5 @@
+package Classes;
+
 import java.util.ArrayList;
 
 public class Requirement
@@ -16,7 +18,7 @@ public class Requirement
      * This is the constructor.
      * @param task The requirement has to have at least one task.
      */
-    public Requirement(String name, int ID,String description, int estimatedTime, int priority, Deadline deadline, Task task)
+    public Requirement(String name, int ID, String description, int estimatedTime, int priority, Deadline deadline, Task task)
     {
         this.name = name;
         this.ID = ID;
@@ -118,7 +120,7 @@ public class Requirement
         }
     }
     public String toString() {
-        return "Requirement{" +
+        return "Classes.Requirement{" +
                 "name='" + name + '\'' +
                 ", ID=" + ID +
                 ", description='" + description + '\'' +

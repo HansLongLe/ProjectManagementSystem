@@ -1,4 +1,4 @@
-import java.util.Objects;
+package Classes;
 
 public abstract class Employee
 {
@@ -86,9 +86,9 @@ public abstract class Employee
 
   /**
    * This is an abstract method that will show all the employees' information.
-   * @param firstName for the name of an Employee.
-   * @param lastName for the name of an Employee.
-   * @return returns the information about an Employee.
+   * @param firstName for the name of an Classes.Employee.
+   * @param lastName for the name of an Classes.Employee.
+   * @return returns the information about an Classes.Employee.
    */
   public abstract Employee showEmployeeInfo(String firstName, String lastName);
 
