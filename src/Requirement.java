@@ -38,12 +38,21 @@ public class Requirement
         tasks.remove(task);
     }
 
+    public ArrayList<Task> getTask()
+    {
+        return tasks;
+    }
+
+    /**
+     * Getting the hours from each task to see the time worked on the requirement.
+     * @return
+     */
     public int hoursWorkedOnRequirement()
     {
         int hoursWorkedInTotal = 0;
         for (int i =0; i<tasks.size(); i++)
         {
-            hoursWorkedInTotal += tasks.get(i).getHoursWorked;
+            hoursWorkedInTotal += tasks.get(i).getHoursWorked();
         }
         return hoursWorkedInTotal;
     }
@@ -56,6 +65,9 @@ public class Requirement
         return name;
     }
 
+    /**
+     * @param ID Checking if the ID is not less or more then 4 digits.
+     */
     public void setID(int ID) {
         if (ID > 999 && ID <=9999 )
         this.ID = ID;
@@ -73,6 +85,9 @@ public class Requirement
         return description;
     }
 
+    /**
+     * @param estimatedTime Checking if the time isn't less then 0.
+     */
     public void setEstimatedTime(int estimatedTime) {
         if (estimatedTime >0)
         {
@@ -123,5 +138,4 @@ public class Requirement
     public Deadline getDeadline() {
         return deadline;
     }
-
 }

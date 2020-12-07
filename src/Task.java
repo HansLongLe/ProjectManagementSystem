@@ -1,5 +1,6 @@
 public class Task
 {
+
     private String name;
     private int ID;
     private String description;
@@ -8,6 +9,7 @@ public class Task
     private int hoursWorked;
     private Deadline deadline;
     private Employee employee;
+    private Task task;
 
 
     public Task (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline, Employee employee)
