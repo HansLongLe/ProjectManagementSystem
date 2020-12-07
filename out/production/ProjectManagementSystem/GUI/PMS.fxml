@@ -46,32 +46,28 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <VBox prefHeight="410.0" prefWidth="594.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
+                                 <content>
+                                    <VBox prefHeight="347.0" prefWidth="595.0" />
+                                 </content>
+                              </ScrollPane>
+                              <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
-                                       <content>
-                                          <VBox prefHeight="347.0" prefWidth="595.0" />
-                                       </content>
-                                    </ScrollPane>
-                                    <HBox prefHeight="27.0" prefWidth="594.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Add Project">
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
-                                             <HBox.margin>
-                                                <Insets left="400.0" right="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
+                                    <Button mnemonicParsing="false" text="Add Project">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
+                                       <HBox.margin>
+                                          <Insets left="400.0" right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                  </children>
-                              </VBox>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
                         </VBox>
                      </content>
@@ -235,32 +231,28 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <VBox prefHeight="413.0" prefWidth="594.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
+                                 <content>
+                                    <VBox prefHeight="346.0" prefWidth="595.0" />
+                                 </content>
+                              </ScrollPane>
+                              <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="347.0" prefWidth="594.0">
-                                       <content>
-                                          <VBox prefHeight="343.0" prefWidth="577.0" />
-                                       </content>
-                                    </ScrollPane>
-                                    <HBox prefHeight="33.0" prefWidth="599.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Add Requirement">
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Requirement">
-                                             <HBox.margin>
-                                                <Insets left="340.0" right="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
+                                    <Button mnemonicParsing="false" text="Add Project">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
+                                       <HBox.margin>
+                                          <Insets left="400.0" right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                  </children>
-                              </VBox>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
                         </VBox>
                      </content>
@@ -434,32 +426,28 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <VBox prefHeight="417.0" prefWidth="594.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
+                                 <content>
+                                    <VBox prefHeight="347.0" prefWidth="595.0" />
+                                 </content>
+                              </ScrollPane>
+                              <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="349.0" prefWidth="594.0">
-                                       <content>
-                                          <VBox prefHeight="346.0" prefWidth="595.0" />
-                                       </content>
-                                    </ScrollPane>
-                                    <HBox prefHeight="33.0" prefWidth="599.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" text="Add Task">
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Task">
-                                             <HBox.margin>
-                                                <Insets left="430.0" right="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
+                                    <Button mnemonicParsing="false" text="Add Project">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
+                                       <HBox.margin>
+                                          <Insets left="400.0" right="10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                  </children>
-                              </VBox>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
                         </VBox>
                      </content>
