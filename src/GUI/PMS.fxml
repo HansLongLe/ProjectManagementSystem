@@ -83,7 +83,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="68.0" top="2.0" />
                                        </HBox.margin>
@@ -114,7 +114,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="88.0" top="2.0" />
                                        </HBox.margin>
@@ -131,7 +131,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="60.0" top="2.0" />
                                        </HBox.margin>
@@ -148,7 +148,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="60.0" top="2.0" />
                                        </HBox.margin>
@@ -167,7 +167,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="91.0" top="2.0" />
                                        </HBox.margin>
@@ -197,7 +197,7 @@
                                                 <Insets bottom="5.0" left="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <TextArea minWidth="-Infinity" prefHeight="71.0" prefWidth="450.0">
+                                          <TextArea disable="true" minWidth="-Infinity" prefHeight="71.0" prefWidth="450.0">
                                              <VBox.margin>
                                                 <Insets left="10.0" right="10.0" />
                                              </VBox.margin>
@@ -268,7 +268,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="68.0" top="2.0" />
                                        </HBox.margin>
@@ -285,7 +285,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="87.0" top="2.0" />
                                        </HBox.margin>
@@ -302,17 +302,17 @@
                                           <Insets left="10.0" top="5.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <RadioButton mnemonicParsing="false" text="1">
+                                    <RadioButton disable="true" mnemonicParsing="false" text="1">
                                        <HBox.margin>
                                           <Insets left="69.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="2">
+                                    <RadioButton disable="true" mnemonicParsing="false" text="2">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="3">
+                                    <RadioButton disable="true" mnemonicParsing="false" text="3">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
@@ -329,7 +329,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="90.0" top="2.0" />
                                        </HBox.margin>
@@ -362,7 +362,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="122.0" top="2.0" />
                                        </HBox.margin>
@@ -395,7 +395,7 @@
                                                 <Insets bottom="5.0" left="10.0" top="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <TextArea minWidth="-Infinity" prefHeight="71.0" prefWidth="450.0">
+                                          <TextArea disable="true" minWidth="-Infinity" prefHeight="71.0" prefWidth="450.0">
                                              <VBox.margin>
                                                 <Insets left="10.0" right="10.0" />
                                              </VBox.margin>
@@ -463,7 +463,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="105.0" top="2.0" />
                                        </HBox.margin>
@@ -480,7 +480,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="123.0" top="2.0" />
                                        </HBox.margin>
@@ -497,7 +497,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets left="20.0" top="2.0" />
                                        </HBox.margin>
@@ -514,7 +514,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField>
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets left="86.0" />
                                        </HBox.margin>
@@ -531,7 +531,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="82.0" top="2.0" />
                                        </HBox.margin>
@@ -550,7 +550,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false">
+                                    <TextField disable="true" editable="false">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="116.0" top="2.0" />
                                        </HBox.margin>
@@ -580,7 +580,7 @@
                                                 <Insets bottom="5.0" left="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <TextArea minWidth="-Infinity" prefHeight="71.0" prefWidth="450.0">
+                                          <TextArea disable="true" minWidth="-Infinity" prefHeight="71.0" prefWidth="450.0">
                                              <VBox.margin>
                                                 <Insets left="10.0" right="10.0" />
                                              </VBox.margin>
