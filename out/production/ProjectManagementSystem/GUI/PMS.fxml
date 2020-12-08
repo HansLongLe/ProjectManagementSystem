@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -183,6 +184,16 @@
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="68.0" />
                                        </HBox.margin>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Started" />
+                                                <MenuItem mnemonicParsing="false" text="Ended" />
+                                                <MenuItem mnemonicParsing="false" text="Accepted" />
+                                                <MenuItem mnemonicParsing="false" text="Not Accepted" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
                                     </ComboBox>
                                  </children>
                               </HBox>
