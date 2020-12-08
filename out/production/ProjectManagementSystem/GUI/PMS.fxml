@@ -26,7 +26,6 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Position">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
                         <CheckMenuItem mnemonicParsing="false" text="Scrum Master" />
                         <CheckMenuItem mnemonicParsing="false" text="Project Creator" />
                         <CheckMenuItem mnemonicParsing="false" text="Team Member" />
