@@ -69,21 +69,9 @@ public class ProjectController
   @FXML private ListView requirementList;
   @FXML private ListView taskList;
 
-
-
-
   public void handleActions(ActionEvent e){
-    if(e.getSource() == addProject && position.equals(projectCreator)){
-      projectName.setDisable(false);
-      tabPane.getSelectionModel().select(projectInfo);
+    if(e.getSource() == addProject){
+      projects.isSelected();
     }
   }
-
-
-
-
-
-
-
-
 }

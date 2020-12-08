@@ -5,7 +5,6 @@
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -19,33 +18,37 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="596.0" type="FlowPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProjectController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProjectController">
    <children>
       <VBox prefHeight="456.0" prefWidth="594.0">
          <children>
             <MenuBar>
-              <menus>
-                <Menu fx:id="position" mnemonicParsing="false" text="Position">
-                  <items>
+               <menus>
+                  <Menu mnemonicParsing="false" text="Position">
+                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Scrum Master" />
                         <CheckMenuItem mnemonicParsing="false" text="Project Creator" />
                         <CheckMenuItem mnemonicParsing="false" text="Team Member" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
             </MenuBar>
             <TabPane prefHeight="433.0" prefWidth="594.0" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="Projects">
+               <tabs>
+                  <Tab text="Projects">
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ListView prefHeight="353.0" prefWidth="594.0" />
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
+                                 <content>
+                                    <VBox prefHeight="347.0" prefWidth="595.0" />
+                                 </content>
+                              </ScrollPane>
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addProject" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
@@ -53,7 +56,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Project">
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
                                        <HBox.margin>
                                           <Insets left="400.0" right="10.0" />
                                        </HBox.margin>
@@ -66,8 +69,8 @@
                            </children>
                         </VBox>
                      </content>
-                </Tab>
-                <Tab fx:id="projectInfo" text="Project Info">
+                  </Tab>
+                  <Tab text="Project Info">
                      <content>
                         <VBox prefHeight="333.0" prefWidth="594.0">
                            <children>
@@ -199,12 +202,12 @@
                                           </TextArea>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="594.0">
                                              <children>
-                                                <Button fx:id="projectChange" mnemonicParsing="false" text="Change">
+                                                <Button mnemonicParsing="false" text="Change">
                                                    <HBox.margin>
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="projectSave" mnemonicParsing="false" text="Save">
+                                                <Button mnemonicParsing="false" text="Save">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
                                                    </HBox.margin>
@@ -228,10 +231,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
                                  <content>
-                                    <VBox prefHeight="346.0" prefWidth="595.0">
-                                       <children>
-                                          <ListView prefHeight="355.0" prefWidth="595.0" />
-                                       </children></VBox>
+                                    <VBox prefHeight="346.0" prefWidth="595.0" />
                                  </content>
                               </ScrollPane>
                               <HBox prefHeight="33.0" prefWidth="594.0">
@@ -239,12 +239,12 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement">
+                                    <Button mnemonicParsing="false" text="Add Requirement">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="deleteRequirement" mnemonicParsing="false" onAction="#handleActions" text="Delete Requirement">
+                                    <Button mnemonicParsing="false" text="Delete Requirement">
                                        <HBox.margin>
                                           <Insets left="350.0" />
                                        </HBox.margin>
@@ -400,12 +400,12 @@
                                           </TextArea>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="594.0">
                                              <children>
-                                                <Button fx:id="requirementChange" mnemonicParsing="false" text="Change">
+                                                <Button mnemonicParsing="false" text="Change">
                                                    <HBox.margin>
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="requirementSave" mnemonicParsing="false" text="Save">
+                                                <Button mnemonicParsing="false" text="Save">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
                                                    </HBox.margin>
@@ -426,20 +426,17 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
                                  <content>
-                                    <VBox prefHeight="347.0" prefWidth="595.0">
-                                       <children>
-                                          <ListView prefHeight="360.0" prefWidth="595.0" />
-                                       </children></VBox>
+                                    <VBox prefHeight="347.0" prefWidth="595.0" />
                                  </content>
                               </ScrollPane>
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button fx:id="addTask" mnemonicParsing="false" onAction="#handleActions" text="Add Task">
+                                    <Button mnemonicParsing="false" text="Add Task">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="deleteTask" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Task">
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Task">
                                        <HBox.margin>
                                           <Insets left="430.0" right="10.0" />
                                        </HBox.margin>
@@ -588,12 +585,12 @@
                                           </TextArea>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="594.0">
                                              <children>
-                                                <Button fx:id="taskChange" mnemonicParsing="false" text="Change">
+                                                <Button mnemonicParsing="false" text="Change">
                                                    <HBox.margin>
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="taskSave" mnemonicParsing="false" text="Save">
+                                                <Button mnemonicParsing="false" text="Save">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
                                                    </HBox.margin>
@@ -608,9 +605,9 @@
                         </VBox>
                      </content>
                   </Tab>
-              </tabs>
+               </tabs>
             </TabPane>
          </children>
       </VBox>
    </children>
-</fx:root>
+</FlowPane>
