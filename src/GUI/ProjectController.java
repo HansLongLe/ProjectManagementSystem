@@ -71,7 +71,7 @@ public class ProjectController
 
   public void handleActions(ActionEvent e){
     if(e.getSource() == addProject){
-      projects.isSelected();
+      tabPane.getSelectionModel().selectNext();
     }
   }
 }
