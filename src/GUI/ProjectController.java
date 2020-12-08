@@ -2,8 +2,6 @@ package GUI;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Tab;
-
 import javafx.event.ActionEvent;
 
 public class ProjectController
@@ -16,11 +14,13 @@ public class ProjectController
   @FXML private Tab taskInfo;
   @FXML private TabPane tabPane;
 
-  @FXML private ToggleButton position;
-  @FXML private MenuItem scrumMaster;
-  @FXML private MenuItem projectCreator;
-  @FXML private MenuItem teamMember;
+  @FXML private Menu position;
+  @FXML private CheckMenuItem scrumMaster;
+  @FXML private CheckMenuItem projectCreator;
+  @FXML private CheckMenuItem teamMember;
   @FXML private MenuItem about;
+  @FXML private MenuBar menuBar;
+
 
   @FXML private Button addProject;
   @FXML private Button deleteProject;
@@ -44,10 +44,12 @@ public class ProjectController
   @FXML private RadioButton priority1;
   @FXML private RadioButton priority2;
   @FXML private RadioButton priority3;
+  @FXML private ToggleGroup ToggleGroup;
   @FXML private TextField requirementEstimatedTime;
   @FXML private TextField requirementDeadline;
   @FXML private TextField requirementDescription;
   @FXML private ComboBox requirementStatus;
+
 
   @FXML private TextField taskName;
   @FXML private TextField taskID;
@@ -70,8 +72,25 @@ public class ProjectController
   @FXML private ListView taskList;
 
   public void handleActions(ActionEvent e){
-    if(e.getSource() == addProject){
-      tabPane.getSelectionModel().selectNext();
-    }
+      if (scrumMaster.isSelected())
+      {
+          projectCreator.setSelected(false);
+          teamMember.setSelected(false);
+      }
+      if (projectCreator.isSelected())
+      {
+          scrumMaster.setSelected(false);
+          teamMember.setSelected(false);
+          if(e.getSource() == addProject)
+          {
+              tabPane.getSelectionModel().selectNext();
+          }
+      }
+      if (teamMember.isSelected())
+      {
+          projectCreator.setSelected(false);
+          scrumMaster.setSelected(false);
+      }
+
   }
 }

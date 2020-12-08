@@ -24,11 +24,11 @@
          <children>
             <MenuBar>
                <menus>
-                  <Menu mnemonicParsing="false" text="Position">
+                  <Menu fx:id="position" mnemonicParsing="false" onAction="#handleActions" text="Position">
                      <items>
-                        <CheckMenuItem mnemonicParsing="false" text="Scrum Master" />
-                        <CheckMenuItem mnemonicParsing="false" text="Project Creator" />
-                        <CheckMenuItem mnemonicParsing="false" text="Team Member" />
+                        <CheckMenuItem fx:id="scrumMaster" mnemonicParsing="false" text="Scrum Master" />
+                        <CheckMenuItem fx:id="projectCreator" mnemonicParsing="false" text="Project Creator" />
+                        <CheckMenuItem fx:id="teamMember" mnemonicParsing="false" text="Team Member" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
