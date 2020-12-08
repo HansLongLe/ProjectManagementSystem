@@ -85,10 +85,30 @@ public class ProjectController
           if(e.getSource() == addProject)
           {
               tabPane.getSelectionModel().selectNext();
+              projectInfo.setDisable(false);
+              projectChange.setVisible(false);
 
+              requirements.setDisable(false);
 
 
           }
+        if(e.getSource() == addRequirement){
+          tabPane.getSelectionModel().selectNext();
+          requirementsInfo.setDisable(false);
+          requirementChange.setVisible(false);
+
+          tasks.setDisable(false);
+        }
+        if(e.getSource() == addTask){
+          tabPane.getSelectionModel().selectNext();
+          taskInfo.setDisable(false);
+          taskChange.setVisible(false);
+
+          taskSave.setDisable(false);
+        }
+
+
+
       }
       if (teamMember.isSelected())
       {

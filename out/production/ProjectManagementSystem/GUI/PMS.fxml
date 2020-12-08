@@ -5,11 +5,11 @@
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -40,15 +40,11 @@
             </MenuBar>
             <TabPane fx:id="tabPane" prefHeight="433.0" prefWidth="594.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                  <Tab text="Projects">
+                  <Tab fx:id="projects" text="Projects">
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
-                                 <content>
-                                    <VBox prefHeight="347.0" prefWidth="595.0" />
-                                 </content>
-                              </ScrollPane>
+                              <ListView prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addProject" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
@@ -70,7 +66,7 @@
                         </VBox>
                      </content>
                   </Tab>
-                  <Tab text="Project Info">
+                  <Tab fx:id="projectInfo" disable="true" text="Project Info">
                      <content>
                         <VBox prefHeight="333.0" prefWidth="594.0">
                            <children>
@@ -81,7 +77,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="projectName" editable="false" onAction="#handleActions">
+                                    <TextField fx:id="projectName" onAction="#handleActions">
                                        <HBox.margin>
                                           <Insets left="68.0" top="2.0" />
                                        </HBox.margin>
@@ -112,7 +108,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="projectID" editable="false" onAction="#handleActions">
+                                    <TextField fx:id="projectID" onAction="#handleActions">
                                        <HBox.margin>
                                           <Insets left="88.0" top="2.0" />
                                        </HBox.margin>
@@ -129,7 +125,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="productOwner" editable="false" onAction="#handleActions">
+                                    <TextField fx:id="productOwner" onAction="#handleActions">
                                        <HBox.margin>
                                           <Insets left="60.0" top="2.0" />
                                        </HBox.margin>
@@ -146,7 +142,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="projectEstimatedTime" editable="false" onAction="#handleActions">
+                                    <TextField fx:id="projectEstimatedTime" onAction="#handleActions">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="60.0" top="2.0" />
                                        </HBox.margin>
@@ -165,7 +161,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="projectDeadline" editable="false" onAction="#handleActions">
+                                    <TextField fx:id="projectDeadline" onAction="#handleActions">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="91.0" top="2.0" />
                                        </HBox.margin>
@@ -202,12 +198,12 @@
                                           </TextArea>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="594.0">
                                              <children>
-                                                <Button mnemonicParsing="false" text="Change">
+                                                <Button fx:id="projectChange" mnemonicParsing="false" onAction="#handleActions" text="Change">
                                                    <HBox.margin>
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Save">
+                                                <Button fx:id="projectSave" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Save">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
                                                    </HBox.margin>
@@ -225,21 +221,17 @@
                         </VBox>
                      </content>
                   </Tab>
-                  <Tab text="Requirements">
+                  <Tab fx:id="requirements" disable="true" text="Requirements">
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
-                                 <content>
-                                    <VBox prefHeight="346.0" prefWidth="595.0" />
-                                 </content>
-                              </ScrollPane>
+                              <ListView prefHeight="356.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add Requirement">
+                                    <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
@@ -255,7 +247,7 @@
                         </VBox>
                      </content>
                   </Tab>
-                  <Tab text="Requirement Info">
+                  <Tab fx:id="requirementsInfo" disable="true" text="Requirement Info">
                      <content>
                         <VBox prefHeight="333.0" prefWidth="594.0">
                            <children>
@@ -266,7 +258,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets left="68.0" top="2.0" />
                                        </HBox.margin>
@@ -283,7 +275,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets left="87.0" top="2.0" />
                                        </HBox.margin>
@@ -327,7 +319,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="90.0" top="2.0" />
                                        </HBox.margin>
@@ -360,7 +352,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="122.0" top="2.0" />
                                        </HBox.margin>
@@ -400,12 +392,12 @@
                                           </TextArea>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="594.0">
                                              <children>
-                                                <Button mnemonicParsing="false" text="Change">
+                                                <Button fx:id="requirementChange" mnemonicParsing="false" text="Change">
                                                    <HBox.margin>
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Save">
+                                                <Button fx:id="requirementSave" mnemonicParsing="false" text="Save">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
                                                    </HBox.margin>
@@ -420,23 +412,19 @@
                         </VBox>
                      </content>
                   </Tab>
-                  <Tab text="Tasks">
+                  <Tab fx:id="tasks" disable="true" text="Tasks">
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="594.0">
-                                 <content>
-                                    <VBox prefHeight="347.0" prefWidth="595.0" />
-                                 </content>
-                              </ScrollPane>
+                              <ListView prefHeight="354.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add Task">
+                                    <Button fx:id="addTask" mnemonicParsing="false" onAction="#handleActions" text="Add Task">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Task">
+                                    <Button fx:id="deleteTask" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Task">
                                        <HBox.margin>
                                           <Insets left="430.0" right="10.0" />
                                        </HBox.margin>
@@ -450,7 +438,7 @@
                         </VBox>
                      </content>
                   </Tab>
-                  <Tab text="Task Info">
+                  <Tab fx:id="taskInfo" disable="true" text="Task Info">
                      <content>
                         <VBox prefHeight="333.0" prefWidth="594.0">
                            <children>
@@ -461,7 +449,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets left="105.0" top="2.0" />
                                        </HBox.margin>
@@ -478,7 +466,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets left="123.0" top="2.0" />
                                        </HBox.margin>
@@ -495,7 +483,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets left="20.0" top="2.0" />
                                        </HBox.margin>
@@ -529,7 +517,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="82.0" top="2.0" />
                                        </HBox.margin>
@@ -548,7 +536,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField disable="true" editable="false">
+                                    <TextField disable="true">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="116.0" top="2.0" />
                                        </HBox.margin>
@@ -585,12 +573,12 @@
                                           </TextArea>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="594.0">
                                              <children>
-                                                <Button mnemonicParsing="false" text="Change">
+                                                <Button fx:id="taskChange" mnemonicParsing="false" text="Change">
                                                    <HBox.margin>
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Save">
+                                                <Button fx:id="taskSave" mnemonicParsing="false" text="Save">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
                                                    </HBox.margin>
