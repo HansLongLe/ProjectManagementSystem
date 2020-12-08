@@ -26,7 +26,6 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Position">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
                         <CheckMenuItem mnemonicParsing="false" text="Scrum Master" />
                         <CheckMenuItem mnemonicParsing="false" text="Project Creator" />
                         <CheckMenuItem mnemonicParsing="false" text="Team Member" />
@@ -236,21 +235,21 @@
                                  </content>
                               </ScrollPane>
                               <HBox prefHeight="33.0" prefWidth="594.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Add Project">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
-                                       <HBox.margin>
-                                          <Insets left="400.0" right="10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add Requirement">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="Delete Requirement">
+                                       <HBox.margin>
+                                          <Insets left="350.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
                               </HBox>
                            </children>
                         </VBox>
@@ -432,14 +431,14 @@
                               </ScrollPane>
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add Project">
+                                    <Button mnemonicParsing="false" text="Add Task">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Project">
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" text="Delete Task">
                                        <HBox.margin>
-                                          <Insets left="400.0" right="10.0" />
+                                          <Insets left="430.0" right="10.0" />
                                        </HBox.margin>
                                     </Button>
                                  </children>
