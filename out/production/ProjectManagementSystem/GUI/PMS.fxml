@@ -25,7 +25,7 @@
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Position">
+                <Menu fx:id="position" mnemonicParsing="false" text="Position">
                   <items>
                         <CheckMenuItem mnemonicParsing="false" text="Scrum Master" />
                         <CheckMenuItem mnemonicParsing="false" text="Project Creator" />
@@ -45,7 +45,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ListView fx:id="projectList" prefHeight="353.0" prefWidth="594.0" />
+                              <ListView prefHeight="353.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addProject" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
@@ -67,7 +67,7 @@
                         </VBox>
                      </content>
                 </Tab>
-                <Tab text="Project Info">
+                <Tab fx:id="projectInfo" text="Project Info">
                      <content>
                         <VBox prefHeight="333.0" prefWidth="594.0">
                            <children>
@@ -230,7 +230,7 @@
                                  <content>
                                     <VBox prefHeight="346.0" prefWidth="595.0">
                                        <children>
-                                          <ListView fx:id="requirementList" prefHeight="355.0" prefWidth="595.0" />
+                                          <ListView prefHeight="355.0" prefWidth="595.0" />
                                        </children></VBox>
                                  </content>
                               </ScrollPane>
@@ -428,7 +428,7 @@
                                  <content>
                                     <VBox prefHeight="347.0" prefWidth="595.0">
                                        <children>
-                                          <ListView fx:id="taskList" prefHeight="360.0" prefWidth="595.0" />
+                                          <ListView prefHeight="360.0" prefWidth="595.0" />
                                        </children></VBox>
                                  </content>
                               </ScrollPane>
