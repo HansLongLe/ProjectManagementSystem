@@ -23,24 +23,24 @@
       <VBox prefHeight="456.0" prefWidth="594.0">
          <children>
             <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="Position">
-                  <items>
+               <menus>
+                  <Menu mnemonicParsing="false" text="Position">
+                     <items>
                         <CheckMenuItem mnemonicParsing="false" text="Scrum Master" />
                         <CheckMenuItem mnemonicParsing="false" text="Project Creator" />
                         <CheckMenuItem mnemonicParsing="false" text="Team Member" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
             </MenuBar>
             <TabPane prefHeight="433.0" prefWidth="594.0" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="Projects">
+               <tabs>
+                  <Tab text="Projects">
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
@@ -69,8 +69,8 @@
                            </children>
                         </VBox>
                      </content>
-                </Tab>
-                <Tab text="Project Info">
+                  </Tab>
+                  <Tab text="Project Info">
                      <content>
                         <VBox prefHeight="333.0" prefWidth="594.0">
                            <children>
@@ -605,7 +605,7 @@
                         </VBox>
                      </content>
                   </Tab>
-              </tabs>
+               </tabs>
             </TabPane>
          </children>
       </VBox>
