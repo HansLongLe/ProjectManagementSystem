@@ -34,8 +34,9 @@ public class ProjectController
   @FXML private TextField productOwner;
   @FXML private TextField projectEstimatedTime;
   @FXML private TextField projectDeadline;
-  @FXML private TextField projectDescription;
+  @FXML private TextArea projectDescription;
   @FXML private ComboBox projectStatus;
+  @FXML private TextField projectHoursWorked;
 
 
   @FXML private TextField requirementName;
@@ -47,7 +48,7 @@ public class ProjectController
   @FXML private ToggleGroup ToggleGroup;
   @FXML private TextField requirementEstimatedTime;
   @FXML private TextField requirementDeadline;
-  @FXML private TextField requirementDescription;
+  @FXML private TextArea requirementDescription;
   @FXML private ComboBox requirementStatus;
 
 
@@ -56,7 +57,7 @@ public class ProjectController
   @FXML private TextField respTeamMember;
   @FXML private TextField taskEstimatedTime;
   @FXML private TextField taskDeadline;
-  @FXML private TextField taskDescription;
+  @FXML private TextArea taskDescription;
   @FXML private TextField taskHoursWorked;
   @FXML private ComboBox taskStatus;
 
@@ -84,6 +85,9 @@ public class ProjectController
           if(e.getSource() == addProject)
           {
               tabPane.getSelectionModel().selectNext();
+
+
+
           }
       }
       if (teamMember.isSelected())
