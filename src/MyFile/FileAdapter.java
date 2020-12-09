@@ -23,7 +23,7 @@ public class FileAdapter
 
     try
     {
-      employees = (ArrayList<Employee>)mfio.readObjectFromFile(fileName);
+        employees = (ArrayList<Employee>)mfio.readObjectFromFile(fileName);
     }
     catch (FileNotFoundException e)
     {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public  class ProjectManagementSystem
 {
-  private static ArrayList<Employee> employees;
+  private ArrayList<Employee> employees;
   private ArrayList<Project> projects;
 
   public ProjectManagementSystem(){
@@ -35,7 +35,8 @@ public  class ProjectManagementSystem
    *
    * @param employee that is added to the emploees aray list
    */
-  public void addEmployee(Employee employee){
+  public void addEmployee(Employee employee)
+  {
     employees.add(employee);
   }
 
