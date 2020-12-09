@@ -1,8 +1,12 @@
 package GUI;
 
+import MyFile.FileAdapter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
+import Classes.*;
 
 public class ProjectController
 {
@@ -54,7 +58,7 @@ public class ProjectController
 
   @FXML private TextField taskName;
   @FXML private TextField taskID;
-  @FXML private TextField respTeamMember;
+  @FXML private ComboBox respTeamMember;
   @FXML private TextField taskEstimatedTime;
   @FXML private TextField taskDeadline;
   @FXML private TextArea taskDescription;
@@ -71,6 +75,13 @@ public class ProjectController
   @FXML private ListView projectList;
   @FXML private ListView requirementList;
   @FXML private ListView taskList;
+
+  private FileAdapter adapter;
+
+  public void initialize()
+  {
+    adapter = new FileAdapter("employees.txt");
+  }
 
   public void handleActions(ActionEvent e){
       if (scrumMaster.isSelected())
@@ -115,6 +126,20 @@ public class ProjectController
           projectCreator.setSelected(false);
           scrumMaster.setSelected(false);
       }
-
   }
-}
+
+  public void InfoRespMember()
+  {
+      ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
+//    Employee employee = new TeamMember("Iana","Postolachi", "Team Member", 75000,304695);
+//    Employee employee1 = new ProjectCreator("Martin","Vosta", "Project Creator", 25000,304826);
+//    Employee employee2 = new ProjectCreator("Andrei","Soldan", "Project Creator", 25000,304168);
+//    Employee employee3 = new ScrumMaster("Jan","Le", "Scrum Master", 25000,304287);
+//    projectManagementSystem.addEmployee(employee);
+//    projectManagementSystem.addEmployee(employee1);
+//    projectManagementSystem.addEmployee(employee2);
+//    projectManagementSystem.addEmployee(employee3);
+    ObservableList<String> observableList= FXCollections.observableArrayList(projectManagementSystem.getEmployees().get(0).getFirstName());
+    respTeamMember.setItems(observableList);
+    }
+  }

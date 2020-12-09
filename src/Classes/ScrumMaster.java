@@ -5,7 +5,9 @@ import Classes.Project;
 import Classes.ProjectManagementSystem;
 import Classes.Requirement;
 
-public class ScrumMaster extends Employee
+import java.io.Serializable;
+
+public class ScrumMaster extends Employee implements Serializable
 {
   private static ProjectManagementSystem projectManagementSystem;
 

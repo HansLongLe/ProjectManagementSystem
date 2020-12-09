@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public  class ProjectManagementSystem
 {
-  private ArrayList<Employee> employees;
+  private static ArrayList<Employee> employees;
   private ArrayList<Project> projects;
 
   public ProjectManagementSystem(){

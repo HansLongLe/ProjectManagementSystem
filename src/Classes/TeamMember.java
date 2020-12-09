@@ -4,7 +4,9 @@ import Classes.Employee;
 import Classes.Project;
 import Classes.ProjectManagementSystem;
 
-public class TeamMember extends Employee
+import java.io.Serializable;
+
+public class TeamMember extends Employee implements Serializable
 {
   private static ProjectManagementSystem pms;
   public TeamMember(String firstName, String lastName, String position, double salary, int employeeID){
