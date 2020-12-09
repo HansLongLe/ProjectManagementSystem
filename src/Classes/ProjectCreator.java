@@ -3,7 +3,9 @@ package Classes;
 import Classes.Employee;
 import Classes.Project;
 
-public class ProjectCreator extends Employee
+import java.io.Serializable;
+
+public class ProjectCreator extends Employee implements Serializable
 {
     private static ProjectManagementSystem projectManagementSystem;
     private Project project;
