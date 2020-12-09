@@ -80,7 +80,8 @@ public class ProjectController
 
   public void initialize()
   {
-    adapter = new FileAdapter("employees.txt");
+    adapter = new FileAdapter("employees.bin");
+    InfoRespMember();
   }
 
   public void handleActions(ActionEvent e){
@@ -131,15 +132,11 @@ public class ProjectController
   public void InfoRespMember()
   {
       ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
-//    Employee employee = new TeamMember("Iana","Postolachi", "Team Member", 75000,304695);
-//    Employee employee1 = new ProjectCreator("Martin","Vosta", "Project Creator", 25000,304826);
-//    Employee employee2 = new ProjectCreator("Andrei","Soldan", "Project Creator", 25000,304168);
-//    Employee employee3 = new ScrumMaster("Jan","Le", "Scrum Master", 25000,304287);
-//    projectManagementSystem.addEmployee(employee);
-//    projectManagementSystem.addEmployee(employee1);
-//    projectManagementSystem.addEmployee(employee2);
-//    projectManagementSystem.addEmployee(employee3);
-    ObservableList<String> observableList= FXCollections.observableArrayList(projectManagementSystem.getEmployees().get(0).getFirstName());
-    respTeamMember.setItems(observableList);
+    projectManagementSystem.getEmployees().addAll(adapter.getAllEmployees());
+      respTeamMember.getItems().clear();
+      for (int i = 0; i < projectManagementSystem.getEmployees().size(); i++)
+      {
+        respTeamMember.getItems().add(projectManagementSystem.getEmployees().get(i));
+      }
     }
   }

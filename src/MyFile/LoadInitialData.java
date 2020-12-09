@@ -2,6 +2,7 @@ package MyFile;
 import Classes.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class LoadInitialData
 {
@@ -25,9 +26,25 @@ public class LoadInitialData
         String salary = tempArr[3];
         String employeeID = tempArr[4];
 
-        projectManagementSystem.addEmployee(
-            new TeamMember(firstName, lastName, position, Double.parseDouble(salary),
-            Integer.parseInt(employeeID)));
+        Employee employee = null;
+
+        if (position.equals("ScrumMaster"))
+        {
+         employee = new ScrumMaster(firstName, lastName, position, Double.parseDouble(salary),
+                  Integer.parseInt(employeeID));
+        }
+        else if (position.equals("TeamMember"))
+        {
+          employee = new TeamMember(firstName, lastName, position, Double.parseDouble(salary),
+              Integer.parseInt(employeeID));
+        }
+        else if(position.equals("ProjectCreator"))
+        {
+          employee = new ProjectCreator(firstName, lastName, position, Double.parseDouble(salary),
+              Integer.parseInt(employeeID));
+        }
+
+        projectManagementSystem.getEmployees().add(employee);
       }
     }
     catch (FileNotFoundException e)
@@ -35,6 +52,24 @@ public class LoadInitialData
       System.out.println("File was not found, or could not be opened");
     }
 
-    System.out.println(projectManagementSystem.getEmployees());
+    MyFileIO mfio = new MyFileIO();
+
+    try
+    {
+      mfio.writeToFile("employees.bin", projectManagementSystem.getEmployees());
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("Error opening file ");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file ");
+    }
+
+    System.out.println("Done");
   }
+
+
 }
+

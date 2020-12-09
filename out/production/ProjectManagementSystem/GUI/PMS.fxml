@@ -483,7 +483,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ComboBox fx:id="respTeamMember" onAction="#handleActions" prefWidth="150.0">
+                                    <ComboBox fx:id="respTeamMember" onAction="#InfoRespMember" prefWidth="150.0">
                                        <HBox.margin>
                                           <Insets left="19.0" />
                                        </HBox.margin>

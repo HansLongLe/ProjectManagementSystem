@@ -70,7 +70,7 @@ public abstract class Employee implements Serializable
 
   public String toString()
   {
-    return "The employee " + firstName + " " + lastName + " is a " + position + ". They are payed " + salary + "$\n ID: " + employeeID;
+    return firstName + " " + lastName + " (" + position + ")";
   }
 
   public boolean equals(Object obj)
