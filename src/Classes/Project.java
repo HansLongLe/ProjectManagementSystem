@@ -14,13 +14,12 @@ public class Project
   private Deadline deadline;
   private ProductOwner productOwner;
 
-  public Project (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline, ProductOwner productOwner){
+  public Project (String name, int ID, String description, int estimatedTime, String status,  Deadline deadline, ProductOwner productOwner){
     this.name = name;
     this.ID = ID;
     this.description = description;
     this.estimatedTime = estimatedTime;
     this.status = status;
-    this.hoursWorked = hoursWorked;
     this.deadline = deadline;
     requirements = new ArrayList<Requirement>();
     this.productOwner = productOwner;
