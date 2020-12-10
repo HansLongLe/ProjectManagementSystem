@@ -17,7 +17,7 @@ public class Requirement
     /**
      * This is the constructor.
      */
-    public Requirement(String name, int ID, String description, int estimatedTime, int priority, Deadline deadline)
+    public Requirement(String name, int ID, String description, int estimatedTime, int priority, Deadline deadline, String status)
     {
         this.name = name;
         this.ID = ID;
@@ -26,7 +26,7 @@ public class Requirement
         this.priority = priority;
         this.deadline = deadline;
         tasks = new ArrayList<Task>();
-        status = "Started";
+        this.status = status;
         hoursWorked = 0;
     }
     public void addTask(Task task)
