@@ -81,26 +81,9 @@ public class ProjectController
   @FXML private Button projectSave;
   @FXML private Button projectChange;
 
-  @FXML private TableView<Project> projectTableView;
-  @FXML private TableColumn projectCheckBoxColumn;
-  @FXML private TableColumn projectIDColumn;
-  @FXML private TableColumn projectNameColumn;
-  @FXML private TableColumn projectStatusColumn;
-  @FXML private TableColumn projectIDKColumn;
-
-  @FXML private TableView<Requirement> requirementTableView;
-  @FXML private TableColumn requirementCheckBoxColumn;
-  @FXML private TableColumn requirementPriorityColumn;
-  @FXML private TableColumn requirementIDColumn;
-  @FXML private TableColumn requirementNameColumn;
-  @FXML private TableColumn requirementStatusColumn;
-
-  @FXML private TableView<Task> taskTableView;
-  @FXML private TableColumn taskCheckBoxColumn;
-  @FXML private TableColumn taskIDColumn;
-  @FXML private TableColumn taskNameColumn;
-  @FXML private TableColumn taskStatusColumn;
-  @FXML private TableColumn taskRespMembColumn;
+  @FXML private ListView<Project> projectListView;
+  @FXML private ListView<Requirement> requirementListView;
+  @FXML private ListView<Task> taskListView;
 
   private FileAdapter adapter;
 
@@ -153,7 +136,7 @@ public class ProjectController
              taskStatus.getSelectionModel().getSelectedItem(),Integer.parseInt(taskHoursWorked.getText()),
              deadline,(Employee)respTeamMember.getSelectionModel().getSelectedItem());
 
-
+             taskListView.getItems().add(task);
              taskName.clear();
              taskID.clear();
              respTeamMember.getSelectionModel().clearSelection();
