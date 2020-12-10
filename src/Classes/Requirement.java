@@ -16,9 +16,8 @@ public class Requirement
 
     /**
      * This is the constructor.
-     * @param task The requirement has to have at least one task.
      */
-    public Requirement(String name, int ID, String description, int estimatedTime, int priority, Deadline deadline, Task task)
+    public Requirement(String name, int ID, String description, int estimatedTime, int priority, Deadline deadline)
     {
         this.name = name;
         this.ID = ID;
@@ -27,7 +26,6 @@ public class Requirement
         this.priority = priority;
         this.deadline = deadline;
         tasks = new ArrayList<Task>();
-        tasks.add(task);
         status = "Started";
         hoursWorked = 0;
     }
@@ -120,17 +118,7 @@ public class Requirement
         }
     }
     public String toString() {
-        return "Classes.Requirement{" +
-                "name='" + name + '\'' +
-                ", ID=" + ID +
-                ", description='" + description + '\'' +
-                ", estimatedTime=" + estimatedTime +
-                ", status='" + status + '\'' +
-                ", priority=" + priority +
-                ", hoursWorked=" + hoursWorked +
-                ", deadline=" + deadline +
-                ", tasks=" + tasks +
-                '}';
+        return priority + "\t\t" + ID + "\t\t" + name + "\t\t" + status;
     }
 
     public void setDeadline(Deadline deadline) {

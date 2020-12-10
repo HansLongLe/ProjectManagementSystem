@@ -50,7 +50,6 @@ public class ProjectController
 
   @FXML private TextField requirementName;
   @FXML private TextField requirementID;
-  @FXML private ToggleButton requirementPriority ;
   @FXML private RadioButton priority1;
   @FXML private RadioButton priority2;
   @FXML private RadioButton priority3;
@@ -61,6 +60,7 @@ public class ProjectController
   @FXML private TextField requirementDeadlineYyyy;
   @FXML private TextArea requirementDescription;
   @FXML private ComboBox requirementStatus;
+  @FXML private TextField requirementHoursWorked;
 
 
   @FXML private TextField taskName;
@@ -86,12 +86,14 @@ public class ProjectController
   @FXML private ListView<Task> taskListView;
 
   private FileAdapter adapter;
+  private int requirementPriorityInteger;
 
   public void initialize()
   {
     adapter = new FileAdapter("employees.bin");
     InfoRespMember();
     statusBox();
+    taskStatus.getSelectionModel().select("Not started");
   }
 
   public void handleActions(ActionEvent e)
@@ -150,13 +152,46 @@ public class ProjectController
              taskDescription.clear();
 
              tabPane.getSelectionModel().select(tasks);
+             requirementSave.setDisable(false);
+
 
         }
+          if (e.getSource() == requirementSave){
+              Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
+                      requirementDescription.getText(),Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
+                      new Deadline(Integer.parseInt(requirementDeadlineDd.getText()),Integer.parseInt(requirementDeadlineMm.getText()),
+                              Integer.parseInt(requirementDeadlineYyyy.getText())));
+              for (int i = 0; i < taskListView.getItems().size(); i++) {
+                  requirement.addTask(taskListView.getItems().get(i));
+              }
+              requirementListView.getItems().add(requirement);
+              String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
+              requirementHoursWorked.setText(requirementHoursWorkedString);
+              tabPane.getSelectionModel().select(requirements);
+          }
+          if (priority1.isSelected())
+          {
+              requirementPriorityInteger = 1;
+          }
+          if (priority2.isSelected())
+          {
+              requirementPriorityInteger = 2;
+          }
+          if (priority3.isSelected())
+          {
+              requirementPriorityInteger = 3;
+          }
       }
       if (teamMember.isSelected())
       {
 
       }
+
+//      if (e.getSource() == taskListView.getSelectionModel().getSelectedItems())
+//      {
+//          tabPane.getSelectionModel().selectNext();
+//
+//      }
   }
 
 
@@ -175,5 +210,7 @@ public class ProjectController
   {
     String[] statuses = {"Started","Not started","Approved","Rejected","Ended"};
       taskStatus.getItems().addAll(statuses);
+      requirementStatus.getItems().addAll(statuses);
   }
+
 }
