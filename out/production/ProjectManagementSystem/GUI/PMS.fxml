@@ -166,7 +166,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ComboBox fx:id="projectStatus" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleActions" prefWidth="150.0" promptText="Not Started">
+                                    <ComboBox fx:id="projectStatus" minHeight="-Infinity" minWidth="-Infinity" onAction="#initialize" prefWidth="150.0" promptText="Not Started">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="68.0" />
                                        </HBox.margin>
@@ -325,12 +325,12 @@
                                           <ToggleGroup fx:id="ToggleGroup" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="priority2" mnemonicParsing="false" text="2" toggleGroup="$ToggleGroup">
+                                    <RadioButton fx:id="priority2" mnemonicParsing="false" onAction="#handleActions" text="2" toggleGroup="$ToggleGroup">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton fx:id="priority3" mnemonicParsing="false" text="3" toggleGroup="$ToggleGroup">
+                                    <RadioButton fx:id="priority3" mnemonicParsing="false" onAction="#handleActions" text="3" toggleGroup="$ToggleGroup">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>

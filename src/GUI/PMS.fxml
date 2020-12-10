@@ -166,7 +166,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ComboBox fx:id="projectStatus" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleActions" prefWidth="150.0" promptText="Not Started">
+                                    <ComboBox fx:id="projectStatus" minHeight="-Infinity" minWidth="-Infinity" onAction="#initialize" prefWidth="150.0" promptText="Not Started">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="68.0" />
                                        </HBox.margin>

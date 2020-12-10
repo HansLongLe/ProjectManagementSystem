@@ -94,6 +94,8 @@ public class ProjectController
     InfoRespMember();
     statusBox();
     taskStatus.getSelectionModel().select("Not started");
+    requirementStatus.getSelectionModel().select("Not started");
+    projectStatus.getSelectionModel().select("Not started");
   }
 
   public void handleActions(ActionEvent e)
@@ -168,6 +170,56 @@ public class ProjectController
               String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
               requirementHoursWorked.setText(requirementHoursWorkedString);
               tabPane.getSelectionModel().select(requirements);
+              taskListView.getItems().clear();
+              requirementName.clear();
+              requirementID.clear();
+              priority1.setSelected(false);
+            priority2.setSelected(false);
+            priority3.setSelected(false);
+              requirementEstimatedTime.clear();
+              requirementHoursWorked.clear();
+              requirementDeadlineDd.clear();
+              requirementDeadlineMm.clear();
+              requirementDeadlineYyyy.clear();
+              requirementDescription.clear();
+              requirementStatus.getSelectionModel().select("Not started");
+            projectSave.setDisable(false);
+
+
+          }
+          if(e.getSource() == projectSave){
+            String temp = productOwner.getText();
+            String[] stringArr = temp.split(" ");
+
+
+            String firstName = stringArr[0];
+            String lastName = stringArr[1];
+
+            Project project = new Project(projectName.getText(),
+                Integer.parseInt(projectID.getText()), projectDescription.getText(),
+                Integer.parseInt(projectEstimatedTime.getText()),
+                projectStatus.getSelectionModel().getSelectedItem().toString(),
+                new Deadline(Integer.parseInt(projectDeadlineDd.getText()),Integer.parseInt(projectDeadlineMm.getText()),
+                Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
+
+            projectListView.getItems().add(project);
+            for(int i=0; i<requirementListView.getItems().size(); i++){
+              project.addRequirement(requirementListView.getItems().get(i));
+            }
+            String projectHoursWorkedString = project.getHoursWorked() + "";
+            projectHoursWorked.setText(projectHoursWorkedString);
+            requirementListView.getItems().clear();
+            projectName.clear();
+            projectHoursWorked.clear();
+            projectID.clear();
+            productOwner.clear();
+            projectEstimatedTime.clear();
+            projectDeadlineDd.clear();
+            projectDeadlineMm.clear();
+            projectDeadlineYyyy.clear();
+            projectStatus.getSelectionModel().select("Not started");
+            tabPane.getSelectionModel().select(projects);
+
 
 
           }
@@ -214,6 +266,7 @@ public class ProjectController
     String[] statuses = {"Started","Not started","Approved","Rejected","Ended"};
       taskStatus.getItems().addAll(statuses);
       requirementStatus.getItems().addAll(statuses);
+      projectStatus.getItems().addAll(statuses);
   }
 
 }
