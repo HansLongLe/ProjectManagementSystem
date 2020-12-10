@@ -181,6 +181,7 @@ public class ProjectController
           {
               requirementPriorityInteger = 3;
           }
+
       }
       if (teamMember.isSelected())
       {
