@@ -8,6 +8,8 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import Classes.*;
 
+import java.util.ArrayList;
+
 public class ProjectController
 {
   @FXML private Tab projects;
@@ -38,7 +40,9 @@ public class ProjectController
   @FXML private TextField projectID;
   @FXML private TextField productOwner;
   @FXML private TextField projectEstimatedTime;
-  @FXML private TextField projectDeadline;
+  @FXML private TextField projectDeadlineDd;
+  @FXML private TextField projectDeadlineMm;
+  @FXML private TextField projectDeadlineYyyy;
   @FXML private TextArea projectDescription;
   @FXML private ComboBox projectStatus;
   @FXML private TextField projectHoursWorked;
@@ -52,7 +56,9 @@ public class ProjectController
   @FXML private RadioButton priority3;
   @FXML private ToggleGroup ToggleGroup;
   @FXML private TextField requirementEstimatedTime;
-  @FXML private TextField requirementDeadline;
+  @FXML private TextField requirementDeadlineDd;
+  @FXML private TextField requirementDeadlineMm;
+  @FXML private TextField requirementDeadlineYyyy;
   @FXML private TextArea requirementDescription;
   @FXML private ComboBox requirementStatus;
 
@@ -61,10 +67,12 @@ public class ProjectController
   @FXML private TextField taskID;
   @FXML private ComboBox respTeamMember;
   @FXML private TextField taskEstimatedTime;
-  @FXML private TextField taskDeadline;
+  @FXML private TextField taskDeadlineDd;
+  @FXML private TextField taskDeadlineMm;
+  @FXML private TextField taskDeadlineYyyy;
   @FXML private TextArea taskDescription;
   @FXML private TextField taskHoursWorked;
-  @FXML private ComboBox taskStatus;
+  @FXML private ComboBox<String> taskStatus;
 
   @FXML private Button taskSave;
   @FXML private Button taskChange;
@@ -73,9 +81,26 @@ public class ProjectController
   @FXML private Button projectSave;
   @FXML private Button projectChange;
 
-  @FXML private ListView projectList;
-  @FXML private ListView requirementList;
-  @FXML private ListView taskList;
+  @FXML private TableView<Project> projectTableView;
+  @FXML private TableColumn projectCheckBoxColumn;
+  @FXML private TableColumn projectIDColumn;
+  @FXML private TableColumn projectNameColumn;
+  @FXML private TableColumn projectStatusColumn;
+  @FXML private TableColumn projectIDKColumn;
+
+  @FXML private TableView<Requirement> requirementTableView;
+  @FXML private TableColumn requirementCheckBoxColumn;
+  @FXML private TableColumn requirementPriorityColumn;
+  @FXML private TableColumn requirementIDColumn;
+  @FXML private TableColumn requirementNameColumn;
+  @FXML private TableColumn requirementStatusColumn;
+
+  @FXML private TableView<Task> taskTableView;
+  @FXML private TableColumn taskCheckBoxColumn;
+  @FXML private TableColumn taskIDColumn;
+  @FXML private TableColumn taskNameColumn;
+  @FXML private TableColumn taskStatusColumn;
+  @FXML private TableColumn taskRespMembColumn;
 
   private FileAdapter adapter;
 
@@ -83,6 +108,7 @@ public class ProjectController
   {
     adapter = new FileAdapter("employees.bin");
     InfoRespMember();
+    statusBox();
   }
 
   public void handleActions(ActionEvent e)
@@ -107,6 +133,7 @@ public class ProjectController
           tabPane.getSelectionModel().selectNext();
           requirementsInfo.setDisable(false);
           requirementChange.setVisible(false);
+          //Requirement requirement = new Requirement()
 
           tasks.setDisable(false);
         }
@@ -114,16 +141,38 @@ public class ProjectController
           tabPane.getSelectionModel().selectNext();
           taskInfo.setDisable(false);
           taskChange.setVisible(false);
-
           taskSave.setDisable(false);
+        }
+        if (e.getSource() == taskSave)
+        {
+          Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
+            Integer.parseInt(taskDeadlineMm.getText()),Integer.parseInt(taskDeadlineYyyy.getText()));
+
+         Task task = new Task(taskName.getText(),Integer.parseInt(taskID.getText()),
+             taskDescription.getText(),Integer.parseInt(taskEstimatedTime.getText()),
+             taskStatus.getSelectionModel().getSelectedItem(),Integer.parseInt(taskHoursWorked.getText()),
+             deadline,(Employee)respTeamMember.getSelectionModel().getSelectedItem());
+
+
+             taskName.clear();
+             taskID.clear();
+             //respTeamMember.setPromptText("Choose employee");
+             taskEstimatedTime.clear();
+             taskHoursWorked.clear();
+             taskDeadlineDd.clear();
+             taskDeadlineMm.clear();
+             taskDeadlineYyyy.clear();
+             //taskStatus.setPromptText("Not started");
+             taskDescription.clear();
+
+             tabPane.getSelectionModel().select(tasks);
+
         }
       }
       if (teamMember.isSelected())
       {
 
       }
-
-
   }
 
 
@@ -136,6 +185,11 @@ public class ProjectController
       {
         respTeamMember.getItems().add(projectManagementSystem.getEmployees().get(i));
       }
-    }
-    
   }
+
+  private void statusBox()
+  {
+    String[] statuses = {"Started","Not started","Approved","Rejected","Ended"};
+      taskStatus.getItems().addAll(statuses);
+  }
+}

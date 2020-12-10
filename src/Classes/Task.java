@@ -14,7 +14,8 @@ public class Task
 
 
 
-    public Task (String name, int ID, String description, int estimatedTime, String status, int hoursWorked, Deadline deadline, Employee employee)
+    public Task (String name, int ID, String description, int estimatedTime,
+        String status, int hoursWorked, Deadline deadline, Employee employee)
     {
         this.name = name;
         this.ID = ID;
@@ -23,7 +24,7 @@ public class Task
         this.status = status;
         this.hoursWorked = hoursWorked;
         this.deadline = deadline;
-        this.employee = null;
+        this.employee = employee;
     }
 
     /**
@@ -114,5 +115,10 @@ public class Task
         {
             this.employee = employee;
         }
+    }
+
+    public String toString()
+    {
+        return ID + "\t\t\t" + name + "\t\t" + status + "\t\t\tAssigned to: " + employee;
     }
 }
