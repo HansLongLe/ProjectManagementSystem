@@ -366,9 +366,9 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField editable="false" prefHeight="11.0" prefWidth="22.0" promptText="0">
+                                    <TextField fx:id="requirementHoursWorked" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="41.0" promptText="0">
                                        <HBox.margin>
-                                          <Insets left="155.0" />
+                                          <Insets left="145.0" />
                                        </HBox.margin>
                                     </TextField>
                                  </children>
