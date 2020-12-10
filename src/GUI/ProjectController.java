@@ -160,7 +160,7 @@ public class ProjectController
               Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
                       requirementDescription.getText(),Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
                       new Deadline(Integer.parseInt(requirementDeadlineDd.getText()),Integer.parseInt(requirementDeadlineMm.getText()),
-                              Integer.parseInt(requirementDeadlineYyyy.getText())));
+                              Integer.parseInt(requirementDeadlineYyyy.getText())), requirementStatus.getSelectionModel().getSelectedItem().toString());
               for (int i = 0; i < taskListView.getItems().size(); i++) {
                   requirement.addTask(taskListView.getItems().get(i));
               }
@@ -168,6 +168,8 @@ public class ProjectController
               String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
               requirementHoursWorked.setText(requirementHoursWorkedString);
               tabPane.getSelectionModel().select(requirements);
+
+
           }
           if (priority1.isSelected())
           {
