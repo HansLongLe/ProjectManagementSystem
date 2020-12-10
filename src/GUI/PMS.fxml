@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,8 +12,6 @@
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -50,15 +49,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <TableView fx:id="projectTableView" prefHeight="355.0" prefWidth="594.0">
-                                <columns>
-                                    <TableColumn fx:id="projectCheckBoxColumn" prefWidth="25.333344101905823" />
-                                  <TableColumn fx:id="projectIDColumn" prefWidth="125.9999942779541" text="Project ID" />
-                                  <TableColumn fx:id="projectNameColumn" prefWidth="91.99996185302734" text="Project Name" />
-                                    <TableColumn fx:id="projectStatusColumn" prefWidth="125.33335876464844" text="Project Status" />
-                                    <TableColumn fx:id="projectIDKColumn" prefWidth="221.99996948242188" />
-                                </columns>
-                              </TableView>
+                              <ListView fx:id="projectListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addProject" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
@@ -259,15 +250,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <TableView fx:id="requirementTableView" prefHeight="357.0" prefWidth="594.0">
-                                <columns>
-                                    <TableColumn fx:id="requirementCheckBoxColumn" prefWidth="26.66665518283844" />
-                                  <TableColumn fx:id="requirementPriorityColumn" prefWidth="139.99999618530273" text="Requirement Priority" />
-                                  <TableColumn fx:id="requirementIDColumn" prefWidth="118.00004577636719" text="Requirement ID" />
-                                    <TableColumn fx:id="requirementNameColumn" minWidth="0.0" prefWidth="124.66668701171875" text="Requirement Name" />
-                                    <TableColumn fx:id="requirementStatusColumn" prefWidth="180.66665649414062" text="Requirement Status" />
-                                </columns>
-                              </TableView>
+                              <ListView fx:id="requirementListView" prefHeight="357.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
@@ -478,15 +461,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <TableView fx:id="taskTableView" prefHeight="355.0" prefWidth="594.0">
-                                 <columns>
-                                    <TableColumn fx:id="taskCheckBoxColumn" prefWidth="27.333344101905823" />
-                                    <TableColumn fx:id="taskIDColumn" prefWidth="71.33334541320801" text="Task ID" />
-                                    <TableColumn fx:id="taskNameColumn" prefWidth="112.6666488647461" text="Task Name" />
-                                    <TableColumn fx:id="taskStatusColumn" prefWidth="99.33335876464844" text="Task Status" />
-                                    <TableColumn fx:id="taskRespMembColumn" maxWidth="1.7976931348623157E308" prefWidth="278.6665954589844" text="Responsible team member" />
-                                 </columns>
-                              </TableView>
+                              <ListView fx:id="taskListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addTask" mnemonicParsing="false" onAction="#handleActions" text="Add Task">

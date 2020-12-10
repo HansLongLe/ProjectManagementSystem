@@ -49,7 +49,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ListView prefHeight="355.0" prefWidth="594.0" />
+                              <ListView fx:id="projectListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addProject" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
@@ -250,7 +250,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ListView fx:id="requirementList" prefHeight="356.0" prefWidth="594.0" />
+                              <ListView fx:id="requirementListView" prefHeight="357.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
@@ -461,7 +461,7 @@
                      <content>
                         <VBox prefHeight="341.0" prefWidth="597.0">
                            <children>
-                              <ListView fx:id="taskList" prefHeight="354.0" prefWidth="594.0" />
+                              <ListView fx:id="taskListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
                                     <Button fx:id="addTask" mnemonicParsing="false" onAction="#handleActions" text="Add Task">
