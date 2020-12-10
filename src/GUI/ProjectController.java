@@ -19,9 +19,10 @@ public class ProjectController
   @FXML private TabPane tabPane;
 
   @FXML private Menu position;
-  @FXML private CheckMenuItem scrumMaster;
-  @FXML private CheckMenuItem projectCreator;
-  @FXML private CheckMenuItem teamMember;
+  @FXML private RadioMenuItem scrumMaster;
+  @FXML private RadioMenuItem projectCreator;
+  @FXML private RadioMenuItem teamMember;
+  @FXML private ToggleGroup MenuItemToggleGroup;
   @FXML private MenuItem about;
   @FXML private MenuBar menuBar;
 
@@ -84,16 +85,14 @@ public class ProjectController
     InfoRespMember();
   }
 
-  public void handleActions(ActionEvent e){
+  public void handleActions(ActionEvent e)
+  {
       if (scrumMaster.isSelected())
       {
-          projectCreator.setSelected(false);
-          teamMember.setSelected(false);
+
       }
       if (projectCreator.isSelected())
       {
-          scrumMaster.setSelected(false);
-          teamMember.setSelected(false);
           if(e.getSource() == addProject)
           {
               tabPane.getSelectionModel().selectNext();
@@ -118,25 +117,26 @@ public class ProjectController
 
           taskSave.setDisable(false);
         }
-
-
-
       }
       if (teamMember.isSelected())
       {
-          projectCreator.setSelected(false);
-          scrumMaster.setSelected(false);
+
       }
+
+
   }
+
 
   public void InfoRespMember()
   {
       ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
-    projectManagementSystem.getEmployees().addAll(adapter.getAllEmployees());
+      projectManagementSystem.getEmployees().addAll(adapter.getAllEmployees());
       respTeamMember.getItems().clear();
       for (int i = 0; i < projectManagementSystem.getEmployees().size(); i++)
       {
         respTeamMember.getItems().add(projectManagementSystem.getEmployees().get(i));
       }
+
     }
+    
   }
