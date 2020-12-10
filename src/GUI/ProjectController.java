@@ -139,13 +139,14 @@ public class ProjectController
              taskListView.getItems().add(task);
              taskName.clear();
              taskID.clear();
-             //respTeamMember.setPromptText("Choose employee");
+             respTeamMember.getSelectionModel().clearSelection();
+             respTeamMember.setPromptText("Choose employee");
              taskEstimatedTime.clear();
              taskHoursWorked.clear();
              taskDeadlineDd.clear();
              taskDeadlineMm.clear();
              taskDeadlineYyyy.clear();
-             //taskStatus.setPromptText("Not started");
+             taskStatus.getSelectionModel().select("Not started");
              taskDescription.clear();
 
              tabPane.getSelectionModel().select(tasks);
