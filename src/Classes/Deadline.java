@@ -65,6 +65,6 @@ public class Deadline
 
     public String toString()
     {
-        return "The deadline is: " + day + ":" + month + ":" + year;
+        return day + "." + month + "." + year;
     }
 }
