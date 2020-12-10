@@ -325,12 +325,12 @@
                                           <ToggleGroup fx:id="ToggleGroup" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="priority2" mnemonicParsing="false" text="2" toggleGroup="$ToggleGroup">
+                                    <RadioButton fx:id="priority2" mnemonicParsing="false" onAction="#handleActions" text="2" toggleGroup="$ToggleGroup">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton fx:id="priority3" mnemonicParsing="false" text="3" toggleGroup="$ToggleGroup">
+                                    <RadioButton fx:id="priority3" mnemonicParsing="false" onAction="#handleActions" text="3" toggleGroup="$ToggleGroup">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
