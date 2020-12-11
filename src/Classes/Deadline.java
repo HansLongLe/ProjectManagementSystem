@@ -1,6 +1,8 @@
 package Classes;
 
-public class Deadline
+import java.io.Serializable;
+
+public class Deadline implements Serializable
 {
     private int day;
     private int month;
