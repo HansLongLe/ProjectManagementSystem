@@ -208,7 +208,7 @@ public class ProjectController {
 
                 taskListView.getItems().add(task);
 
-                clearTask();
+                //clearTask();
 
                 tabPane.getSelectionModel().select(tasks);
                 requirementSave.setDisable(false);
@@ -227,7 +227,7 @@ public class ProjectController {
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
                 requirementHoursWorked.setText(requirementHoursWorkedString);
                 tabPane.getSelectionModel().select(requirements);
-                clearRequirement();
+                clearTask();
                 projectSave.setDisable(false);
 
 
@@ -254,7 +254,8 @@ public class ProjectController {
                 String projectHoursWorkedString = project.getHoursWorked() + "";
                 projectHoursWorked.setText(projectHoursWorkedString);
 
-                clearProject();
+//                clearProject();
+              clearRequirement();
                 tabPane.getSelectionModel().select(projects);
 
 
@@ -274,6 +275,7 @@ public class ProjectController {
                             .get(i));
                     System.out.println("Saved!");
                 }
+                clearProject();
                 adapter = new FileAdapter("ProjectManagementSystem.bin");
                 adapter.saveToPMSFile(projectManagementSystem);
                 System.out.println("Saved to file!");
