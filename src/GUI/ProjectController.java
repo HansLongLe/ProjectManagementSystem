@@ -241,7 +241,9 @@ public class ProjectController
           {
             projectManagementSystem.addProject(projectListView.getItems()
                 .get(i));
+            System.out.println("Saved!");
           }
+
         }
       }
       if (teamMember.isSelected())
