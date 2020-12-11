@@ -1,8 +1,6 @@
 package GUI;
 
-import MyFile.FileAdapter;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import MyFile.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,164 +10,108 @@ import Classes.*;
 
 import java.util.ArrayList;
 
-public class ProjectController {
-    @FXML
-    private Tab projects;
-    @FXML
-    private Tab projectInfo;
-    @FXML
-    private Tab requirements;
-    @FXML
-    private Tab requirementsInfo;
-    @FXML
-    private Tab tasks;
-    @FXML
-    private Tab taskInfo;
-    @FXML
-    private TabPane tabPane;
+public class ProjectController
+{
+  @FXML private Tab projects;
+  @FXML private Tab projectInfo;
+  @FXML private Tab requirements;
+  @FXML private Tab requirementsInfo;
+  @FXML private Tab tasks;
+  @FXML private Tab taskInfo;
+  @FXML private TabPane tabPane;
 
-    @FXML
-    private Menu position;
-    @FXML
-    private RadioMenuItem scrumMaster;
-    @FXML
-    private RadioMenuItem projectCreator;
-    @FXML
-    private RadioMenuItem teamMember;
-    @FXML
-    private ToggleGroup MenuItemToggleGroup;
-    @FXML
-    private MenuItem about;
-    @FXML
-    private MenuBar menuBar;
+  @FXML private Menu position;
+  @FXML private RadioMenuItem scrumMaster;
+  @FXML private RadioMenuItem projectCreator;
+  @FXML private RadioMenuItem teamMember;
+  @FXML private ToggleGroup MenuItemToggleGroup;
+  @FXML private MenuItem about;
+  @FXML private MenuBar menuBar;
 
 
-    @FXML
-    private Button addProject;
-    @FXML
-    private Button deleteProject;
-    @FXML
-    private Button addRequirement;
-    @FXML
-    private Button deleteRequirement;
-    @FXML
-    private Button addTask;
-    @FXML
-    private Button deleteTask;
+  @FXML private Button addProject;
+  @FXML private Button deleteProject;
+  @FXML private Button addRequirement;
+  @FXML private Button deleteRequirement;
+  @FXML private Button addTask;
+  @FXML private Button deleteTask;
 
-    @FXML
-    private TextField projectName;
-    @FXML
-    private TextField projectID;
-    @FXML
-    private TextField productOwner;
-    @FXML
-    private TextField projectEstimatedTime;
-    @FXML
-    private TextField projectDeadlineDd;
-    @FXML
-    private TextField projectDeadlineMm;
-    @FXML
-    private TextField projectDeadlineYyyy;
-    @FXML
-    private TextArea projectDescription;
-    @FXML
-    private ComboBox projectStatus;
-    @FXML
-    private TextField projectHoursWorked;
+  @FXML private TextField projectName;
+  @FXML private TextField projectID;
+  @FXML private TextField productOwner;
+  @FXML private TextField projectEstimatedTime;
+  @FXML private TextField projectDeadlineDd;
+  @FXML private TextField projectDeadlineMm;
+  @FXML private TextField projectDeadlineYyyy;
+  @FXML private TextArea projectDescription;
+  @FXML private ComboBox projectStatus;
+  @FXML private TextField projectHoursWorked;
 
 
-    @FXML
-    private TextField requirementName;
-    @FXML
-    private TextField requirementID;
-    @FXML
-    private RadioButton priority1;
-    @FXML
-    private RadioButton priority2;
-    @FXML
-    private RadioButton priority3;
-    @FXML
-    private ToggleGroup ToggleGroup;
-    @FXML
-    private TextField requirementEstimatedTime;
-    @FXML
-    private TextField requirementDeadlineDd;
-    @FXML
-    private TextField requirementDeadlineMm;
-    @FXML
-    private TextField requirementDeadlineYyyy;
-    @FXML
-    private TextArea requirementDescription;
-    @FXML
-    private ComboBox requirementStatus;
-    @FXML
-    private TextField requirementHoursWorked;
+  @FXML private TextField requirementName;
+  @FXML private TextField requirementID;
+  @FXML private RadioButton priority1;
+  @FXML private RadioButton priority2;
+  @FXML private RadioButton priority3;
+  @FXML private ToggleGroup ToggleGroup;
+  @FXML private TextField requirementEstimatedTime;
+  @FXML private TextField requirementDeadlineDd;
+  @FXML private TextField requirementDeadlineMm;
+  @FXML private TextField requirementDeadlineYyyy;
+  @FXML private TextArea requirementDescription;
+  @FXML private ComboBox requirementStatus;
+  @FXML private TextField requirementHoursWorked;
 
 
-    @FXML
-    private TextField taskName;
-    @FXML
-    private TextField taskID;
-    @FXML
-    private ComboBox respTeamMember;
-    @FXML
-    private TextField taskEstimatedTime;
-    @FXML
-    private TextField taskDeadlineDd;
-    @FXML
-    private TextField taskDeadlineMm;
-    @FXML
-    private TextField taskDeadlineYyyy;
-    @FXML
-    private TextArea taskDescription;
-    @FXML
-    private TextField taskHoursWorked;
-    @FXML
-    private ComboBox<String> taskStatus;
+  @FXML private TextField taskName;
+  @FXML private TextField taskID;
+  @FXML private ComboBox respTeamMember;
+  @FXML private TextField taskEstimatedTime;
+  @FXML private TextField taskDeadlineDd;
+  @FXML private TextField taskDeadlineMm;
+  @FXML private TextField taskDeadlineYyyy;
+  @FXML private TextArea taskDescription;
+  @FXML private TextField taskHoursWorked;
+  @FXML private ComboBox<String> taskStatus;
 
-    @FXML
-    private Button taskSave;
-    @FXML
-    private Button taskChange;
-    @FXML
-    private Button requirementSave;
-    @FXML
-    private Button requirementChange;
-    @FXML
-    private Button projectSave;
-    @FXML
-    private Button projectChange;
+  @FXML private Button taskSave;
+  @FXML private Button taskChange;
+  @FXML private Button requirementSave;
+  @FXML private Button requirementChange;
+  @FXML private Button projectSave;
+  @FXML private Button projectChange;
 
-    @FXML
-    private ListView<Project> projectListView;
-    @FXML
-    private ListView<Requirement> requirementListView;
-    @FXML
-    private ListView<Task> taskListView;
+  @FXML private ListView<Project> projectListView;
+  @FXML private ListView<Requirement> requirementListView;
+  @FXML private ListView<Task> taskListView;
+  @FXML private Button saveToPMS;
 
-    private FileAdapter adapter;
-    private int requirementPriorityInteger;
+  private FileAdapter adapter;
+  private int requirementPriorityInteger;
+  ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
+  public void initialize()
+  {
+    adapter = new FileAdapter("employees.bin");
 
-    public void initialize() {
-        adapter = new FileAdapter("employees.bin");
-        InfoRespMember();
-        statusBox();
-        taskStatus.getSelectionModel().select("Not started");
-        requirementStatus.getSelectionModel().select("Not started");
-        projectStatus.getSelectionModel().select("Not started");
-    }
+    InfoRespMember();
+    statusBox();
+    taskStatus.getSelectionModel().select("Not started");
+    requirementStatus.getSelectionModel().select("Not started");
+    projectStatus.getSelectionModel().select("Not started");
+  }
 
     public void handleActions(ActionEvent e) {
         if (scrumMaster.isSelected()) {
             addProject.setDisable(true);
 
-        }
-        if (projectCreator.isSelected()) {
-            if (e.getSource() == addProject) {
-                tabPane.getSelectionModel().selectNext();
-                projectInfo.setDisable(false);
-                projectChange.setVisible(false);
+      }
+      if (projectCreator.isSelected())
+      {
+          if(e.getSource() == addProject)
+          {
+              tabPane.getSelectionModel().selectNext();
+              projectInfo.setDisable(false);
+              projectChange.setVisible(false);
 
                 requirements.setDisable(false);
                 clearProject();
@@ -255,16 +197,30 @@ public class ProjectController {
                 tabPane.getSelectionModel().select(projects);
 
 
-            }
-            if (priority1.isSelected()) {
-                requirementPriorityInteger = 1;
-            }
-            if (priority2.isSelected()) {
-                requirementPriorityInteger = 2;
-            }
-            if (priority3.isSelected()) {
-                requirementPriorityInteger = 3;
-            }
+
+          }
+          if (priority1.isSelected())
+          {
+              requirementPriorityInteger = 1;
+          }
+          if (priority2.isSelected())
+          {
+              requirementPriorityInteger = 2;
+          }
+          if (priority3.isSelected())
+          {
+              requirementPriorityInteger = 3;
+          }
+        if(e.getSource() == saveToPMS){
+          for (int i = 0; i <projectListView.getItems().size() ; i++)
+          {
+            projectManagementSystem.addProject(projectListView.getItems()
+                .get(i));
+            System.out.println("Saved!");
+          }
+          adapter = new FileAdapter("ProjectManagementSystem.bin");
+          adapter.saveToPMSFile(projectManagementSystem);
+          System.out.println("Saved to file!");
 
         }
         if (teamMember.isSelected()) {
@@ -295,6 +251,16 @@ public class ProjectController {
             respTeamMember.getItems().add(projectManagementSystem.getEmployees().get(i));
         }
     }
+  public void InfoRespMember()
+  {
+
+      projectManagementSystem.getEmployees().addAll(adapter.getAllEmployees());
+      respTeamMember.getItems().clear();
+      for (int i = 0; i < projectManagementSystem.getEmployees().size(); i++)
+      {
+        respTeamMember.getItems().add(projectManagementSystem.getEmployees().get(i));
+      }
+  }
 
     private void statusBox() {
         String[] statuses = {"Started", "Not started", "Approved", "Rejected", "Ended"};
