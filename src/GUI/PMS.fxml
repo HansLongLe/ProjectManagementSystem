@@ -52,7 +52,7 @@
                               <ListView fx:id="projectListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Save to PMS">
+                                    <Button fx:id="saveToPMS" mnemonicParsing="false" onAction="#handleActions" text="Save to PMS">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
