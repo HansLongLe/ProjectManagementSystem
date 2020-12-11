@@ -1,6 +1,8 @@
 package Classes;
 
-public class Task
+import java.io.Serializable;
+
+public class Task implements Serializable
 {
 
     private String name;
@@ -89,6 +91,14 @@ public class Task
 
     public String getStatus() {
         return status;
+    }
+
+    public Deadline getDeadline() {
+        return deadline;
+    }
+
+    public Employee getEmployee() {
+        return employee;
     }
 
     public boolean equals (Object obj)

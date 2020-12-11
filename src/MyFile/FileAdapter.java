@@ -39,5 +39,17 @@ public class FileAdapter
     }
     return employees;
   }
+  public void saveToPMSFile(ProjectManagementSystem pms){
+
+    try{
+      mfio.writeToFile("ProjectManagementSystem.bin", pms);
+    }
+    catch(FileNotFoundException e){
+      System.out.println("File not found");
+    }
+    catch(IOException e){
+      System.out.println("IO Error writing file");
+    }
+  }
 
 }

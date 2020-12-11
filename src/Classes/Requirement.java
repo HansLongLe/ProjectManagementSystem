@@ -1,8 +1,9 @@
 package Classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Requirement
+public class Requirement implements Serializable
 {
     private String name;
     private int ID;

@@ -1,8 +1,9 @@
 package Classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Project
+public class Project implements Serializable
 {
   private String name;
   private int ID;
@@ -146,6 +147,6 @@ public class Project
 
   }
   public String toString(){
-    return "The project info:\n" + name + "\nID:" + ID +"\nDescription: " + description +"\nEstimated time: " + estimatedTime +"\nStatus: " + status +"\nHours worked " + getHoursWorked() +"\nClasses.Deadline: " + deadline + "\nOwned by: " + productOwner;
+    return ID + "\t\t\t" + name + "\t\t\t" + status + "\t\t\t" + productOwner;
   }
 }
