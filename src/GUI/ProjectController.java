@@ -84,6 +84,7 @@ public class ProjectController
   @FXML private ListView<Project> projectListView;
   @FXML private ListView<Requirement> requirementListView;
   @FXML private ListView<Task> taskListView;
+  @FXML private Button saveToPMS;
 
   private FileAdapter adapter;
   private int requirementPriorityInteger;
@@ -240,6 +241,13 @@ public class ProjectController
       if (teamMember.isSelected())
       {
 
+      }
+      if(e.getSource() == saveToPMS){
+        for (int i = 0; i <projectListView.getItems().size() ; i++)
+        {
+          projectManagementSystem.addProject(projectListView.getItems()
+              .get(i));
+        }
       }
 
 //      if (e.getSource() == taskListView.getSelectionModel().getSelectedItems())
