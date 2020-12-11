@@ -1,6 +1,8 @@
 package Classes;
 
-public class ProductOwner
+import java.io.Serializable;
+
+public class ProductOwner implements Serializable
 {
   private String firstName;
   private String lastName;

@@ -1,6 +1,6 @@
 package GUI;
 
-import MyFile.FileAdapter;
+import MyFile.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -92,6 +92,7 @@ public class ProjectController
   public void initialize()
   {
     adapter = new FileAdapter("employees.bin");
+
     InfoRespMember();
     statusBox();
     taskStatus.getSelectionModel().select("Not started");
@@ -243,6 +244,9 @@ public class ProjectController
                 .get(i));
             System.out.println("Saved!");
           }
+          adapter = new FileAdapter("ProjectManagementSystem.bin");
+          adapter.saveToPMSFile(projectManagementSystem);
+          System.out.println("Saved to file!");
 
         }
       }

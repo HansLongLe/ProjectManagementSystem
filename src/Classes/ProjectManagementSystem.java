@@ -3,9 +3,10 @@ package Classes;
 import Classes.Employee;
 import Classes.Project;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public  class ProjectManagementSystem
+public  class ProjectManagementSystem implements Serializable
 {
   private ArrayList<Employee> employees;
   private ArrayList<Project> projects;
