@@ -87,7 +87,7 @@ public class ProjectController
 
   private FileAdapter adapter;
   private int requirementPriorityInteger;
-
+  ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
   public void initialize()
   {
     adapter = new FileAdapter("employees.bin");
@@ -252,7 +252,7 @@ public class ProjectController
 
   public void InfoRespMember()
   {
-      ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
+
       projectManagementSystem.getEmployees().addAll(adapter.getAllEmployees());
       respTeamMember.getItems().clear();
       for (int i = 0; i < projectManagementSystem.getEmployees().size(); i++)
