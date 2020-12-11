@@ -93,6 +93,14 @@ public class Task implements Serializable
         return status;
     }
 
+    public Deadline getDeadline() {
+        return deadline;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
     public boolean equals (Object obj)
     {
         if (!(obj instanceof Task))
