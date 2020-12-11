@@ -236,19 +236,19 @@ public class ProjectController
           {
               requirementPriorityInteger = 3;
           }
-
+        if(e.getSource() == saveToPMS){
+          for (int i = 0; i <projectListView.getItems().size() ; i++)
+          {
+            projectManagementSystem.addProject(projectListView.getItems()
+                .get(i));
+          }
+        }
       }
       if (teamMember.isSelected())
       {
 
       }
-      if(e.getSource() == saveToPMS){
-        for (int i = 0; i <projectListView.getItems().size() ; i++)
-        {
-          projectManagementSystem.addProject(projectListView.getItems()
-              .get(i));
-        }
-      }
+
 
 //      if (e.getSource() == taskListView.getSelectionModel().getSelectedItems())
 //      {
