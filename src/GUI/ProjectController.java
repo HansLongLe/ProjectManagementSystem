@@ -572,6 +572,8 @@ public class ProjectController {
                     requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
                     requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
                     requirementDescription.setText(selectedRequirement.getDescription());
+
+                    taskListView.getItems().addAll(selectedRequirement.getTask());
             });
         projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
             tabPane.getSelectionModel().select(projectInfo);
@@ -586,6 +588,8 @@ public class ProjectController {
             projectDeadlineYyyy.setText(selectedProject.getDeadline().getYear() + "");
             projectStatus.getSelectionModel().select(selectedProject.getStatus());
             projectDescription.setText(selectedProject.getDescription());
+
+            requirementListView.getItems().addAll(selectedProject.getRequirements());
         });
         }
 
