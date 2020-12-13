@@ -332,7 +332,6 @@ public class ProjectController {
 
 
             projectName.setEditable(true);
-            projectHoursWorked.setEditable(true);
             projectID.setEditable(true);
             productOwner.setEditable(true);
             projectEstimatedTime.setEditable(true);
@@ -343,7 +342,7 @@ public class ProjectController {
             projectDescription.setEditable(true);
 
             projectSave.setVisible(true);
-            projectChange.setVisible(true);
+            projectChange.setVisible(false);
 
             requirementName.setEditable(true);
             requirementID.setEditable(true);
@@ -351,7 +350,6 @@ public class ProjectController {
             priority2.setDisable(false);
             priority3.setDisable(false);
             requirementEstimatedTime.setEditable(true);
-            requirementHoursWorked.setEditable(true);
             requirementStatus.setDisable(false);
             requirementDeadlineDd.setEditable(true);
             requirementDeadlineMm.setEditable(true);
@@ -361,11 +359,11 @@ public class ProjectController {
             addRequirement.setVisible(true);
             deleteRequirement.setVisible(true);
             requirementSave.setVisible(true);
-            requirementChange.setVisible(true);
+            requirementChange.setVisible(false);
 
             taskName.setEditable(true);
             taskID.setEditable(true);
-            respTeamMember.setDisable(true);
+            respTeamMember.setDisable(false);
             taskHoursWorked.setEditable(true);
             taskDeadlineDd.setEditable(true);
             taskDeadlineMm.setEditable(true);
@@ -377,7 +375,7 @@ public class ProjectController {
             addTask.setVisible(true);
             deleteTask.setVisible(true);
             taskSave.setVisible(true);
-            taskChange.setVisible(true);
+            taskChange.setVisible(false);
 
             if (e.getSource() == addProject) {
                 tabPane.getSelectionModel().select(projectInfo);
@@ -391,7 +389,7 @@ public class ProjectController {
 
             }
             if (e.getSource() == addRequirement) {
-                tabPane.getSelectionModel().selectNext();
+                tabPane.getSelectionModel().select(requirementsInfo);
                 requirementsInfo.setDisable(false);
                 requirementChange.setVisible(false);
                 //Requirement requirement = new Requirement()
@@ -400,7 +398,7 @@ public class ProjectController {
                 tasks.setDisable(false);
             }
             if (e.getSource() == addTask) {
-                tabPane.getSelectionModel().selectNext();
+                tabPane.getSelectionModel().select(taskInfo);
                 taskInfo.setDisable(false);
                 taskChange.setVisible(false);
                 taskSave.setDisable(false);
