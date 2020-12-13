@@ -171,7 +171,7 @@ public class ProjectController {
         if (projectCreator.isSelected()) {
             addProject.setDisable(false);
             if (e.getSource() == addProject) {
-                tabPane.getSelectionModel().selectNext();
+                tabPane.getSelectionModel().select(projectInfo);
                 projectInfo.setDisable(false);
                 projectChange.setVisible(false);
 
