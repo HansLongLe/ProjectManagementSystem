@@ -325,7 +325,9 @@ public class ProjectController {
         if (projectCreator.isSelected()) {
             addProject.setVisible(true);
             saveToPMS.setVisible(true);
-            deleteProject.setVisible(true);
+            deleteProject.setVisible(false);
+            addProject.setDisable(false);
+
 
             projectName.setEditable(true);
             projectHoursWorked.setEditable(true);
