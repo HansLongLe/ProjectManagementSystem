@@ -171,7 +171,7 @@ public class ProjectController {
         if (projectCreator.isSelected()) {
             addProject.setDisable(false);
             if (e.getSource() == addProject) {
-                tabPane.getSelectionModel().selectNext();
+                tabPane.getSelectionModel().select(projectInfo);
                 projectInfo.setDisable(false);
                 projectChange.setVisible(false);
 
@@ -285,7 +285,52 @@ public class ProjectController {
             }
         }
             if (teamMember.isSelected()) {
+                addProject.setDisable(true);
+                saveToPMS.setDisable(true);
+                deleteProject.setDisable(true);
 
+                projectName.setEditable(false);
+                projectHoursWorked.setEditable(false);
+                projectID.setEditable(false);
+                productOwner.setEditable(false);
+                projectEstimatedTime.setEditable(false);
+                projectStatus.setEditable(false);
+                projectDeadlineDd.setEditable(false);
+                projectDeadlineMm.setEditable(false);
+                projectDeadlineYyyy.setEditable(false);
+                projectDescription.setEditable(false);
+
+                projectSave.setVisible(false);
+                projectChange.setVisible(false);
+
+                requirementName.setEditable(false);
+                requirementID.setEditable(false);
+                priority1.setDisable(true);
+                priority2.setDisable(true);
+                priority3.setDisable(true);
+                requirementEstimatedTime.setEditable(false);
+                requirementHoursWorked.setEditable(false);
+                requirementStatus.setEditable(false);
+                requirementDeadlineDd.setEditable(false);
+                requirementDeadlineMm.setEditable(false);
+                requirementDeadlineYyyy.setEditable(false);
+                requirementDescription.setEditable(false);
+
+                requirementSave.setVisible(false);
+                requirementChange.setVisible(false);
+
+                taskName.setEditable(false);
+                taskID.setEditable(false);
+                respTeamMember.setEditable(false);
+                taskHoursWorked.setEditable(false);
+                taskDeadlineDd.setEditable(false);
+                taskDeadlineMm.setEditable(false);
+                taskDeadlineYyyy.setEditable(false);
+                taskStatus.setEditable(false);
+                taskDescription.setEditable(false);
+
+                taskSave.setVisible(false);
+                taskChange.setVisible(false);
             }
             taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
                         tabPane.getSelectionModel().selectNext();
