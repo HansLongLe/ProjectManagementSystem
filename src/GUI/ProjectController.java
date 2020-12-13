@@ -378,32 +378,25 @@ public class ProjectController {
             taskChange.setVisible(false);
 
             if (e.getSource() == addProject) {
+                clearProject();
                 tabPane.getSelectionModel().select(projectInfo);
                 projectInfo.setDisable(false);
                 projectChange.setVisible(false);
-
-
                 requirements.setDisable(false);
-                clearProject();
-
-
             }
             if (e.getSource() == addRequirement) {
+                clearRequirement();
                 tabPane.getSelectionModel().select(requirementsInfo);
                 requirementsInfo.setDisable(false);
                 requirementChange.setVisible(false);
-                //Requirement requirement = new Requirement()
-
-                clearRequirement();
                 tasks.setDisable(false);
             }
             if (e.getSource() == addTask) {
+                clearTask();
                 tabPane.getSelectionModel().select(taskInfo);
                 taskInfo.setDisable(false);
                 taskChange.setVisible(false);
                 taskSave.setDisable(false);
-
-                clearTask();
 
             }
             if (e.getSource() == taskSave) {
