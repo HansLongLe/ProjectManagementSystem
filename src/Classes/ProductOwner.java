@@ -32,7 +32,7 @@ public class ProductOwner implements Serializable
     this.lastName = lastName;
   }
   public String toString(){
-    return "The Product owner is " + firstName + " " + lastName;
+    return firstName + " " + lastName;
   }
   public boolean equals(Object obj){
     if(!(obj instanceof ProductOwner)){
