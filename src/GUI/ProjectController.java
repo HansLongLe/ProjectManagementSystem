@@ -573,7 +573,11 @@ public class ProjectController {
                     requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
                     requirementDescription.setText(selectedRequirement.getDescription());
 
-                    taskListView.getItems().addAll(selectedRequirement.getTask());
+                    taskListView.getItems().clear();
+                    for (int i = 0; i < selectedRequirement.getTask().size(); i++) {
+                        taskListView.getItems().add(selectedRequirement.getTask().get(i));
+                    }
+                    clearTask();
             });
         projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
             tabPane.getSelectionModel().select(projectInfo);
@@ -589,7 +593,12 @@ public class ProjectController {
             projectStatus.getSelectionModel().select(selectedProject.getStatus());
             projectDescription.setText(selectedProject.getDescription());
 
-            requirementListView.getItems().addAll(selectedProject.getRequirements());
+            requirementListView.getItems().clear();
+            for (int i = 0; i < selectedProject.getRequirements().size(); i++) {
+                requirementListView.getItems().add(selectedProject.getRequirements().get(i));
+            }
+            clearTask();
+            clearRequirement();
         });
         }
 
