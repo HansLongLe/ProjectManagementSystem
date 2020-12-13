@@ -328,6 +328,7 @@ public class ProjectController {
                 taskDeadlineYyyy.setEditable(false);
                 taskStatus.setEditable(false);
                 taskDescription.setEditable(false);
+                taskEstimatedTime.setEditable(false);
 
                 taskSave.setVisible(false);
                 taskChange.setVisible(false);
