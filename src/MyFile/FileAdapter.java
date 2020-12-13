@@ -51,5 +51,27 @@ public class FileAdapter
       System.out.println("IO Error writing file");
     }
   }
+  public ArrayList<Project> getAllProjects(){
+    ArrayList<Project> projects = new ArrayList<Project>();
+      try{
+        ArrayList<Project> result = (ArrayList<Project>)mfio.readObjectFromFile(fileName);
+          for(int i=0; i<result.size(); i++){
+            projects.add(result.get(i));
+          }
+      }
+      catch (FileNotFoundException e)
+      {
+        System.out.println("File not found");
+      }
+      catch (IOException e)
+      {
+        System.out.println("IO Error reading file");
+      }
+      catch (ClassNotFoundException e)
+      {
+        System.out.println("Class Not Found");
+      }
+      return projects;
+  }
 
 }
