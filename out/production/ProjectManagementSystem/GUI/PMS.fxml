@@ -57,12 +57,12 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="addProject" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
+                                    <Button fx:id="addProject" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Add Project">
                                        <HBox.margin>
                                           <Insets left="310.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Project">
+                                    <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Delete Project">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
