@@ -54,10 +54,8 @@ public class FileAdapter
   public ArrayList<Project> getAllProjects(){
     ArrayList<Project> projects = new ArrayList<Project>();
       try{
-        ArrayList<Project> result = (ArrayList<Project>)mfio.readObjectFromFile(fileName);
-          for(int i=0; i<result.size(); i++){
-            projects.add(result.get(i));
-          }
+        projects = (ArrayList<Project>)mfio.readObjectFromFile("ProjectManagementSystem.bin");
+
       }
       catch (FileNotFoundException e)
       {
