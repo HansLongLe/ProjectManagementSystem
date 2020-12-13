@@ -129,4 +129,8 @@ public class Requirement implements Serializable
     public Deadline getDeadline() {
         return deadline;
     }
+
+    public String getStatus() {
+        return status;
+    }
 }
