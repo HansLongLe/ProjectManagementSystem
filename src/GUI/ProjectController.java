@@ -150,12 +150,13 @@ public class ProjectController {
     private Button saveToPMS;
 
     private FileAdapter adapter;
+    private FileAdapter adapter2;
     private int requirementPriorityInteger;
     ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
 
     public void initialize() {
         adapter = new FileAdapter("employees.bin");
-
+        adapter2 = new FileAdapter("ProjectManagementSystem.bin");
         InfoRespMember();
         statusBox();
         taskStatus.getSelectionModel().select("Not started");
@@ -164,6 +165,7 @@ public class ProjectController {
     }
 
     public void handleActions(ActionEvent e) {
+
         if (scrumMaster.isSelected()) {
 
             addProject.setVisible(false);
