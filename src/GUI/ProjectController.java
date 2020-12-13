@@ -173,6 +173,7 @@ public class ProjectController {
                 tabPane.getSelectionModel().selectNext();
                 projectInfo.setDisable(false);
                 projectChange.setVisible(false);
+                addProject.setDisable(false);
 
                 requirements.setDisable(false);
                 clearProject();
@@ -255,7 +256,7 @@ public class ProjectController {
                 projectHoursWorked.setText(projectHoursWorkedString);
 
 //                clearProject();
-              clearRequirement();
+                clearRequirement();
                 tabPane.getSelectionModel().select(projects);
 
 
@@ -281,25 +282,65 @@ public class ProjectController {
                 System.out.println("Saved to file!");
 
             }
+        }
             if (teamMember.isSelected()) {
 
             }
-            taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> ov, Task old_val, Task new_val) -> {
-                tabPane.getSelectionModel().selectNext();
-                Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
-                taskName.setText(selectedTask.getName());
-                taskID.setText(selectedTask.getID() + "");
-                respTeamMember.getSelectionModel().select(selectedTask.getEmployee());
-                taskHoursWorked.setText(selectedTask.getHoursWorked() + "");
-                taskEstimatedTime.setText(selectedTask.getEstimatedTime() + "");
-                taskDeadlineDd.setText(selectedTask.getDeadline().getDay() + "");
-                taskDeadlineMm.setText(selectedTask.getDeadline().getMonth() + "");
-                taskDeadlineYyyy.setText(selectedTask.getDeadline().getYear() + "");
-                taskStatus.getSelectionModel().select(selectedTask.getStatus());
-                taskDescription.setText(selectedTask.getDescription());
+            taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
+                        tabPane.getSelectionModel().selectNext();
+                        Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
+                        taskName.setText(selectedTask.getName());
+                        taskID.setText(selectedTask.getID() + "");
+                        respTeamMember.getSelectionModel().select(selectedTask.getEmployee());
+                        taskHoursWorked.setText(selectedTask.getHoursWorked() + "");
+                        taskEstimatedTime.setText(selectedTask.getEstimatedTime() + "");
+                        taskDeadlineDd.setText(selectedTask.getDeadline().getDay() + "");
+                        taskDeadlineMm.setText(selectedTask.getDeadline().getMonth() + "");
+                        taskDeadlineYyyy.setText(selectedTask.getDeadline().getYear() + "");
+                        taskStatus.getSelectionModel().select(selectedTask.getStatus());
+                        taskDescription.setText(selectedTask.getDescription());
+                    });
+                requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
+                    tabPane.getSelectionModel().selectNext();
+                    Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
+                    requirementName.setText(selectedRequirement.getName());
+                    requirementID.setText(selectedRequirement.getID() + "");
+                    if (selectedRequirement.getPriority() == 1)
+                    {
+                     priority1.setSelected(true);
+                    }
+                    if (selectedRequirement.getPriority() == 2)
+                    {
+                        priority2.setSelected(true);
+                    }
+                    if (selectedRequirement.getPriority() == 3)
+                    {
+                        priority3.setSelected(true);
+                    }
+                    requirementHoursWorked.setText(selectedRequirement.hoursWorkedOnRequirement() + "");
+                    requirementEstimatedTime.setText(selectedRequirement.getEstimatedTime() + "");
+                    requirementDeadlineDd.setText(selectedRequirement.getDeadline().getDay() + "");
+                    requirementDeadlineMm.setText(selectedRequirement.getDeadline().getMonth() + "");
+                    requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
+                    requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
+                    requirementDescription.setText(selectedRequirement.getDescription());
             });
+        projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
+            tabPane.getSelectionModel().selectNext();
+            Project selectedProject = projectListView.getSelectionModel().getSelectedItem();
+            projectName.setText(selectedProject.getName());
+            projectID.setText(selectedProject.getID() + "");
+            productOwner.setText(selectedProject.getProductOwner().toString());
+            projectHoursWorked.setText(selectedProject.getHoursWorked() + "");
+            projectEstimatedTime.setText(selectedProject.getEstimatedTime() + "");
+            projectDeadlineDd.setText(selectedProject.getDeadline().getDay() + "");
+            projectDeadlineMm.setText(selectedProject.getDeadline().getMonth() + "");
+            projectDeadlineYyyy.setText(selectedProject.getDeadline().getYear() + "");
+            projectStatus.getSelectionModel().select(selectedProject.getStatus());
+            projectDescription.setText(selectedProject.getDescription());
+        });
         }
-    }
+
 
 
         public void InfoRespMember () {
