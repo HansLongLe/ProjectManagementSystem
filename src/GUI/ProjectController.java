@@ -302,7 +302,7 @@ public class ProjectController {
                         taskDescription.setText(selectedTask.getDescription());
                     });
                 requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
-                    tabPane.getSelectionModel().selectNext();
+                    tabPane.getSelectionModel().select(requirementsInfo);
                     Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
                     requirementName.setText(selectedRequirement.getName());
                     requirementID.setText(selectedRequirement.getID() + "");
@@ -327,7 +327,7 @@ public class ProjectController {
                     requirementDescription.setText(selectedRequirement.getDescription());
             });
         projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
-            tabPane.getSelectionModel().selectNext();
+            tabPane.getSelectionModel().select(projectInfo);
             Project selectedProject = projectListView.getSelectionModel().getSelectedItem();
             projectName.setText(selectedProject.getName());
             projectID.setText(selectedProject.getID() + "");
