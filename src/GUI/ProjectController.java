@@ -323,7 +323,7 @@ public class ProjectController {
 
                 taskName.setEditable(false);
                 taskID.setEditable(false);
-                respTeamMember.setEditable(false);
+                respTeamMember.setDisable(false);
                 taskHoursWorked.setEditable(false);
                 taskDeadlineDd.setEditable(false);
                 taskDeadlineMm.setEditable(false);
