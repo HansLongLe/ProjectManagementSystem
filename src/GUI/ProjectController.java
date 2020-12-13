@@ -285,16 +285,16 @@ public class ProjectController {
             }
         }
             if (teamMember.isSelected()) {
-                addProject.setDisable(true);
-                saveToPMS.setDisable(true);
-                deleteProject.setDisable(true);
+                addProject.setVisible(false);
+                saveToPMS.setVisible(false);
+                deleteProject.setVisible(false);
 
                 projectName.setEditable(false);
                 projectHoursWorked.setEditable(false);
                 projectID.setEditable(false);
                 productOwner.setEditable(false);
                 projectEstimatedTime.setEditable(false);
-                projectStatus.setEditable(false);
+                projectStatus.setDisable(true);
                 projectDeadlineDd.setEditable(false);
                 projectDeadlineMm.setEditable(false);
                 projectDeadlineYyyy.setEditable(false);
@@ -310,12 +310,14 @@ public class ProjectController {
                 priority3.setDisable(true);
                 requirementEstimatedTime.setEditable(false);
                 requirementHoursWorked.setEditable(false);
-                requirementStatus.setEditable(false);
+                requirementStatus.setDisable(true);
                 requirementDeadlineDd.setEditable(false);
                 requirementDeadlineMm.setEditable(false);
                 requirementDeadlineYyyy.setEditable(false);
                 requirementDescription.setEditable(false);
 
+                addRequirement.setVisible(false);
+                deleteRequirement.setVisible(false);
                 requirementSave.setVisible(false);
                 requirementChange.setVisible(false);
 
@@ -326,10 +328,12 @@ public class ProjectController {
                 taskDeadlineDd.setEditable(false);
                 taskDeadlineMm.setEditable(false);
                 taskDeadlineYyyy.setEditable(false);
-                taskStatus.setEditable(false);
+                taskStatus.setDisable(true);
                 taskDescription.setEditable(false);
                 taskEstimatedTime.setEditable(false);
 
+                addTask.setVisible(false);
+                deleteTask.setVisible(false);
                 taskSave.setVisible(false);
                 taskChange.setVisible(false);
             }
