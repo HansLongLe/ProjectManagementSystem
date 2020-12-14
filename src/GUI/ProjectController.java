@@ -402,6 +402,7 @@ public class ProjectController
                 taskDescription.setEditable(true);
                 taskEstimatedTime.setEditable(true);
                 taskSave.setDisable(false);
+
             }
             if (e.getSource() == projectSave)
             {
@@ -426,11 +427,12 @@ public class ProjectController
                 new Deadline(Integer.parseInt(projectDeadlineDd.getText()), Integer.parseInt(projectDeadlineMm.getText()),
                             Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
 
-                projectListView.getItems().set(projectListView.getEditingIndex(), project);
+
                 for (int i = 0; i < requirementListView.getItems().size(); i++)
                 {
                     project.addRequirement(requirementListView.getItems().get(i));
                 }
+                projectListView.getItems().set(projectListView.getSelectionModel().getSelectedIndex(), project);
                 String projectHoursWorkedString = project.getHoursWorked() + "";
                 projectHoursWorked.setText(projectHoursWorkedString);
 
@@ -438,6 +440,16 @@ public class ProjectController
                 tabPane.getSelectionModel().select(projects);
                 saveToPMS.setDisable(false);
 
+
+                clearProject();
+                clearRequirement();
+                clearTask();
+                projectInfo.setDisable(true);
+                requirements.setDisable(true);
+                requirementsInfo.setDisable(true);
+                tasks.setDisable(true);
+                taskInfo.setDisable(true);
+                tabPane.getSelectionModel().select(projects);
             }
             if (e.getSource() == requirementSave)
             {
@@ -449,11 +461,22 @@ public class ProjectController
                 {
                     requirement.addTask(taskListView.getItems().get(i));
                 }
-                requirementListView.getItems().set(requirementListView.getEditingIndex(), requirement);
+                requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
                 requirementHoursWorked.setText(requirementHoursWorkedString);
                 tabPane.getSelectionModel().select(requirements);
+
+
                 clearTask();
+                clearRequirement();
+                taskListView.getItems().clear();
+                tabPane.getSelectionModel().select(requirements);
+                clearTask();
+                projectSave.setDisable(false);
+                requirementSave.setDisable(true);
+                requirementsInfo.setDisable(true);
+                tasks.setDisable(true);
+                taskInfo.setDisable(true);
             }
             if (e.getSource() == taskSave)
             {
@@ -465,9 +488,13 @@ public class ProjectController
                         taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
                         deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
 
-                taskListView.getItems().set(taskListView.getEditingIndex(), task);
+                taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
                 taskSave.setDisable(true);
                 tabPane.getSelectionModel().select(tasks);
+                clearTask();
+                tabPane.getSelectionModel().select(tasks);
+                requirementSave.setDisable(false);
+                taskInfo.setDisable(true);
             }
         }
         if (projectCreator.isSelected()) {
@@ -584,6 +611,7 @@ public class ProjectController
                 requirementListView.getItems().add(requirement);
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
                 requirementHoursWorked.setText(requirementHoursWorkedString);
+
                 tabPane.getSelectionModel().select(requirements);
                 clearTask();
                 projectSave.setDisable(false);
