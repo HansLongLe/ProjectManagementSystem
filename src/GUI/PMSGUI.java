@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ProjectAdapter extends Application
+public class PMSGUI extends Application
 {
     public void start(Stage window) throws IOException
     {
