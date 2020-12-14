@@ -165,6 +165,122 @@ public class ProjectController
         taskStatus.getSelectionModel().select("Not started");
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
+
+        taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
+            tabPane.getSelectionModel().selectNext();
+            Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
+            taskName.setText(selectedTask.getName());
+            taskID.setText(selectedTask.getID() + "");
+            respTeamMember.getSelectionModel().select(selectedTask.getEmployee());
+            taskHoursWorked.setText(selectedTask.getHoursWorked() + "");
+            taskEstimatedTime.setText(selectedTask.getEstimatedTime() + "");
+            taskDeadlineDd.setText(selectedTask.getDeadline().getDay() + "");
+            taskDeadlineMm.setText(selectedTask.getDeadline().getMonth() + "");
+            taskDeadlineYyyy.setText(selectedTask.getDeadline().getYear() + "");
+            taskStatus.getSelectionModel().select(selectedTask.getStatus());
+            taskDescription.setText(selectedTask.getDescription());
+
+            taskName.setEditable(false);
+            taskID.setEditable(false);
+            respTeamMember.setDisable(false);
+            taskHoursWorked.setEditable(false);
+            taskDeadlineDd.setEditable(false);
+            taskDeadlineMm.setEditable(false);
+            taskDeadlineYyyy.setEditable(false);
+            taskStatus.setDisable(true);
+            taskDescription.setEditable(false);
+            taskEstimatedTime.setEditable(false);
+
+            taskSave.setDisable(true);
+            taskInfo.setDisable(false);
+        });
+
+        requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
+            tabPane.getSelectionModel().select(requirementsInfo);
+            Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
+            requirementName.setText(selectedRequirement.getName());
+            requirementID.setText(selectedRequirement.getID() + "");
+            if (selectedRequirement.getPriority() == 1)
+            {
+                priority1.setSelected(true);
+            }
+            if (selectedRequirement.getPriority() == 2)
+            {
+                priority2.setSelected(true);
+            }
+            if (selectedRequirement.getPriority() == 3)
+            {
+                priority3.setSelected(true);
+            }
+            requirementHoursWorked.setText(selectedRequirement.hoursWorkedOnRequirement() + "");
+            requirementEstimatedTime.setText(selectedRequirement.getEstimatedTime() + "");
+            requirementDeadlineDd.setText(selectedRequirement.getDeadline().getDay() + "");
+            requirementDeadlineMm.setText(selectedRequirement.getDeadline().getMonth() + "");
+            requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
+            requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
+            requirementDescription.setText(selectedRequirement.getDescription());
+
+            requirementName.setEditable(false);
+            requirementID.setEditable(false);
+            priority1.setDisable(true);
+            priority2.setDisable(true);
+            priority3.setDisable(true);
+            requirementEstimatedTime.setEditable(false);
+            requirementHoursWorked.setEditable(false);
+            requirementStatus.setDisable(true);
+            requirementDeadlineDd.setEditable(false);
+            requirementDeadlineMm.setEditable(false);
+            requirementDeadlineYyyy.setEditable(false);
+            requirementDescription.setEditable(false);
+
+            taskListView.getItems().clear();
+            clearTask();
+            for (int i = 0; i < selectedRequirement.getTask().size(); i++) {
+                taskListView.getItems().add(selectedRequirement.getTask().get(i));
+            }
+            taskInfo.setDisable(true);
+            requirementSave.setDisable(true);
+            requirementsInfo.setDisable(false);
+            tasks.setDisable(false);
+        });
+        projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
+            tabPane.getSelectionModel().select(projectInfo);
+            Project selectedProject = projectListView.getSelectionModel().getSelectedItem();
+            projectName.setText(selectedProject.getName());
+            projectID.setText(selectedProject.getID() + "");
+            productOwner.setText(selectedProject.getProductOwner().toString());
+            projectHoursWorked.setText(selectedProject.getHoursWorked() + "");
+            projectEstimatedTime.setText(selectedProject.getEstimatedTime() + "");
+            projectDeadlineDd.setText(selectedProject.getDeadline().getDay() + "");
+            projectDeadlineMm.setText(selectedProject.getDeadline().getMonth() + "");
+            projectDeadlineYyyy.setText(selectedProject.getDeadline().getYear() + "");
+            projectStatus.getSelectionModel().select(selectedProject.getStatus());
+            projectDescription.setText(selectedProject.getDescription());
+
+            projectName.setEditable(false);
+            projectHoursWorked.setEditable(false);
+            projectID.setEditable(false);
+            productOwner.setEditable(false);
+            projectEstimatedTime.setEditable(false);
+            projectStatus.setDisable(true);
+            projectDeadlineDd.setEditable(false);
+            projectDeadlineMm.setEditable(false);
+            projectDeadlineYyyy.setEditable(false);
+            projectDescription.setEditable(false);
+
+            requirementListView.getItems().clear();
+            clearTask();
+            clearRequirement();
+            for (int i = 0; i < selectedProject.getRequirements().size(); i++) {
+                requirementListView.getItems().add(selectedProject.getRequirements().get(i));
+            }
+            projectSave.setDisable(true);
+            projectInfo.setDisable(false);
+            requirements.setDisable(false);
+            requirementsInfo.setDisable(true);
+            taskInfo.setDisable(true);
+            tasks.setDisable(true);
+        });
     }
 
     public void handleActions(ActionEvent e)
@@ -568,121 +684,7 @@ public class ProjectController
             {
                 projectSave.setDisable(true);
             }
-            taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
-                        tabPane.getSelectionModel().selectNext();
-                        Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
-                        taskName.setText(selectedTask.getName());
-                        taskID.setText(selectedTask.getID() + "");
-                        respTeamMember.getSelectionModel().select(selectedTask.getEmployee());
-                        taskHoursWorked.setText(selectedTask.getHoursWorked() + "");
-                        taskEstimatedTime.setText(selectedTask.getEstimatedTime() + "");
-                        taskDeadlineDd.setText(selectedTask.getDeadline().getDay() + "");
-                        taskDeadlineMm.setText(selectedTask.getDeadline().getMonth() + "");
-                        taskDeadlineYyyy.setText(selectedTask.getDeadline().getYear() + "");
-                        taskStatus.getSelectionModel().select(selectedTask.getStatus());
-                        taskDescription.setText(selectedTask.getDescription());
 
-                taskName.setEditable(false);
-                taskID.setEditable(false);
-                respTeamMember.setDisable(false);
-                taskHoursWorked.setEditable(false);
-                taskDeadlineDd.setEditable(false);
-                taskDeadlineMm.setEditable(false);
-                taskDeadlineYyyy.setEditable(false);
-                taskStatus.setDisable(true);
-                taskDescription.setEditable(false);
-                taskEstimatedTime.setEditable(false);
-
-                        taskSave.setDisable(true);
-                        taskInfo.setDisable(false);
-                    });
-
-            requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
-                    tabPane.getSelectionModel().select(requirementsInfo);
-                    Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
-                    requirementName.setText(selectedRequirement.getName());
-                    requirementID.setText(selectedRequirement.getID() + "");
-                    if (selectedRequirement.getPriority() == 1)
-                    {
-                     priority1.setSelected(true);
-                    }
-                    if (selectedRequirement.getPriority() == 2)
-                    {
-                        priority2.setSelected(true);
-                    }
-                    if (selectedRequirement.getPriority() == 3)
-                    {
-                        priority3.setSelected(true);
-                    }
-                    requirementHoursWorked.setText(selectedRequirement.hoursWorkedOnRequirement() + "");
-                    requirementEstimatedTime.setText(selectedRequirement.getEstimatedTime() + "");
-                    requirementDeadlineDd.setText(selectedRequirement.getDeadline().getDay() + "");
-                    requirementDeadlineMm.setText(selectedRequirement.getDeadline().getMonth() + "");
-                    requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
-                    requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
-                    requirementDescription.setText(selectedRequirement.getDescription());
-
-                requirementName.setEditable(false);
-                requirementID.setEditable(false);
-                priority1.setDisable(true);
-                priority2.setDisable(true);
-                priority3.setDisable(true);
-                requirementEstimatedTime.setEditable(false);
-                requirementHoursWorked.setEditable(false);
-                requirementStatus.setDisable(true);
-                requirementDeadlineDd.setEditable(false);
-                requirementDeadlineMm.setEditable(false);
-                requirementDeadlineYyyy.setEditable(false);
-                requirementDescription.setEditable(false);
-
-                taskListView.getItems().clear();
-                clearTask();
-                for (int i = 0; i < selectedRequirement.getTask().size(); i++) {
-                    taskListView.getItems().add(selectedRequirement.getTask().get(i));
-                }
-                taskInfo.setDisable(true);
-                requirementSave.setDisable(true);
-                requirementsInfo.setDisable(false);
-                tasks.setDisable(false);
-            });
-            projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
-                tabPane.getSelectionModel().select(projectInfo);
-                Project selectedProject = projectListView.getSelectionModel().getSelectedItem();
-                projectName.setText(selectedProject.getName());
-                projectID.setText(selectedProject.getID() + "");
-                productOwner.setText(selectedProject.getProductOwner().toString());
-                projectHoursWorked.setText(selectedProject.getHoursWorked() + "");
-                projectEstimatedTime.setText(selectedProject.getEstimatedTime() + "");
-                projectDeadlineDd.setText(selectedProject.getDeadline().getDay() + "");
-                projectDeadlineMm.setText(selectedProject.getDeadline().getMonth() + "");
-                projectDeadlineYyyy.setText(selectedProject.getDeadline().getYear() + "");
-                projectStatus.getSelectionModel().select(selectedProject.getStatus());
-                projectDescription.setText(selectedProject.getDescription());
-
-                projectName.setEditable(false);
-                projectHoursWorked.setEditable(false);
-                projectID.setEditable(false);
-                productOwner.setEditable(false);
-                projectEstimatedTime.setEditable(false);
-                projectStatus.setDisable(true);
-                projectDeadlineDd.setEditable(false);
-                projectDeadlineMm.setEditable(false);
-                projectDeadlineYyyy.setEditable(false);
-                projectDescription.setEditable(false);
-
-                requirementListView.getItems().clear();
-                clearTask();
-                clearRequirement();
-                for (int i = 0; i < selectedProject.getRequirements().size(); i++) {
-                    requirementListView.getItems().add(selectedProject.getRequirements().get(i));
-                }
-                projectSave.setDisable(true);
-                projectInfo.setDisable(false);
-                requirements.setDisable(false);
-                requirementsInfo.setDisable(true);
-                taskInfo.setDisable(true);
-                tasks.setDisable(true);
-            });
         }
 
 
