@@ -585,7 +585,7 @@
                                           <Insets left="105.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskNameLabel" text="Name exists" textFill="RED">
+                                    <Label fx:id="taskNameLabel" text="Name exists" textFill="RED" visible="false">
                                        <HBox.margin>
                                           <Insets left="100.0" />
                                        </HBox.margin>
@@ -610,7 +610,7 @@
                                           <Insets left="123.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskIDLabel" text="ID must be ****" textFill="RED">
+                                    <Label fx:id="taskIDLabel" text="ID must be ****" textFill="RED" visible="false">
                                        <HBox.margin>
                                           <Insets left="100.0" />
                                        </HBox.margin>
@@ -635,7 +635,7 @@
                                           <Insets left="19.0" />
                                        </HBox.margin>
                                     </ComboBox>
-                                    <Label fx:id="taskEmployee" text="Choose an employee" textFill="RED">
+                                    <Label fx:id="taskEmployee" text="Choose an employee" textFill="RED" visible="false">
                                        <HBox.margin>
                                           <Insets left="70.0" />
                                        </HBox.margin>
@@ -660,7 +660,7 @@
                                           <Insets left="86.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskHWorked" text="Higher than 0!" textFill="RED">
+                                    <Label fx:id="taskHWorked" text="Higher than 0!" textFill="RED" visible="false">
                                        <HBox.margin>
                                           <Insets left="100.0" />
                                        </HBox.margin>
@@ -690,7 +690,7 @@
                                           <Insets bottom="5.0" left="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="taskETime" text="Higher than 0!" textFill="RED">
+                                    <Label fx:id="taskETime" text="Higher than 0!" textFill="RED" visible="false">
                                        <HBox.margin>
                                           <Insets left="45.0" />
                                        </HBox.margin>
@@ -732,7 +732,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskDeadline" text="Wrong date!" textFill="RED">
+                                    <Label fx:id="taskDeadline" text="Wrong date!" textFill="RED" visible="false">
                                        <HBox.margin>
                                           <Insets left="100.0" />
                                        </HBox.margin>
