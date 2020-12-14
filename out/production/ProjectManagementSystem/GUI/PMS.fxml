@@ -53,7 +53,7 @@
                               <ListView fx:id="projectListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button fx:id="saveToPMS" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Save to PMS">
+                                    <Button fx:id="saveToPMS" disable="false" mnemonicParsing="false" onAction="#handleActions" text="Save to PMS">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -96,7 +96,7 @@
                                           <Insets left="68.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projNameLabel" text="Name exists" textFill="RED">
+                                    <Label fx:id="projNameLabel" text="Name exists" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -135,7 +135,7 @@
                                           <Insets left="88.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projIDLabel" text="ID must be ****" textFill="RED">
+                                    <Label fx:id="projIDLabel" text="ID must be ****" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -160,7 +160,7 @@
                                           <Insets left="60.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projProductOwner" text="First name and last name" textFill="RED">
+                                    <Label fx:id="projProductOwner" text="First name and last name" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -190,7 +190,7 @@
                                           <Insets bottom="5.0" left="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="projETime" text="Higher than 0!" textFill="RED">
+                                    <Label fx:id="projETime" text="Higher than 0!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -246,7 +246,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projDeadline" text="Wrong date!" textFill="RED">
+                                    <Label fx:id="projDeadline" text="Wrong date!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -337,7 +337,7 @@
                                           <Insets left="68.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqNameLabel" text="Name exists" textFill="RED">
+                                    <Label fx:id="reqNameLabel" text="Name exists" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -362,7 +362,7 @@
                                           <Insets left="87.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqIDLabel" text="ID must be ****" textFill="RED">
+                                    <Label fx:id="reqIDLabel" text="ID must be ****" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -400,7 +400,7 @@
                                           <Insets left="20.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <Label fx:id="reqPriority" text="Set the priority!" textFill="RED">
+                                    <Label fx:id="reqPriority" text="Set the priority!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -430,7 +430,7 @@
                                           <Insets bottom="5.0" left="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="reqETime" text="Higher than 0!" textFill="RED">
+                                    <Label fx:id="reqETime" text="Higher than 0!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -500,7 +500,7 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqDeadline" text="Wrong date!" textFill="RED">
+                                    <Label fx:id="reqDeadline" text="Wrong date!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
