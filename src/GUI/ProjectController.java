@@ -347,7 +347,7 @@ public class ProjectController
 
             taskName.setEditable(false);
             taskID.setEditable(false);
-            respTeamMember.setDisable(false);
+            respTeamMember.setDisable(true);
             taskHoursWorked.setEditable(false);
             taskDeadlineDd.setEditable(false);
             taskDeadlineMm.setEditable(false);
@@ -382,7 +382,7 @@ public class ProjectController
                 priority2.setDisable(false);
                 priority3.setDisable(false);
                 requirementEstimatedTime.setEditable(true);
-                requirementStatus.setDisable(true);
+                requirementStatus.setDisable(false);
                 requirementDeadlineDd.setEditable(true);
                 requirementDeadlineMm.setEditable(true);
                 requirementDeadlineYyyy.setEditable(true);
@@ -688,7 +688,7 @@ public class ProjectController
 
                 taskName.setEditable(false);
                 taskID.setEditable(false);
-                respTeamMember.setDisable(false);
+                respTeamMember.setDisable(true);
                 taskHoursWorked.setEditable(false);
                 taskDeadlineDd.setEditable(false);
                 taskDeadlineMm.setEditable(false);
