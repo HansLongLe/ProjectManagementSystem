@@ -6,7 +6,7 @@ import javafx.application.Application;
   {
     public static void main(String[] args)
     {
-      Application.launch(ProjectAdapter.class);
+      Application.launch(PMSGUI.class);
     }
   }
 
