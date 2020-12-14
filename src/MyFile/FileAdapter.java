@@ -51,10 +51,31 @@ public class FileAdapter
       System.out.println("IO Error writing file");
     }
   }
+  public ProjectManagementSystem loadPMS(){
+    ProjectManagementSystem pms = new ProjectManagementSystem();
+    try{
+      pms = (ProjectManagementSystem)mfio.readObjectFromFile("ProjectManagementSystem.bin");
+
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+    return pms;
+  }
+
   public ArrayList<Project> getAllProjects(){
     ArrayList<Project> projects = new ArrayList<Project>();
       try{
-        projects = (ArrayList<Project>)mfio.readObjectFromFile("ProjectManagementSystem.bin");
+        projects = ((ProjectManagementSystem)mfio.readObjectFromFile("ProjectManagementSystem.bin")).getProjects();
 
       }
       catch (FileNotFoundException e)
