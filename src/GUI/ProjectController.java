@@ -167,7 +167,6 @@ public class ProjectController
         projectStatus.getSelectionModel().select("Not started");
 
         taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
-            tabPane.getSelectionModel().selectNext();
             Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
             taskName.setText(selectedTask.getName());
             taskID.setText(selectedTask.getID() + "");
@@ -193,10 +192,11 @@ public class ProjectController
 
             taskSave.setDisable(true);
             taskInfo.setDisable(false);
+            tabPane.getSelectionModel().select(taskInfo);
         });
 
         requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
-            tabPane.getSelectionModel().select(requirementsInfo);
+
             Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
             requirementName.setText(selectedRequirement.getName());
             requirementID.setText(selectedRequirement.getID() + "");
@@ -242,9 +242,9 @@ public class ProjectController
             requirementSave.setDisable(true);
             requirementsInfo.setDisable(false);
             tasks.setDisable(false);
+            tabPane.getSelectionModel().select(requirementsInfo);
         });
         projectListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Project> project, Project old_project, Project new_project) -> {
-            tabPane.getSelectionModel().select(projectInfo);
             Project selectedProject = projectListView.getSelectionModel().getSelectedItem();
             projectName.setText(selectedProject.getName());
             projectID.setText(selectedProject.getID() + "");
@@ -280,6 +280,7 @@ public class ProjectController
             requirementsInfo.setDisable(true);
             taskInfo.setDisable(true);
             tasks.setDisable(true);
+            tabPane.getSelectionModel().select(projectInfo);
         });
     }
 
@@ -353,6 +354,7 @@ public class ProjectController
                 projectDeadlineMm.setEditable(true);
                 projectDeadlineYyyy.setEditable(true);
                 projectDescription.setEditable(true);
+                projectSave.setDisable(false);
             }
             if (e.getSource() == requirementChange)
             {
@@ -368,12 +370,13 @@ public class ProjectController
                 requirementDeadlineMm.setEditable(true);
                 requirementDeadlineYyyy.setEditable(true);
                 requirementDescription.setEditable(true);
+                requirementSave.setDisable(false);
             }
             if (e.getSource() == taskChange)
             {
                 taskName.setEditable(true);
                 taskID.setEditable(true);
-                respTeamMember.setDisable(true);
+                respTeamMember.setDisable(false);
                 taskHoursWorked.setEditable(true);
                 taskDeadlineDd.setEditable(true);
                 taskDeadlineMm.setEditable(true);
@@ -381,6 +384,7 @@ public class ProjectController
                 taskStatus.setDisable(false);
                 taskDescription.setEditable(true);
                 taskEstimatedTime.setEditable(true);
+                taskSave.setDisable(false);
             }
             if (e.getSource() == projectSave)
             {
@@ -511,6 +515,9 @@ public class ProjectController
                 projectInfo.setDisable(false);
                 projectChange.setVisible(false);
                 requirements.setDisable(false);
+                requirementsInfo.setDisable(true);
+                tasks.setDisable(true);
+                taskInfo.setDisable(true);
             }
             if (e.getSource() == addRequirement) {
                 clearRequirement();
@@ -519,6 +526,8 @@ public class ProjectController
                 requirementsInfo.setDisable(false);
                 requirementChange.setVisible(false);
                 tasks.setDisable(false);
+                taskInfo.setDisable(true);
+
 
             }
             if (e.getSource() == addTask) {
