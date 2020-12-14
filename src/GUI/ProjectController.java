@@ -419,6 +419,7 @@ public class ProjectController
 
                 clearRequirement();
                 tabPane.getSelectionModel().select(projects);
+                saveToPMS.setDisable(false);
 
             }
             if (e.getSource() == requirementSave)
@@ -693,6 +694,7 @@ public class ProjectController
             {
                 projectSave.setDisable(true);
             }
+
 
         }
 
