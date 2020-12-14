@@ -333,6 +333,8 @@ public class ProjectController
             }
         }
         if (projectCreator.isSelected()) {
+//            loadProjects();
+
             addProject.setVisible(true);
             saveToPMS.setVisible(true);
             deleteProject.setVisible(false);
@@ -685,10 +687,10 @@ public class ProjectController
 
 
         public void loadProjects(){
-            for (int i = 0; i < projectManagementSystem.getProjects().size(); i++)
-            {
-                projectListView.getItems().addAll(adapter2.getAllProjects());
-            }
+            projectManagementSystem = adapter.loadPMS();
+
+                projectListView.getItems().addAll(projectManagementSystem.getProjects());
+
         }
 
         public void InfoRespMember () {
