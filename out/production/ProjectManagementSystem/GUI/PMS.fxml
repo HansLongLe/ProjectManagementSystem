@@ -33,7 +33,7 @@
                            </toggleGroup>
                         </RadioMenuItem>
                         <RadioMenuItem fx:id="projectCreator" mnemonicParsing="false" onAction="#handleActions" text="Project Creator" toggleGroup="$MenuItemToggleGroup" />
-                        <RadioMenuItem fx:id="teamMember" mnemonicParsing="false" onAction="#handleActions" text="Team Member" toggleGroup="$MenuItemToggleGroup" />
+                        <RadioMenuItem fx:id="teamMember" mnemonicParsing="false" onAction="#handleActions" selected="true" text="Team Member" toggleGroup="$MenuItemToggleGroup" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
