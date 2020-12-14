@@ -150,6 +150,25 @@ public class ProjectController
     @FXML
     private Button saveToPMS;
 
+    @FXML private Label taskIDLabel;
+    @FXML private Label taskNameLabel;
+    @FXML private Label taskEmployee;
+    @FXML private Label taskHWorked;
+    @FXML private Label taskETime;
+    @FXML private Label taskDeadline;
+
+    @FXML private Label reqIDLabel;
+    @FXML private Label reqNameLabel;
+    @FXML private Label reqPriority;
+    @FXML private Label reqETime;
+    @FXML private Label reqDeadline;
+
+    @FXML private Label projIDLabel;
+    @FXML private Label projNameLabel;
+    @FXML private Label projProductOwner;
+    @FXML private Label projETime;
+    @FXML private Label projDeadline;
+
     private FileAdapter adapter;
     private FileAdapter adapter2;
     private int requirementPriorityInteger;
@@ -328,7 +347,7 @@ public class ProjectController
 
             taskName.setEditable(false);
             taskID.setEditable(false);
-            respTeamMember.setDisable(false);
+            respTeamMember.setDisable(true);
             taskHoursWorked.setEditable(false);
             taskDeadlineDd.setEditable(false);
             taskDeadlineMm.setEditable(false);
@@ -345,7 +364,6 @@ public class ProjectController
             if (e.getSource() == projectChange)
             {
                 projectName.setEditable(true);
-                projectHoursWorked.setEditable(true);
                 projectID.setEditable(true);
                 productOwner.setEditable(true);
                 projectEstimatedTime.setEditable(true);
@@ -364,8 +382,7 @@ public class ProjectController
                 priority2.setDisable(false);
                 priority3.setDisable(false);
                 requirementEstimatedTime.setEditable(true);
-                requirementHoursWorked.setEditable(true);
-                requirementStatus.setDisable(true);
+                requirementStatus.setDisable(false);
                 requirementDeadlineDd.setEditable(true);
                 requirementDeadlineMm.setEditable(true);
                 requirementDeadlineYyyy.setEditable(true);
@@ -419,6 +436,7 @@ public class ProjectController
 
                 clearRequirement();
                 tabPane.getSelectionModel().select(projects);
+                saveToPMS.setDisable(false);
 
             }
             if (e.getSource() == requirementSave)
@@ -670,7 +688,7 @@ public class ProjectController
 
                 taskName.setEditable(false);
                 taskID.setEditable(false);
-                respTeamMember.setDisable(false);
+                respTeamMember.setDisable(true);
                 taskHoursWorked.setEditable(false);
                 taskDeadlineDd.setEditable(false);
                 taskDeadlineMm.setEditable(false);
@@ -693,6 +711,7 @@ public class ProjectController
             {
                 projectSave.setDisable(true);
             }
+
 
         }
 
