@@ -27,13 +27,13 @@
                <menus>
                   <Menu fx:id="position" mnemonicParsing="false" onAction="#handleActions" text="Position">
                      <items>
-                        <RadioMenuItem fx:id="scrumMaster" mnemonicParsing="false" text="Scrum Master">
+                        <RadioMenuItem fx:id="scrumMaster" mnemonicParsing="false" onAction="#handleActions" text="Scrum Master">
                            <toggleGroup>
                               <ToggleGroup fx:id="MenuItemToggleGroup" />
                            </toggleGroup>
                         </RadioMenuItem>
-                        <RadioMenuItem fx:id="projectCreator" mnemonicParsing="false" text="Project Creator" toggleGroup="$MenuItemToggleGroup" />
-                        <RadioMenuItem fx:id="teamMember" mnemonicParsing="false" text="Team Member" toggleGroup="$MenuItemToggleGroup" />
+                        <RadioMenuItem fx:id="projectCreator" mnemonicParsing="false" onAction="#handleActions" text="Project Creator" toggleGroup="$MenuItemToggleGroup" />
+                        <RadioMenuItem fx:id="teamMember" mnemonicParsing="false" onAction="#handleActions" text="Team Member" toggleGroup="$MenuItemToggleGroup" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
