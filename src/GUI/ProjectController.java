@@ -157,7 +157,7 @@ public class ProjectController {
     public void initialize() {
         adapter = new FileAdapter("employees.bin");
         adapter2 = new FileAdapter("ProjectManagementSystem.bin");
-        loadProjects();
+
         InfoRespMember();
         statusBox();
         taskStatus.getSelectionModel().select("Not started");
@@ -167,7 +167,9 @@ public class ProjectController {
 
     public void handleActions(ActionEvent e) {
 
-        if (scrumMaster.isSelected()) {
+        if (e.getSource() == scrumMaster) {
+            loadProjects();
+            System.out.println("done");
 
             addProject.setVisible(false);
             saveToPMS.setVisible(true);
@@ -326,6 +328,7 @@ public class ProjectController {
             }
         }
         if (projectCreator.isSelected()) {
+
             addProject.setVisible(true);
             saveToPMS.setVisible(true);
             deleteProject.setVisible(false);
@@ -604,10 +607,11 @@ public class ProjectController {
         }
 
         public void loadProjects(){
-            for (int i = 0; i < projectManagementSystem.getProjects().size(); i++)
-            {
-                projectListView.getItems().addAll(adapter2.getAllProjects());
-            }
+            projectManagementSystem = adapter2.loadPMS();
+            System.out.println(projectManagementSystem.getProjects().size());
+
+                projectListView.getItems().addAll(projectManagementSystem.getProjects());
+
         }
 
         public void InfoRespMember () {
