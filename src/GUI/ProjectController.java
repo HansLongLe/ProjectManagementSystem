@@ -783,4 +783,13 @@ public class ProjectController
             projectDescription.clear();
             projectStatus.getSelectionModel().select("Not started");
         }
+       private void taskException(){
+           for (int i = 0; i < requirementListView.getItems().get(i).getTask().size(); i++)
+           {
+               if(taskName.equals(requirementListView.getItems().get(i).getTask().get(i).getName())){
+                   taskNameLabel.setVisible(true);
+               }
+           }
+
+       }
 }
