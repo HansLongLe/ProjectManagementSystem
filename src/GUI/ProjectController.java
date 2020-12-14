@@ -185,6 +185,16 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
+        if (priority1.isSelected()) {
+            requirementPriorityInteger = 1;
+        }
+        if (priority2.isSelected()) {
+            requirementPriorityInteger = 2;
+        }
+        if (priority3.isSelected()) {
+            requirementPriorityInteger = 3;
+        }
+
         taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
             Task selectedTask = taskListView.getSelectionModel().getSelectedItem();
             taskName.setText(selectedTask.getName());
@@ -435,8 +445,6 @@ public class ProjectController
                 projectListView.getItems().set(projectListView.getSelectionModel().getSelectedIndex(), project);
                 String projectHoursWorkedString = project.getHoursWorked() + "";
                 projectHoursWorked.setText(projectHoursWorkedString);
-
-                clearRequirement();
                 tabPane.getSelectionModel().select(projects);
                 saveToPMS.setDisable(false);
 
@@ -461,6 +469,7 @@ public class ProjectController
                 {
                     requirement.addTask(taskListView.getItems().get(i));
                 }
+
                 requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
                 requirementHoursWorked.setText(requirementHoursWorkedString);
@@ -471,7 +480,6 @@ public class ProjectController
                 clearRequirement();
                 taskListView.getItems().clear();
                 tabPane.getSelectionModel().select(requirements);
-                clearTask();
                 projectSave.setDisable(false);
                 requirementSave.setDisable(true);
                 requirementsInfo.setDisable(true);
