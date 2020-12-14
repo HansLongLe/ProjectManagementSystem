@@ -150,6 +150,25 @@ public class ProjectController
     @FXML
     private Button saveToPMS;
 
+    @FXML private Label taskIDLabel;
+    @FXML private Label taskNameLabel;
+    @FXML private Label taskEmployee;
+    @FXML private Label taskHWorked;
+    @FXML private Label taskETime;
+    @FXML private Label taskDeadline;
+
+    @FXML private Label reqIDLabel;
+    @FXML private Label reqNameLabel;
+    @FXML private Label reqPriority;
+    @FXML private Label reqETime;
+    @FXML private Label reqDeadline;
+
+    @FXML private Label projIDLabel;
+    @FXML private Label projNameLabel;
+    @FXML private Label projProductOwner;
+    @FXML private Label projETime;
+    @FXML private Label projDeadline;
+
     private FileAdapter adapter;
     private FileAdapter adapter2;
     private int requirementPriorityInteger;
