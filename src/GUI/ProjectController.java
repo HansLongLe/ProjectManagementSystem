@@ -327,7 +327,8 @@ public class ProjectController {
                 tabPane.getSelectionModel().select(tasks);
             }
         }
-        if (projectCreator.isSelected()) {
+        if (e.getSource() == projectCreator) {
+            //loadProjects();
 
             addProject.setVisible(true);
             saveToPMS.setVisible(true);
