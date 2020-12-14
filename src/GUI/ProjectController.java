@@ -157,6 +157,7 @@ public class ProjectController {
     public void initialize() {
         adapter = new FileAdapter("employees.bin");
         adapter2 = new FileAdapter("ProjectManagementSystem.bin");
+        loadProjects();
         InfoRespMember();
         statusBox();
         taskStatus.getSelectionModel().select("Not started");
@@ -602,7 +603,12 @@ public class ProjectController {
         });
         }
 
-
+        public void loadProjects(){
+            for (int i = 0; i < projectManagementSystem.getProjects().size(); i++)
+            {
+                projectListView.getItems().addAll(adapter2.getAllProjects());
+            }
+        }
 
         public void InfoRespMember () {
             ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
