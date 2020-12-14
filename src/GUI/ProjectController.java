@@ -354,6 +354,28 @@ public class ProjectController
 
 
             }
+            if (e.getSource() == addRequirement)
+            {
+                clearRequirement();
+                clearTask();
+                unlockRequirement();
+                taskListView.getItems().clear();
+                tabPane.getSelectionModel().select(requirementsInfo);
+                requirementsInfo.setDisable(false);
+                tasks.setDisable(false);
+                taskInfo.setDisable(true);
+
+
+            }
+            if (e.getSource() == addTask)
+            {
+                clearTask();
+                unlockTask();
+                tabPane.getSelectionModel().select(taskInfo);
+                taskInfo.setDisable(false);
+                taskSave.setDisable(false);
+
+            }
         }
 
         if (projectCreator.isSelected())
