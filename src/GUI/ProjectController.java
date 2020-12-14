@@ -364,7 +364,6 @@ public class ProjectController
             if (e.getSource() == projectChange)
             {
                 projectName.setEditable(true);
-                projectHoursWorked.setEditable(true);
                 projectID.setEditable(true);
                 productOwner.setEditable(true);
                 projectEstimatedTime.setEditable(true);
@@ -383,7 +382,6 @@ public class ProjectController
                 priority2.setDisable(false);
                 priority3.setDisable(false);
                 requirementEstimatedTime.setEditable(true);
-                requirementHoursWorked.setEditable(true);
                 requirementStatus.setDisable(true);
                 requirementDeadlineDd.setEditable(true);
                 requirementDeadlineMm.setEditable(true);
