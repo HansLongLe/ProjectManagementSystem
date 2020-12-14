@@ -633,9 +633,9 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ComboBox fx:id="respTeamMember" prefHeight="26.0" prefWidth="180.0" promptText="Choose employee">
+                                    <ComboBox fx:id="respTeamMember" prefHeight="26.0" prefWidth="240.0" promptText="Choose employee">
                                        <HBox.margin>
-                                          <Insets left="19.0" />
+                                          <Insets left="34.0" />
                                        </HBox.margin>
                                     </ComboBox>
                                     <Label fx:id="taskEmployee" text="Choose an employee" textFill="RED" visible="false">
