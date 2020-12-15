@@ -221,6 +221,7 @@ public class ProjectController
             projectDeadlineYyyy.setText(selectedProject.getDeadline().getYear() + "");
             projectStatus.getSelectionModel().select(selectedProject.getStatus());
             projectDescription.setText(selectedProject.getDescription());
+
            lockProject();
 
             requirementListView.getItems().clear();
@@ -265,8 +266,6 @@ public class ProjectController
             deleteTask.setVisible(true);
             taskSave.setVisible(true);
             taskChange.setVisible(true);
-
-
 
             if (e.getSource() == projectChange)
             {
@@ -332,7 +331,6 @@ public class ProjectController
                 {
                     project.addRequirement(requirementListView.getItems().get(i));
                 }
-
                 projectListView.getItems().set(projectListView.getSelectionModel().getSelectedIndex(),
                     project);
                 String projectHoursWorkedString = project.getHoursWorked() + "";
@@ -545,7 +543,8 @@ public class ProjectController
                     }
 
                     projectHoursWorked.setText(projectHoursWorkedString);
-
+                    saveToPMS.setVisible(true);
+                    saveToPMS.setDisable(false);
                     clearRequirement();
                     projectInfo.setDisable(true);
                     requirements.setDisable(true);
@@ -610,22 +609,15 @@ public class ProjectController
             taskChange.setVisible(false);
         }
 
-        //Other actions
+            projectManagementSystem.addProject(projectListView.getItems()
+                .get(projectListView.getItems().size()-1));
 
-        if (e.getSource() == saveToPMS)
-        {
-            for (int i = 0; i < projectListView.getItems().size(); i++)
-            {
-                projectManagementSystem.addProject(projectListView.getItems()
-                        .get(i));
-                System.out.println("Saved!");
-            }
+            clearProject();
             adapter = new FileAdapter("ProjectManagementSystem.bin");
             adapter.saveToPMSFile(projectManagementSystem);
             System.out.println("Saved to file!");
-            saveToPMS.setDisable(true);
 
-        }
+        //Other actions
 
         if (taskListView.getItems().isEmpty())
         {
