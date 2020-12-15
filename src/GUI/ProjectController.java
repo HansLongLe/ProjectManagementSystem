@@ -9,6 +9,10 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import Classes.*;
 
+import java.beans.XMLEncoder;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProjectController
@@ -123,6 +127,32 @@ public class ProjectController
         taskStatus.getSelectionModel().select("Not started");
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
+
+        try{
+            FileOutputStream fos = new FileOutputStream(new File("./PMS.xml"));
+            XMLEncoder encoder = new XMLEncoder(fos);
+            encoder.writeObject(adapter.loadPMS());
+
+            encoder.close();
+            fos.close();
+        }
+        catch(IOException e){
+            System.out.println("IO exception");
+        }
+
+        if (priority1.isSelected())
+        {
+            requirementPriorityInteger = 1;
+        }
+        if (priority2.isSelected())
+        {
+            requirementPriorityInteger = 2;
+        }
+        if (priority3.isSelected())
+        {
+            requirementPriorityInteger = 3;
+        }
+
 
         deleteProject.setDisable(true);
         deleteTask.setDisable(true);
@@ -570,6 +600,8 @@ public class ProjectController
                     taskETime.setVisible(false);
                     taskHWorked.setVisible(false);
                     taskDeadline.setVisible(false);
+                    requirementSave.setDisable(false);
+
                 }
             }
 
