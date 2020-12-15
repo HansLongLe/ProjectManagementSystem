@@ -109,6 +109,8 @@ public class ProjectController
     private FileAdapter adapter;
     private FileAdapter adapter2;
     private int requirementPriorityInteger;
+    private boolean requirementAddClicked = false;
+    private boolean taskAddClicked = false;
     ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
 
     public void initialize()
@@ -150,6 +152,10 @@ public class ProjectController
             taskStatus.getSelectionModel().select(selectedTask.getStatus());
             taskDescription.setText(selectedTask.getDescription());
 
+            if (scrumMaster.isSelected()){
+                taskChange.setVisible(true);
+            }
+
             lockTask();
 
             taskSave.setDisable(true);
@@ -160,6 +166,7 @@ public class ProjectController
         requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
 
             Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
+
             requirementName.setText(selectedRequirement.getName());
             requirementID.setText(selectedRequirement.getID() + "");
             if (selectedRequirement.getPriority() == 1)
@@ -181,6 +188,11 @@ public class ProjectController
             requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
             requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
             requirementDescription.setText(selectedRequirement.getDescription());
+
+            if (scrumMaster.isSelected())
+            {
+                requirementChange.setVisible(true);
+            }
 
             lockRequirement();
 
@@ -209,7 +221,6 @@ public class ProjectController
             projectDeadlineYyyy.setText(selectedProject.getDeadline().getYear() + "");
             projectStatus.getSelectionModel().select(selectedProject.getStatus());
             projectDescription.setText(selectedProject.getDescription());
-
            lockProject();
 
             requirementListView.getItems().clear();
@@ -255,6 +266,8 @@ public class ProjectController
             taskSave.setVisible(true);
             taskChange.setVisible(true);
 
+
+
             if (e.getSource() == projectChange)
             {
                 unlockProject();
@@ -264,11 +277,41 @@ public class ProjectController
             {
                 unlockRequirement();
                 requirementSave.setDisable(false);
+                requirementAddClicked = false;
             }
             if (e.getSource() == taskChange)
             {
                 unlockTask();
                 taskSave.setDisable(false);
+                taskAddClicked = false;
+
+            }
+            if (e.getSource() == addRequirement)
+            {
+                clearRequirement();
+                clearTask();
+                unlockRequirement();
+                taskListView.getItems().clear();
+                tabPane.getSelectionModel().select(requirementsInfo);
+                requirementsInfo.setDisable(false);
+                tasks.setDisable(false);
+                taskInfo.setDisable(true);
+
+                requirementAddClicked = true;
+                requirementChange.setVisible(false);
+
+
+            }
+            if (e.getSource() == addTask)
+            {
+                clearTask();
+                unlockTask();
+                tabPane.getSelectionModel().select(taskInfo);
+                taskInfo.setDisable(false);
+                taskSave.setDisable(false);
+
+                taskAddClicked = true;
+                taskChange.setVisible(false);
 
             }
             if (e.getSource() == projectSave)
@@ -316,7 +359,14 @@ public class ProjectController
                     requirement.addTask(taskListView.getItems().get(i));
                 }
 
-                requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
+                if (requirementAddClicked)
+                {
+                    requirementListView.getItems().add(requirement);
+                }
+                else {
+                    requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
+                }
+
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
                 requirementHoursWorked.setText(requirementHoursWorkedString);
 
@@ -343,37 +393,23 @@ public class ProjectController
                         Integer.parseInt(taskHoursWorked.getText()), deadline,
                         (Employee) respTeamMember.getSelectionModel().getSelectedItem());
 
-
-                taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
+                if (taskAddClicked)
+                {
+                    taskListView.getItems().add(task);
+                    requirementSave.setDisable(false);
+                }
+                if (!taskAddClicked){
+                    taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
+                    requirementSave.setDisable(true);
+                }
                 }
                 taskSave.setDisable(true);
+                taskChange.setDisable(true);
 
                 clearTask();
                 tabPane.getSelectionModel().select(tasks);
                 taskInfo.setDisable(true);
 
-
-            }
-            if (e.getSource() == addRequirement)
-            {
-                clearRequirement();
-                clearTask();
-                unlockRequirement();
-                taskListView.getItems().clear();
-                tabPane.getSelectionModel().select(requirementsInfo);
-                requirementsInfo.setDisable(false);
-                tasks.setDisable(false);
-                taskInfo.setDisable(true);
-
-
-            }
-            if (e.getSource() == addTask)
-            {
-                clearTask();
-                unlockTask();
-                tabPane.getSelectionModel().select(taskInfo);
-                taskInfo.setDisable(false);
-                taskSave.setDisable(false);
 
             }
         }
