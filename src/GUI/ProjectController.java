@@ -332,6 +332,7 @@ public class ProjectController
                 {
                     project.addRequirement(requirementListView.getItems().get(i));
                 }
+
                 projectListView.getItems().set(projectListView.getSelectionModel().getSelectedIndex(),
                     project);
                 String projectHoursWorkedString = project.getHoursWorked() + "";
