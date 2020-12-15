@@ -9,6 +9,10 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import Classes.*;
 
+import java.beans.XMLEncoder;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProjectController
@@ -124,7 +128,32 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-        priority();
+        try{
+            FileOutputStream fos = new FileOutputStream(new File("./PMS.xml"));
+            XMLEncoder encoder = new XMLEncoder(fos);
+            encoder.writeObject(adapter.loadPMS());
+
+            encoder.close();
+            fos.close();
+        }
+        catch(IOException e){
+            System.out.println("IO exception");
+        }
+
+        if (priority1.isSelected())
+        {
+            requirementPriorityInteger = 1;
+        }
+        if (priority2.isSelected())
+        {
+            requirementPriorityInteger = 2;
+        }
+        if (priority3.isSelected())
+        {
+            requirementPriorityInteger = 3;
+        }
+
+
         deleteProject.setDisable(true);
         deleteTask.setDisable(true);
         deleteRequirement.setDisable(true);
@@ -571,6 +600,8 @@ public class ProjectController
                     taskETime.setVisible(false);
                     taskHWorked.setVisible(false);
                     taskDeadline.setVisible(false);
+                    requirementSave.setDisable(false);
+
                 }
             }
 
@@ -699,6 +730,7 @@ public class ProjectController
                 projectSave.setDisable(true);
             }
         }
+        priority();
     }
 
         public void loadProjects()
@@ -721,6 +753,9 @@ public class ProjectController
 
         private void statusBox ()
         {
+            taskStatus.getItems().clear();
+            requirementStatus.getItems().clear();
+            projectStatus.getItems().clear();
             String[] statuses = {"Started", "Not started", "Approved", "Rejected", "Ended"};
             taskStatus.getItems().addAll(statuses);
             requirementStatus.getItems().addAll(statuses);
