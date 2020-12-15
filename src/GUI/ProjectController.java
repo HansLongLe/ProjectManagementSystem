@@ -570,18 +570,6 @@ public class ProjectController
             if (priority3.isSelected()) {
                 requirementPriorityInteger = 3;
             }
-            if (e.getSource() == saveToPMS) {
-                for (int i = 0; i < projectListView.getItems().size(); i++) {
-                    projectManagementSystem.addProject(projectListView.getItems()
-                        .get(i));
-                    System.out.println("Saved!");
-                }
-                clearProject();
-                adapter = new FileAdapter("ProjectManagementSystem.bin");
-                adapter.saveToPMSFile(projectManagementSystem);
-                System.out.println("Saved to file!");
-
-            }
         }
 
 
@@ -608,6 +596,7 @@ public class ProjectController
             taskSave.setVisible(false);
             taskChange.setVisible(false);
         }
+        if (e.getSource() == saveToPMS) {
 
             projectManagementSystem.addProject(projectListView.getItems()
                 .get(projectListView.getItems().size()-1));
@@ -618,6 +607,10 @@ public class ProjectController
             System.out.println("Saved to file!");
 
         //Other actions
+
+        //Other actions
+
+
 
         if (taskListView.getItems().isEmpty())
         {
