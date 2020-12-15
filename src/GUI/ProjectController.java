@@ -248,6 +248,10 @@ public class ProjectController
 
     public void handleActions(ActionEvent e) {
 
+        if (e.getSource() == about)
+        {
+            showAlert();
+        }
         if (scrumMaster.isSelected()) {
             lockProject();
             lockRequirement();
@@ -1023,4 +1027,11 @@ public class ProjectController
             taskEstimatedTime.setEditable(true);
 
         }
+    public void showAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About the software");
+        alert.setHeaderText("Color IT project management system version 1.0");
+        alert.setContentText("SEP 1 program");
+        alert.showAndWait();
+    }
 }
