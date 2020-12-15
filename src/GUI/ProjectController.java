@@ -449,14 +449,17 @@ public class ProjectController
 
             }
             if (e.getSource() == taskSave) {
+                if(taskException()==true)
+                {
                 Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
                         Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
 
                 Task task = new Task(taskName.getText(), Integer.parseInt(taskID.getText()),
-                        taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
-                        taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
-                        deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
-                if (taskException() == true) {
+                    taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
+                    taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
+                    deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
+
+
                     taskListView.getItems().add(task);
                     tabPane.getSelectionModel().select(tasks);
                     requirementSave.setDisable(false);
@@ -677,11 +680,17 @@ public class ProjectController
         boolean truth = true;
         for (int i = 0; i < taskListView.getItems().size(); i++)
         {
-            if(taskName.equals(taskListView.getItems().get(i).getName())){
+            if(taskName.getText().equals(taskListView.getItems().get(i).getName())){
                 taskNameLabel.setVisible(true);
                 taskName.clear();
                 truth = false;
             }
+            if(Integer.parseInt(taskID.getText()) == taskListView.getItems().get(i).getID()){
+                taskIDLabel.setVisible(true);
+                taskID.clear();
+                truth=false;
+            }
+
 
         }
         if(Integer.parseInt(taskID.getText())<1000 || Integer.parseInt(taskID.getText())>9999){
@@ -727,10 +736,16 @@ public class ProjectController
         boolean truth = true;
         for (int i = 0; i < requirementListView.getItems().size(); i++)
         {
-            if(requirementName.equals(requirementListView.getItems().get(i).getName())){
+            if(requirementName.getText().equals(requirementListView.getItems().get(i).getName())){
                 reqNameLabel.setVisible(true);
                 requirementName.clear();
                 truth = false;
+            }
+
+            if(Integer.parseInt(requirementID.getText()) == requirementListView.getItems().get(i).getID()){
+                reqIDLabel.setVisible(true);
+                requirementID.clear();
+                truth=false;
             }
 
         }
@@ -771,10 +786,15 @@ public class ProjectController
         boolean truth = true;
         for (int i = 0; i < projectListView.getItems().size(); i++)
         {
-            if(projectName.equals(projectListView.getItems().get(i).getName())){
+            if(projectName.getText().equals(projectListView.getItems().get(i).getName())){
                 projNameLabel.setVisible(true);
                 projectName.clear();
                 truth = false;
+            }
+            if(Integer.parseInt(projectID.getText()) == projectListView.getItems().get(i).getID()){
+                projIDLabel.setVisible(true);
+                projectID.clear();
+                truth=false;
             }
 
         }
