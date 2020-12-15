@@ -172,7 +172,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="projectEstimatedTime" onAction="#handleActions">
+                                    <TextField fx:id="projectEstimatedTime" alignment="CENTER" onAction="#handleActions">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="60.0" top="2.0" />
                                        </HBox.margin>
@@ -305,9 +305,9 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement" visible="false">
+                                    <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement">
                                        <HBox.margin>
-                                          <Insets left="480.0" right="10.0" />
+                                          <Insets left="470.0" right="10.0" />
                                        </HBox.margin>
                                     </Button>
                                  </children>
@@ -418,7 +418,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField fx:id="requirementEstimatedTime" prefHeight="26.0" prefWidth="150.0">
+                                    <TextField fx:id="requirementEstimatedTime" alignment="CENTER" prefHeight="26.0" prefWidth="150.0">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="90.0" top="2.0" />
                                        </HBox.margin>
