@@ -136,7 +136,9 @@ public class ProjectController
         {
             requirementPriorityInteger = 3;
         }
-
+        deleteProject.setDisable(true);
+        deleteTask.setDisable(true);
+        deleteRequirement.setDisable(true);
         lockTask();
 
         taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
@@ -270,18 +272,22 @@ public class ProjectController
             if (e.getSource() == projectChange) {
                 unlockProject();
                 projectSave.setDisable(false);
-                //projectListView.getItems().remove(projectListView.getSelectionModel().getSelectedItem());
+                deleteProject.setDisable(false);
+                projectChange.setDisable(true);
             }
             if (e.getSource() == requirementChange) {
                 unlockRequirement();
                 requirementSave.setDisable(false);
                 requirementAddClicked = false;
-                //requirementListView.getItems().remove(requirementListView.getSelectionModel().getSelectedItem());
+                deleteRequirement.setDisable(false);
+                requirementChange.setDisable(true);
             }
             if (e.getSource() == taskChange) {
                 unlockTask();
                 taskSave.setDisable(false);
                 taskAddClicked = false;
+                deleteTask.setDisable(false);
+                taskChange.setDisable(true);
 
             }
             if (e.getSource() == addRequirement) {
@@ -338,6 +344,8 @@ public class ProjectController
                     clearProject();
                     clearRequirement();
                     clearTask();
+                    projectChange.setDisable(false);
+                    deleteProject.setDisable(true);
                     saveToPMS.setVisible(true);
                     saveToPMS.setDisable(false);
                     projectInfo.setDisable(true);
@@ -378,6 +386,10 @@ public class ProjectController
                    clearTask();
                    clearRequirement();
                    lockRequirement();
+
+                   requirementChange.setDisable(false);
+                   deleteRequirement.setDisable(true);
+
                    taskListView.getItems().clear();
                    tabPane.getSelectionModel().select(requirements);
                    requirementSave.setDisable(true);
@@ -415,12 +427,81 @@ public class ProjectController
                     taskChange.setDisable(true);
 
                     clearTask();
+
+                    taskChange.setDisable(false);
+                    deleteTask.setDisable(true);
+
                     tabPane.getSelectionModel().select(tasks);
                     taskInfo.setDisable(true);
 
 
             }
+            if (e.getSource() == deleteProject)
+            {
+                clearTask();
+                clearRequirement();
+                clearProject();
 
+                lockTask();
+                lockRequirement();
+                lockProject();
+
+                projectManagementSystem.getProjects().remove(projectListView.getSelectionModel().getSelectedIndex());
+                projectListView.getItems().remove(projectListView.getSelectionModel().getSelectedIndex());
+
+                tasks.setDisable(true);
+                taskInfo.setDisable(true);
+                requirementsInfo.setDisable(true);
+                requirements.setDisable(true);
+                projectInfo.setDisable(true);
+
+                tabPane.getSelectionModel().select(projects);
+
+                projectChange.setDisable(false);
+                projectSave.setDisable(true);
+                deleteProject.setDisable(true);
+
+            }
+            if (e.getSource() == deleteRequirement)
+            {
+                clearTask();
+                clearRequirement();
+
+                lockTask();
+                lockRequirement();
+
+                projectListView.getSelectionModel().getSelectedItem().getRequirements().remove(requirementListView.getSelectionModel().getSelectedItem());
+                requirementListView.getItems().remove(requirementListView.getSelectionModel().getSelectedIndex());
+
+                tasks.setDisable(true);
+                taskInfo.setDisable(true);
+                requirementsInfo.setDisable(true);
+
+                tabPane.getSelectionModel().select(requirements);
+
+                requirementChange.setDisable(false);
+                requirementSave.setDisable(true);
+                deleteRequirement.setDisable(true);
+
+            }
+            if (e.getSource() == deleteTask)
+            {
+                clearTask();
+
+                lockTask();
+
+                requirementListView.getSelectionModel().getSelectedItem().getTask().remove(taskListView.getSelectionModel().getSelectedItem());
+                taskListView.getItems().remove(taskListView.getSelectionModel().getSelectedIndex());
+
+                taskInfo.setDisable(true);
+
+                tabPane.getSelectionModel().select(tasks);
+
+                taskChange.setDisable(false);
+                taskSave.setDisable(true);
+                deleteTask.setDisable(true);
+
+            }
         }
 
         if (projectCreator.isSelected()) {
@@ -498,8 +579,8 @@ public class ProjectController
                     taskHWorked.setVisible(false);
                     taskDeadline.setVisible(false);
                 }
-
             }
+
             if (e.getSource() == requirementSave) {
                 Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
                         requirementDescription.getText(), Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,

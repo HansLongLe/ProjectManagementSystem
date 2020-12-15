@@ -58,14 +58,6 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Delete Project" visible="false">
-                                       <HBox.margin>
-                                          <Insets left="310.0" />
-                                       </HBox.margin>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </Button>
                                     <Button fx:id="addProject" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Add Project" visible="false">
                                        <HBox.margin>
                                           <Insets left="10.0" />
@@ -277,6 +269,11 @@
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
+                                                <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Delete Project" visible="false">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
                                                 <Button fx:id="projectSave" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Save" visible="false">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
@@ -305,11 +302,6 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Button fx:id="deleteRequirement" mnemonicParsing="false" onAction="#handleActions" text="Delete Requirement" visible="false">
-                                       <HBox.margin>
-                                          <Insets left="340.0" />
-                                       </HBox.margin>
-                                    </Button>
                                     <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement" visible="false">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
@@ -534,6 +526,7 @@
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
+                                                <Button fx:id="deleteRequirement" mnemonicParsing="false" onAction="#handleActions" text="Delete Requirement" visible="false" />
                                                 <Button fx:id="requirementSave" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Save" visible="false">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
@@ -556,11 +549,6 @@
                               <ListView fx:id="taskListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button fx:id="deleteTask" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Task" visible="false">
-                                       <HBox.margin>
-                                          <Insets left="430.0" />
-                                       </HBox.margin>
-                                    </Button>
                                     <Button fx:id="addTask" mnemonicParsing="false" onAction="#handleActions" text="Add Task" visible="false">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
@@ -789,6 +777,7 @@
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
+                                                <Button fx:id="deleteTask" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Task" visible="false" />
                                                 <Button fx:id="taskSave" mnemonicParsing="false" onAction="#handleActions" text="Save" visible="false">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
