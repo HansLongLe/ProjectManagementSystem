@@ -377,7 +377,7 @@
                                           <Insets left="10.0" top="5.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <RadioButton fx:id="priority1" mnemonicParsing="false" onAction="#initialize" text="1">
+                                    <RadioButton fx:id="priority1" mnemonicParsing="false" onAction="#priority" text="1">
                                        <HBox.margin>
                                           <Insets left="69.0" />
                                        </HBox.margin>
