@@ -451,8 +451,7 @@ public class ProjectController
 
             }
             if (e.getSource() == taskSave) {
-                if(taskException()==true)
-                {
+
                 Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
                         Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
 
@@ -460,7 +459,8 @@ public class ProjectController
                     taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
                     taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
                     deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
-
+                if(taskException()==true)
+                {
 
                     taskListView.getItems().add(task);
                     tabPane.getSelectionModel().select(tasks);
