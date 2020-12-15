@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import Classes.*;
+import parser.ParserException;
+import parser.XmlJsonParser;
 
 import java.beans.XMLEncoder;
 import java.io.File;
@@ -129,16 +131,13 @@ public class ProjectController
         projectStatus.getSelectionModel().select("Not started");
 
         try{
-            FileOutputStream fos = new FileOutputStream(new File("./PMS.xml"));
-            XMLEncoder encoder = new XMLEncoder(fos);
-            encoder.writeObject(adapter.loadPMS());
-
-            encoder.close();
-            fos.close();
+            XmlJsonParser xjp = new XmlJsonParser();
+            xjp.toXml(projectManagementSystem, "pms.xml");
         }
-        catch(IOException e){
+        catch( ParserException e){
             System.out.println("IO exception");
         }
+
 
         if (priority1.isSelected())
         {
