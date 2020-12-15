@@ -39,7 +39,7 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem fx:id="about" mnemonicParsing="false" onAction="#showAlert" text="About" />
                      </items>
                   </Menu>
                </menus>
@@ -57,14 +57,6 @@
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Delete Project" visible="false">
-                                       <HBox.margin>
-                                          <Insets left="310.0" />
-                                       </HBox.margin>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
                                     </Button>
                                     <Button fx:id="addProject" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Add Project" visible="false">
                                        <HBox.margin>
@@ -135,7 +127,7 @@
                                           <Insets left="88.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projIDLabel" text="ID must be ****" textFill="RED" visible="false">
+                                    <Label fx:id="projIDLabel" text="ID must be **** or it exists" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -277,6 +269,11 @@
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
+                                                <Button fx:id="deleteProject" alignment="CENTER_RIGHT" contentDisplay="TOP" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Delete Project" visible="false">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
                                                 <Button fx:id="projectSave" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Save" visible="false">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
@@ -305,11 +302,6 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Button fx:id="deleteRequirement" mnemonicParsing="false" onAction="#handleActions" text="Delete Requirement" visible="false">
-                                       <HBox.margin>
-                                          <Insets left="340.0" />
-                                       </HBox.margin>
-                                    </Button>
                                     <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement" visible="false">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
@@ -362,13 +354,16 @@
                                           <Insets left="87.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqIDLabel" text="ID must be ****" textFill="RED" visible="false">
+                                    <Label fx:id="reqIDLabel" text="ID must be **** or ir exists" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="90.0" />
+                                          <Insets left="80.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
                                     </Label>
                                  </children>
                                  <VBox.margin>
@@ -382,7 +377,7 @@
                                           <Insets left="10.0" top="5.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <RadioButton fx:id="priority1" mnemonicParsing="false" onAction="#initialize" text="1">
+                                    <RadioButton fx:id="priority1" mnemonicParsing="false" onAction="#priority" text="1">
                                        <HBox.margin>
                                           <Insets left="69.0" />
                                        </HBox.margin>
@@ -531,6 +526,7 @@
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
+                                                <Button fx:id="deleteRequirement" mnemonicParsing="false" onAction="#handleActions" text="Delete Requirement" visible="false" />
                                                 <Button fx:id="requirementSave" disable="true" mnemonicParsing="false" onAction="#handleActions" text="Save" visible="false">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />
@@ -553,11 +549,6 @@
                               <ListView fx:id="taskListView" prefHeight="355.0" prefWidth="594.0" />
                               <HBox prefHeight="33.0" prefWidth="594.0">
                                  <children>
-                                    <Button fx:id="deleteTask" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Task" visible="false">
-                                       <HBox.margin>
-                                          <Insets left="430.0" />
-                                       </HBox.margin>
-                                    </Button>
                                     <Button fx:id="addTask" mnemonicParsing="false" onAction="#handleActions" text="Add Task" visible="false">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
@@ -605,7 +596,7 @@
                                  <children>
                                     <Label text="Task ID:">
                                        <HBox.margin>
-                                          <Insets left="10.0" />
+                                          <Insets left="9.0" />
                                        </HBox.margin>
                                     </Label>
                                     <TextField fx:id="taskID">
@@ -613,13 +604,16 @@
                                           <Insets left="123.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskIDLabel" text="ID must be ****" textFill="RED" visible="false">
+                                    <Label fx:id="taskIDLabel" text="ID must be **** or it exists" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="80.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
                                        </font>
+                                       <padding>
+                                          <Insets right="20.0" />
+                                       </padding>
                                     </Label>
                                  </children>
                                  <VBox.margin>
@@ -783,6 +777,7 @@
                                                       <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
+                                                <Button fx:id="deleteTask" alignment="CENTER_RIGHT" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleActions" text="Delete Task" visible="false" />
                                                 <Button fx:id="taskSave" mnemonicParsing="false" onAction="#handleActions" text="Save" visible="false">
                                                    <HBox.margin>
                                                       <Insets left="10.0" right="10.0" top="5.0" />

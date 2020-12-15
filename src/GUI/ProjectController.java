@@ -109,6 +109,8 @@ public class ProjectController
     private FileAdapter adapter;
     private FileAdapter adapter2;
     private int requirementPriorityInteger;
+    private boolean requirementAddClicked = false;
+    private boolean taskAddClicked = false;
     ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
 
     public void initialize()
@@ -122,19 +124,10 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-        if (priority1.isSelected())
-        {
-            requirementPriorityInteger = 1;
-        }
-        if (priority2.isSelected())
-        {
-            requirementPriorityInteger = 2;
-        }
-        if (priority3.isSelected())
-        {
-            requirementPriorityInteger = 3;
-        }
-
+        priority();
+        deleteProject.setDisable(true);
+        deleteTask.setDisable(true);
+        deleteRequirement.setDisable(true);
         lockTask();
 
         taskListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Task> task, Task old_task, Task new_task) -> {
@@ -150,6 +143,11 @@ public class ProjectController
             taskStatus.getSelectionModel().select(selectedTask.getStatus());
             taskDescription.setText(selectedTask.getDescription());
 
+            if (scrumMaster.isSelected()){
+                taskChange.setVisible(true);
+                taskChange.setDisable(false);
+            }
+
             lockTask();
 
             taskSave.setDisable(true);
@@ -160,6 +158,7 @@ public class ProjectController
         requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
 
             Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
+
             requirementName.setText(selectedRequirement.getName());
             requirementID.setText(selectedRequirement.getID() + "");
             if (selectedRequirement.getPriority() == 1)
@@ -181,6 +180,12 @@ public class ProjectController
             requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
             requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
             requirementDescription.setText(selectedRequirement.getDescription());
+
+            if (scrumMaster.isSelected())
+            {
+                requirementChange.setVisible(true);
+                requirementChange.setDisable(false);
+            }
 
             lockRequirement();
 
@@ -230,11 +235,13 @@ public class ProjectController
 
 
 
-    public void handleActions(ActionEvent e)
-    {
+    public void handleActions(ActionEvent e) {
 
-        if (scrumMaster.isSelected())
+        if (e.getSource() == about)
         {
+            showAlert();
+        }
+        if (scrumMaster.isSelected()) {
             lockProject();
             lockRequirement();
             lockTask();
@@ -255,24 +262,54 @@ public class ProjectController
             taskSave.setVisible(true);
             taskChange.setVisible(true);
 
-            if (e.getSource() == projectChange)
-            {
+            if (e.getSource() == projectChange) {
                 unlockProject();
                 projectSave.setDisable(false);
+                deleteProject.setDisable(false);
+                projectChange.setDisable(true);
             }
-            if (e.getSource() == requirementChange)
-            {
+            if (e.getSource() == requirementChange) {
                 unlockRequirement();
                 requirementSave.setDisable(false);
+                requirementAddClicked = false;
+                deleteRequirement.setDisable(false);
+                requirementChange.setDisable(true);
             }
-            if (e.getSource() == taskChange)
-            {
+            if (e.getSource() == taskChange) {
                 unlockTask();
                 taskSave.setDisable(false);
+                taskAddClicked = false;
+                deleteTask.setDisable(false);
+                taskChange.setDisable(true);
 
             }
-            if (e.getSource() == projectSave)
-            {
+            if (e.getSource() == addRequirement) {
+                clearRequirement();
+                clearTask();
+                unlockRequirement();
+                taskListView.getItems().clear();
+                tabPane.getSelectionModel().select(requirementsInfo);
+                requirementsInfo.setDisable(false);
+                tasks.setDisable(false);
+                taskInfo.setDisable(true);
+
+                requirementAddClicked = true;
+                requirementChange.setVisible(false);
+
+
+            }
+            if (e.getSource() == addTask) {
+                clearTask();
+                unlockTask();
+                tabPane.getSelectionModel().select(taskInfo);
+                taskInfo.setDisable(false);
+                taskSave.setDisable(false);
+
+                taskAddClicked = true;
+                taskChange.setVisible(false);
+
+            }
+            if (e.getSource() == projectSave) {
                 String temp = productOwner.getText();
                 String[] stringArr = temp.split(" ");
                 String firstName = stringArr[0];
@@ -285,101 +322,182 @@ public class ProjectController
                                 Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
 
 
-                for (int i = 0; i < requirementListView.getItems().size(); i++)
-                {
-                    project.addRequirement(requirementListView.getItems().get(i));
-                }
-                projectListView.getItems().set(projectListView.getSelectionModel().getSelectedIndex(),
-                    project);
-                String projectHoursWorkedString = project.getHoursWorked() + "";
-                projectHoursWorked.setText(projectHoursWorkedString);
+                    for (int i = 0; i < requirementListView.getItems().size(); i++)
+                    {
+                        project.addRequirement(
+                            requirementListView.getItems().get(i));
+                    }
+                    projectListView.getItems().set(
+                        projectListView.getSelectionModel().getSelectedIndex(),
+                        project);
+                    String projectHoursWorkedString = project.getHoursWorked() + "";
+                    projectHoursWorked.setText(projectHoursWorkedString);
 
-                lockProject();
-                clearProject();
-                clearRequirement();
-                clearTask();
-                saveToPMS.setDisable(false);
-                projectInfo.setDisable(true);
-                requirements.setDisable(true);
-                requirementsInfo.setDisable(true);
-                tasks.setDisable(true);
-                taskInfo.setDisable(true);
-                tabPane.getSelectionModel().select(projects);
+                    lockProject();
+                    clearProject();
+                    clearRequirement();
+                    clearTask();
+                    projectChange.setDisable(false);
+                    deleteProject.setDisable(true);
+                    saveToPMS.setVisible(true);
+                    saveToPMS.setDisable(false);
+                    projectInfo.setDisable(true);
+                    requirements.setDisable(true);
+                    requirementsInfo.setDisable(true);
+                    tasks.setDisable(true);
+                    taskInfo.setDisable(true);
+                    tabPane.getSelectionModel().select(projects);
+
             }
-            if (e.getSource() == requirementSave)
-            {
+            if (e.getSource() == requirementSave) {
                 Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
                         requirementDescription.getText(), Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
                         new Deadline(Integer.parseInt(requirementDeadlineDd.getText()), Integer.parseInt(requirementDeadlineMm.getText()),
                                 Integer.parseInt(requirementDeadlineYyyy.getText())), requirementStatus.getSelectionModel().getSelectedItem().toString());
-                for (int i = 0; i < taskListView.getItems().size(); i++) {
-                    requirement.addTask(taskListView.getItems().get(i));
-                }
 
-                requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
-                String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
-                requirementHoursWorked.setText(requirementHoursWorkedString);
 
+                   for (int i = 0; i < taskListView.getItems().size(); i++)
+                   {
+                       requirement.addTask(taskListView.getItems().get(i));
+                   }
+
+                   if (requirementAddClicked)
+                   {
+                       requirementListView.getItems().add(requirement);
+
+                   }
+                   else
+                   {
+                       requirementListView.getItems().set(
+                           requirementListView.getSelectionModel().getSelectedIndex(), requirement);
+                   }
+
+                   String requirementHoursWorkedString =
+                       requirement.hoursWorkedOnRequirement() + "";
+                   requirementHoursWorked.setText(requirementHoursWorkedString);
+
+                   clearTask();
+                   clearRequirement();
+                   lockRequirement();
+
+                   requirementChange.setDisable(false);
+                   deleteRequirement.setDisable(true);
+
+                   taskListView.getItems().clear();
+                   tabPane.getSelectionModel().select(requirements);
+                   requirementSave.setDisable(true);
+                   requirementsInfo.setDisable(true);
+                   tasks.setDisable(true);
+                   taskInfo.setDisable(true);
+
+            }
+            if (e.getSource() == taskSave) {
+                Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
+                            Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
+
+               Task task = new Task(taskName.getText(), Integer.parseInt(taskID.getText()),
+                            taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
+                            taskStatus.getSelectionModel().getSelectedItem(),
+                            Integer.parseInt(taskHoursWorked.getText()), deadline,
+                            (Employee) respTeamMember.getSelectionModel().getSelectedItem());
+
+                          if (taskAddClicked) {
+                              //task = taskListView.getSelectionModel().getSelectedItem();
+                            //taskListView.getItems().remove(taskListView.getSelectionModel().getSelectedItem());
+                            taskListView.getItems().add(task);
+
+                            requirementSave.setDisable(false);
+
+                        }
+                        if (!taskAddClicked) {
+
+                            taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
+                            requirementSave.setDisable(true);
+                        }
+
+
+                    taskSave.setDisable(true);
+                    taskChange.setDisable(true);
+
+                    clearTask();
+
+                    taskChange.setDisable(false);
+                    deleteTask.setDisable(true);
+
+                    tabPane.getSelectionModel().select(tasks);
+                    taskInfo.setDisable(true);
+
+
+            }
+            if (e.getSource() == deleteProject)
+            {
                 clearTask();
                 clearRequirement();
+                clearProject();
+
+                lockTask();
                 lockRequirement();
-                taskListView.getItems().clear();
-                tabPane.getSelectionModel().select(requirements);
-                requirementSave.setDisable(true);
-                requirementsInfo.setDisable(true);
+                lockProject();
+
+                projectManagementSystem.getProjects().remove(projectListView.getSelectionModel().getSelectedIndex());
+                projectListView.getItems().remove(projectListView.getSelectionModel().getSelectedIndex());
+
                 tasks.setDisable(true);
                 taskInfo.setDisable(true);
+                requirementsInfo.setDisable(true);
+                requirements.setDisable(true);
+                projectInfo.setDisable(true);
+
+                tabPane.getSelectionModel().select(projects);
+
+                projectChange.setDisable(false);
+                projectSave.setDisable(true);
+                deleteProject.setDisable(true);
+
             }
-            if (e.getSource() == taskSave)
+            if (e.getSource() == deleteRequirement)
             {
-                if(taskException()==true)
-                {
-                    Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
-                        Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
-
-                    Task task = new Task(taskName.getText(), Integer.parseInt(taskID.getText()),
-                        taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
-                        taskStatus.getSelectionModel().getSelectedItem(),
-                        Integer.parseInt(taskHoursWorked.getText()), deadline,
-                        (Employee) respTeamMember.getSelectionModel().getSelectedItem());
-
-
-                taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
-                }
-                taskSave.setDisable(true);
-
                 clearTask();
-                tabPane.getSelectionModel().select(tasks);
-                taskInfo.setDisable(true);
-
-
-            }
-            if (e.getSource() == addRequirement)
-            {
                 clearRequirement();
-                clearTask();
-                unlockRequirement();
-                taskListView.getItems().clear();
-                tabPane.getSelectionModel().select(requirementsInfo);
-                requirementsInfo.setDisable(false);
-                tasks.setDisable(false);
-                taskInfo.setDisable(true);
 
+                lockTask();
+                lockRequirement();
+
+                projectListView.getSelectionModel().getSelectedItem().getRequirements().remove(requirementListView.getSelectionModel().getSelectedItem());
+                requirementListView.getItems().remove(requirementListView.getSelectionModel().getSelectedIndex());
+
+                tasks.setDisable(true);
+                taskInfo.setDisable(true);
+                requirementsInfo.setDisable(true);
+
+                tabPane.getSelectionModel().select(requirements);
+
+                requirementChange.setDisable(false);
+                requirementSave.setDisable(true);
+                deleteRequirement.setDisable(true);
 
             }
-            if (e.getSource() == addTask)
+            if (e.getSource() == deleteTask)
             {
                 clearTask();
-                unlockTask();
-                tabPane.getSelectionModel().select(taskInfo);
-                taskInfo.setDisable(false);
-                taskSave.setDisable(false);
+
+                lockTask();
+
+                requirementListView.getSelectionModel().getSelectedItem().getTask().remove(taskListView.getSelectionModel().getSelectedItem());
+                taskListView.getItems().remove(taskListView.getSelectionModel().getSelectedIndex());
+
+                taskInfo.setDisable(true);
+
+                tabPane.getSelectionModel().select(tasks);
+
+                taskChange.setDisable(false);
+                taskSave.setDisable(true);
+                deleteTask.setDisable(true);
 
             }
         }
 
-        if (projectCreator.isSelected())
-        {
+        if (projectCreator.isSelected()) {
             addProject.setVisible(true);
             addProject.setDisable(false);
             deleteProject.setVisible(false);
@@ -395,8 +513,7 @@ public class ProjectController
             taskSave.setVisible(true);
             taskChange.setVisible(false);
 
-            if (e.getSource() == addProject)
-            {
+            if (e.getSource() == addProject) {
                 clearProject();
                 clearRequirement();
                 clearTask();
@@ -410,8 +527,7 @@ public class ProjectController
                 tasks.setDisable(true);
                 taskInfo.setDisable(true);
             }
-            if (e.getSource() == addRequirement)
-            {
+            if (e.getSource() == addRequirement) {
                 clearRequirement();
                 clearTask();
                 unlockRequirement();
@@ -420,11 +536,11 @@ public class ProjectController
                 requirementsInfo.setDisable(false);
                 tasks.setDisable(false);
                 taskInfo.setDisable(true);
+                //requirementSave.setDisable(false);
 
 
             }
-            if (e.getSource() == addTask)
-            {
+            if (e.getSource() == addTask) {
                 clearTask();
                 unlockTask();
                 tabPane.getSelectionModel().select(taskInfo);
@@ -432,24 +548,18 @@ public class ProjectController
                 taskSave.setDisable(false);
 
             }
-            if (e.getSource() == taskSave)
-            {
+            if (e.getSource() == taskSave) {
+
                 Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
                         Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
 
                 Task task = new Task(taskName.getText(), Integer.parseInt(taskID.getText()),
-                        taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
-                        taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
-                        deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
-
-                taskListView.getItems().add(task);
-
-                tabPane.getSelectionModel().select(tasks);
-                requirementSave.setDisable(false);
-                taskInfo.setDisable(true);
-                lockTask();
+                    taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
+                    taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
+                    deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
                 if(taskException()==true)
                 {
+
                     taskListView.getItems().add(task);
                     tabPane.getSelectionModel().select(tasks);
                     requirementSave.setDisable(false);
@@ -462,10 +572,9 @@ public class ProjectController
                     taskHWorked.setVisible(false);
                     taskDeadline.setVisible(false);
                 }
-
             }
-            if (e.getSource() == requirementSave)
-            {
+
+            if (e.getSource() == requirementSave) {
                 Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
                         requirementDescription.getText(), Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
                         new Deadline(Integer.parseInt(requirementDeadlineDd.getText()), Integer.parseInt(requirementDeadlineMm.getText()),
@@ -473,20 +582,8 @@ public class ProjectController
                 for (int i = 0; i < taskListView.getItems().size(); i++) {
                     requirement.addTask(taskListView.getItems().get(i));
                 }
-                requirementListView.getItems().add(requirement);
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
-                requirementHoursWorked.setText(requirementHoursWorkedString);
-
-                tabPane.getSelectionModel().select(requirements);
-                projectSave.setDisable(false);
-                requirementSave.setDisable(true);
-                requirementsInfo.setDisable(true);
-                tasks.setDisable(true);
-                taskInfo.setDisable(true);
-                lockTask();
-                lockRequirement();
-                if(requirementException())
-                {
+                if (requirementException()) {
                     requirementListView.getItems().add(requirement);
                     requirementHoursWorked.setText(requirementHoursWorkedString);
                     tabPane.getSelectionModel().select(requirements);
@@ -506,10 +603,10 @@ public class ProjectController
 
 
             }
-            if (e.getSource() == projectSave)
-            {
+            if (e.getSource() == projectSave) {
                 String temp = productOwner.getText();
                 String[] stringArr = temp.split(" ");
+
 
                 String firstName = stringArr[0];
                 String lastName = stringArr[1];
@@ -521,37 +618,44 @@ public class ProjectController
                         new Deadline(Integer.parseInt(projectDeadlineDd.getText()), Integer.parseInt(projectDeadlineMm.getText()),
                                 Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
                 String projectHoursWorkedString = project.getHoursWorked() + "";
-                if(projectExceptions()){
-                projectListView.getItems().add(project);
-                for (int i = 0; i < requirementListView.getItems().size(); i++) {
-                    project.addRequirement(requirementListView.getItems().get(i));
-                }
+                if (projectExceptions()) {
+                    projectListView.getItems().add(project);
+                    for (int i = 0; i < requirementListView.getItems().size(); i++) {
+                        project.addRequirement(requirementListView.getItems().get(i));
+                    }
 
-                projectHoursWorked.setText(projectHoursWorkedString);
+                    projectHoursWorked.setText(projectHoursWorkedString);
+                    saveToPMS.setVisible(true);
+                    saveToPMS.setDisable(false);
+                    clearRequirement();
+                    projectInfo.setDisable(true);
+                    requirements.setDisable(true);
+                    requirementsInfo.setDisable(true);
+                    tasks.setDisable(true);
+                    taskInfo.setDisable(true);
+                    tabPane.getSelectionModel().select(projects);
 
-                projectInfo.setDisable(true);
-                requirements.setDisable(true);
-                requirementsInfo.setDisable(true);
-                tasks.setDisable(true);
-                taskInfo.setDisable(true);
-                saveToPMS.setDisable(false);
-                tabPane.getSelectionModel().select(projects);
-                lockProject();
-                lockRequirement();
-                lockTask();
-
-                projNameLabel.setVisible(false);
-                projIDLabel.setVisible(false);
-                projETime.setVisible(false);
-                projDeadline.setVisible(false);
-                projProductOwner.setVisible(false);
+                    projNameLabel.setVisible(false);
+                    projIDLabel.setVisible(false);
+                    projETime.setVisible(false);
+                    projDeadline.setVisible(false);
+                    projProductOwner.setVisible(false);
                 }
 
             }
+            if (priority1.isSelected()) {
+                requirementPriorityInteger = 1;
+            }
+            if (priority2.isSelected()) {
+                requirementPriorityInteger = 2;
+            }
+            if (priority3.isSelected()) {
+                requirementPriorityInteger = 3;
+            }
         }
 
-        if (teamMember.isSelected())
-        {
+
+        if (teamMember.isSelected()) {
             lockProject();
             lockRequirement();
             lockTask();
@@ -573,31 +677,27 @@ public class ProjectController
             taskSave.setVisible(false);
             taskChange.setVisible(false);
         }
+        if (e.getSource() == saveToPMS) {
 
-        //Other actions
+            projectManagementSystem.addProject(projectListView.getItems()
+                    .get(projectListView.getItems().size() - 1));
 
-        if (e.getSource() == saveToPMS)
-        {
-            for (int i = 0; i < projectListView.getItems().size(); i++)
-            {
-                projectManagementSystem.addProject(projectListView.getItems()
-                        .get(i));
-                System.out.println("Saved!");
-            }
+            clearProject();
             adapter = new FileAdapter("ProjectManagementSystem.bin");
             adapter.saveToPMSFile(projectManagementSystem);
             System.out.println("Saved to file!");
-            saveToPMS.setDisable(true);
 
-        }
+            //Other actions
 
-        if (taskListView.getItems().isEmpty())
-        {
-            requirementSave.setDisable(true);
-        }
-        if (requirementListView.getItems().isEmpty())
-        {
-            projectSave.setDisable(true);
+            //Other actions
+
+
+            if (taskListView.getItems().isEmpty()) {
+                requirementSave.setDisable(true);
+            }
+            if (requirementListView.getItems().isEmpty()) {
+                projectSave.setDisable(true);
+            }
         }
     }
 
@@ -676,147 +776,165 @@ public class ProjectController
             projectDescription.clear();
             projectStatus.getSelectionModel().select("Not started");
         }
-       private boolean taskException(){
-            boolean truth = true;
-           for (int i = 0; i < taskListView.getItems().size(); i++)
-           {
-               if(taskName.equals(taskListView.getItems().get(i).getName())){
-                   taskNameLabel.setVisible(true);
-                   taskName.clear();
-                   truth = false;
-               }
+    private boolean taskException(){
+        boolean truth = true;
+        for (int i = 0; i < taskListView.getItems().size(); i++)
+        {
+            if(taskName.getText().equals(taskListView.getItems().get(i).getName())){
+                taskNameLabel.setVisible(true);
+                taskName.clear();
+                truth = false;
+            }
+            if(Integer.parseInt(taskID.getText()) == taskListView.getItems().get(i).getID()){
+                taskIDLabel.setVisible(true);
+                taskID.clear();
+                truth=false;
+            }
 
-           }
-           if(Integer.parseInt(taskID.getText())<1000 || Integer.parseInt(taskID.getText())>9999){
-               taskIDLabel.setVisible(true);
-               taskID.clear();
-               truth = false;
-           }
-           if(respTeamMember == null){
-               taskEmployee.setVisible(true);
-               truth = false;
-           }
-           if(Integer.parseInt(taskHoursWorked.getText())<0){
-               taskHWorked.setVisible(true);
-               taskHoursWorked.clear();
-               truth = false;
-           }
-           if(Integer.parseInt(taskEstimatedTime.getText())<0){
-               taskETime.setVisible(true);
-               taskEstimatedTime.clear();
-               truth = false;
-           }
-           if(Integer.parseInt(taskDeadlineDd.getText())<1 || Integer.parseInt(taskDeadlineDd.getText())>31){
-               taskDeadline.setVisible(true);
-               taskDeadlineDd.clear();
-               truth = false;
-           }
 
-           if(Integer.parseInt(taskDeadlineMm.getText())<1 || Integer.parseInt(taskDeadlineMm.getText())>12){
-               taskDeadline.setVisible(true);
-               taskDeadlineMm.clear();
-               truth = false;
-           }
+        }
+        if(Integer.parseInt(taskID.getText())<1000 || Integer.parseInt(taskID.getText())>9999){
+            taskIDLabel.setVisible(true);
+            taskID.clear();
+            truth = false;
+        }
+        if(respTeamMember == null){
+            taskEmployee.setVisible(true);
+            truth = false;
+        }
+        if(Integer.parseInt(taskHoursWorked.getText())<0){
+            taskHWorked.setVisible(true);
+            taskHoursWorked.clear();
+            truth = false;
+        }
+        if(Integer.parseInt(taskEstimatedTime.getText())<0){
+            taskETime.setVisible(true);
+            taskEstimatedTime.clear();
+            truth = false;
+        }
+        if(Integer.parseInt(taskDeadlineDd.getText())<1 || Integer.parseInt(taskDeadlineDd.getText())>31){
+            taskDeadline.setVisible(true);
+            taskDeadlineDd.clear();
+            truth = false;
+        }
 
-           if(Integer.parseInt(taskDeadlineYyyy.getText())<2020){
-               taskDeadline.setVisible(true);
-               taskDeadlineYyyy.clear();
-               truth = false;
-           }
-           return truth;
+        if(Integer.parseInt(taskDeadlineMm.getText())<1 || Integer.parseInt(taskDeadlineMm.getText())>12){
+            taskDeadline.setVisible(true);
+            taskDeadlineMm.clear();
+            truth = false;
+        }
 
-       }
-       private boolean requirementException(){
-           boolean truth = true;
-           for (int i = 0; i < requirementListView.getItems().size(); i++)
-           {
-               if(requirementName.equals(requirementListView.getItems().get(i).getName())){
-                   reqNameLabel.setVisible(true);
-                   requirementName.clear();
-                   truth = false;
-               }
+        if(Integer.parseInt(taskDeadlineYyyy.getText())<2020){
+            taskDeadline.setVisible(true);
+            taskDeadlineYyyy.clear();
+            truth = false;
+        }
+        return truth;
 
-           }
-           if(Integer.parseInt(requirementID.getText())<1000 || Integer.parseInt(requirementID.getText())>9999){
-               reqIDLabel.setVisible(true);
-               requirementID.clear();
-               truth = false;
-           }
+    }
+    private boolean requirementException(){
+        boolean truth = true;
+        for (int i = 0; i < requirementListView.getItems().size(); i++)
+        {
+            if(requirementName.getText().equals(requirementListView.getItems().get(i).getName())){
+                reqNameLabel.setVisible(true);
+                requirementName.clear();
+                truth = false;
+            }
 
-           if(priority1.isSelected()==false && priority2.isSelected()==false && priority3.isSelected()==false){
-               reqPriority.setVisible(true);
+            if(Integer.parseInt(requirementID.getText()) == requirementListView.getItems().get(i).getID()){
+                reqIDLabel.setVisible(true);
+                requirementID.clear();
+                truth=false;
+            }
 
-           }
-           if(Integer.parseInt(requirementEstimatedTime.getText())<0){
-                reqETime.setVisible(true);
-                requirementEstimatedTime.clear();
-           }
-           if(Integer.parseInt(requirementDeadlineDd.getText())<1 || Integer.parseInt(requirementDeadlineDd.getText())>31){
-               reqDeadline.setVisible(true);
-               requirementDeadlineDd.clear();
-               truth = false;
-           }
+        }
+        if(Integer.parseInt(requirementID.getText())<1000 || Integer.parseInt(requirementID.getText())>9999){
+            reqIDLabel.setVisible(true);
+            requirementID.clear();
+            truth = false;
+        }
 
-           if(Integer.parseInt(requirementDeadlineMm.getText())<1 || Integer.parseInt(requirementDeadlineMm.getText())>12){
-               reqDeadline.setVisible(true);
-               requirementDeadlineMm.clear();
-               truth = false;
-           }
+        if(priority1.isSelected()==false && priority2.isSelected()==false && priority3.isSelected()==false){
+            reqPriority.setVisible(true);
 
-           if(Integer.parseInt(requirementDeadlineYyyy.getText())<2020){
-               reqDeadline.setVisible(true);
-               requirementDeadlineYyyy.clear();
-               truth = false;
-           }
-           return truth;
-       }
-       private boolean projectExceptions(){
-           boolean truth = true;
-           for (int i = 0; i < projectListView.getItems().size(); i++)
-           {
-               if(projectName.equals(projectListView.getItems().get(i).getName())){
-                   projNameLabel.setVisible(true);
-                   projectName.clear();
-                   truth = false;
-               }
+        }
+        if(Integer.parseInt(requirementEstimatedTime.getText())<0){
+            reqETime.setVisible(true);
+            requirementEstimatedTime.clear();
+        }
+        if(Integer.parseInt(requirementDeadlineDd.getText())<1 || Integer.parseInt(requirementDeadlineDd.getText())>31){
+            reqDeadline.setVisible(true);
+            requirementDeadlineDd.clear();
+            truth = false;
+        }
 
-           }
-           if(Integer.parseInt(projectID.getText())<1000 || Integer.parseInt(projectID.getText())>9999){
-               projIDLabel.setVisible(true);
-               projectID.clear();
-               truth = false;
-           }
+        if(Integer.parseInt(requirementDeadlineMm.getText())<1 || Integer.parseInt(requirementDeadlineMm.getText())>12){
+            reqDeadline.setVisible(true);
+            requirementDeadlineMm.clear();
+            truth = false;
+        }
 
-           if(!(productOwner.getText().contains(" "))){
-               projProductOwner.setVisible(true);
-               productOwner.clear();
-               truth = false;
-           }
-           if(Integer.parseInt(projectEstimatedTime.getText())<0){
-               projETime.setVisible(true);
-               projectEstimatedTime.clear();
-               truth = false;
-           }
-           if(Integer.parseInt(projectDeadlineDd.getText())<1 || Integer.parseInt(projectDeadlineDd.getText())>31){
-               projDeadline.setVisible(true);
-               projectDeadlineDd.clear();
-               truth = false;
-           }
+        if(Integer.parseInt(requirementDeadlineYyyy.getText())<2020){
+            reqDeadline.setVisible(true);
+            requirementDeadlineYyyy.clear();
+            truth = false;
+        }
+        return truth;
+    }
+    private boolean projectExceptions(){
+        boolean truth = true;
+        for (int i = 0; i < projectListView.getItems().size(); i++)
+        {
+            if(projectName.getText().equals(projectListView.getItems().get(i).getName())){
+                projNameLabel.setVisible(true);
+                projectName.clear();
+                truth = false;
+            }
+            if(Integer.parseInt(projectID.getText()) == projectListView.getItems().get(i).getID()){
+                projIDLabel.setVisible(true);
+                projectID.clear();
+                truth=false;
+            }
 
-           if(Integer.parseInt(projectDeadlineMm.getText())<1 || Integer.parseInt(projectDeadlineMm.getText())>12){
-               projDeadline.setVisible(true);
-               projectDeadlineMm.clear();
-               truth = false;
-           }
+        }
+        if(Integer.parseInt(projectID.getText())<1000 || Integer.parseInt(projectID.getText())>9999){
+            projIDLabel.setVisible(true);
+            projectID.clear();
+            truth = false;
+        }
 
-           if(Integer.parseInt(projectDeadlineYyyy.getText())<2020){
-               projDeadline.setVisible(true);
-               projectDeadlineYyyy.clear();
-               truth = false;
-           }
-           return truth;
-       }
-        private void lockProject()
+        if(!(productOwner.getText().contains(" "))){
+            projProductOwner.setVisible(true);
+            productOwner.clear();
+            truth = false;
+        }
+        if(Integer.parseInt(projectEstimatedTime.getText())<0){
+            projETime.setVisible(true);
+            projectEstimatedTime.clear();
+            truth = false;
+        }
+        if(Integer.parseInt(projectDeadlineDd.getText())<1 || Integer.parseInt(projectDeadlineDd.getText())>31){
+            projDeadline.setVisible(true);
+            projectDeadlineDd.clear();
+            truth = false;
+        }
+
+        if(Integer.parseInt(projectDeadlineMm.getText())<1 || Integer.parseInt(projectDeadlineMm.getText())>12){
+            projDeadline.setVisible(true);
+            projectDeadlineMm.clear();
+            truth = false;
+        }
+
+        if(Integer.parseInt(projectDeadlineYyyy.getText())<2020){
+            projDeadline.setVisible(true);
+            projectDeadlineYyyy.clear();
+            truth = false;
+        }
+        return truth;
+    }
+
+    private void lockProject()
         {
             projectName.setEditable(false);
             projectHoursWorked.setEditable(false);
@@ -882,6 +1000,7 @@ public class ProjectController
             requirementDeadlineMm.setEditable(true);
             requirementDeadlineYyyy.setEditable(true);
             requirementDescription.setEditable(true);
+            //requirementSave.setDisable(false);
         }
         private void unlockTask()
         {
@@ -895,5 +1014,27 @@ public class ProjectController
             taskStatus.setDisable(false);
             taskDescription.setEditable(true);
             taskEstimatedTime.setEditable(true);
+
         }
+    public void showAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About the software");
+        alert.setHeaderText("Color IT project management system version 1.0");
+        alert.setContentText("SEP 1 program");
+        alert.showAndWait();
+    }
+    public void priority(){
+    if (priority1.isSelected())
+    {
+        requirementPriorityInteger = 1;
+    }
+    if (priority2.isSelected())
+    {
+        requirementPriorityInteger = 2;
+    }
+    if (priority3.isSelected())
+    {
+        requirementPriorityInteger = 3;
+    }
+}
 }
