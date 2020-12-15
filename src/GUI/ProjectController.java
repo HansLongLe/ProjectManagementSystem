@@ -154,6 +154,7 @@ public class ProjectController
 
             if (scrumMaster.isSelected()){
                 taskChange.setVisible(true);
+                taskChange.setDisable(false);
             }
 
             lockTask();
@@ -192,6 +193,7 @@ public class ProjectController
             if (scrumMaster.isSelected())
             {
                 requirementChange.setVisible(true);
+                requirementChange.setDisable(false);
             }
 
             lockRequirement();
