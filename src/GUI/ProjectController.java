@@ -124,18 +124,7 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-        if (priority1.isSelected())
-        {
-            requirementPriorityInteger = 1;
-        }
-        if (priority2.isSelected())
-        {
-            requirementPriorityInteger = 2;
-        }
-        if (priority3.isSelected())
-        {
-            requirementPriorityInteger = 3;
-        }
+        priority();
         deleteProject.setDisable(true);
         deleteTask.setDisable(true);
         deleteRequirement.setDisable(true);
@@ -1034,4 +1023,18 @@ public class ProjectController
         alert.setContentText("SEP 1 program");
         alert.showAndWait();
     }
+    public void priority(){
+    if (priority1.isSelected())
+    {
+        requirementPriorityInteger = 1;
+    }
+    if (priority2.isSelected())
+    {
+        requirementPriorityInteger = 2;
+    }
+    if (priority3.isSelected())
+    {
+        requirementPriorityInteger = 3;
+    }
+}
 }
