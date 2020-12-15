@@ -135,7 +135,7 @@
                                           <Insets left="88.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projIDLabel" text="ID must be ****" textFill="RED" visible="false">
+                                    <Label fx:id="projIDLabel" text="ID must be **** or it exists" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -362,13 +362,16 @@
                                           <Insets left="87.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqIDLabel" text="ID must be ****" textFill="RED" visible="false">
+                                    <Label fx:id="reqIDLabel" text="ID must be **** or ir exists" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="90.0" />
+                                          <Insets left="80.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
                                     </Label>
                                  </children>
                                  <VBox.margin>
@@ -605,7 +608,7 @@
                                  <children>
                                     <Label text="Task ID:">
                                        <HBox.margin>
-                                          <Insets left="10.0" />
+                                          <Insets left="9.0" />
                                        </HBox.margin>
                                     </Label>
                                     <TextField fx:id="taskID">
@@ -613,13 +616,16 @@
                                           <Insets left="123.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskIDLabel" text="ID must be ****" textFill="RED" visible="false">
+                                    <Label fx:id="taskIDLabel" text="ID must be **** or it exists" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="80.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
                                        </font>
+                                       <padding>
+                                          <Insets right="20.0" />
+                                       </padding>
                                     </Label>
                                  </children>
                                  <VBox.margin>
