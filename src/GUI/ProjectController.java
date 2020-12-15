@@ -124,7 +124,6 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-        priority();
         deleteProject.setDisable(true);
         deleteTask.setDisable(true);
         deleteRequirement.setDisable(true);
@@ -699,6 +698,7 @@ public class ProjectController
                 projectSave.setDisable(true);
             }
         }
+        priority();
     }
 
         public void loadProjects()
@@ -721,6 +721,9 @@ public class ProjectController
 
         private void statusBox ()
         {
+            taskStatus.getItems().clear();
+            requirementStatus.getItems().clear();
+            projectStatus.getItems().clear();
             String[] statuses = {"Started", "Not started", "Approved", "Rejected", "Ended"};
             taskStatus.getItems().addAll(statuses);
             requirementStatus.getItems().addAll(statuses);
