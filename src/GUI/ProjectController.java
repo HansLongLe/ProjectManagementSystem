@@ -709,10 +709,10 @@ public class ProjectController
             taskChange.setVisible(false);
         }
         if (e.getSource() == saveToPMS) {
-
-            projectManagementSystem.addProject(projectListView.getItems()
-                    .get(projectListView.getItems().size() - 1));
-
+            projectManagementSystem.getProjects().clear();
+            for (int i = 0; i < projectListView.getItems().size(); i++) {
+                projectManagementSystem.addProject(projectListView.getItems().get(i));
+            }
             clearProject();
             adapter = new FileAdapter("ProjectManagementSystem.bin");
             adapter.saveToPMSFile(projectManagementSystem);
