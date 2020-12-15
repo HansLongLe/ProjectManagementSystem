@@ -109,6 +109,8 @@ public class ProjectController
     private FileAdapter adapter;
     private FileAdapter adapter2;
     private int requirementPriorityInteger;
+    private boolean requirementAddClicked = false;
+    private boolean taskAddClicked = false;
     ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
 
     public void initialize()
@@ -150,6 +152,10 @@ public class ProjectController
             taskStatus.getSelectionModel().select(selectedTask.getStatus());
             taskDescription.setText(selectedTask.getDescription());
 
+            if (scrumMaster.isSelected()){
+                taskChange.setVisible(true);
+            }
+
             lockTask();
 
             taskSave.setDisable(true);
@@ -160,6 +166,7 @@ public class ProjectController
         requirementListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Requirement> ov, Requirement old_requirement, Requirement new_requirement) -> {
 
             Requirement selectedRequirement = requirementListView.getSelectionModel().getSelectedItem();
+
             requirementName.setText(selectedRequirement.getName());
             requirementID.setText(selectedRequirement.getID() + "");
             if (selectedRequirement.getPriority() == 1)
@@ -181,6 +188,11 @@ public class ProjectController
             requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
             requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
             requirementDescription.setText(selectedRequirement.getDescription());
+
+            if (scrumMaster.isSelected())
+            {
+                requirementChange.setVisible(true);
+            }
 
             lockRequirement();
 
@@ -230,11 +242,9 @@ public class ProjectController
 
 
 
-    public void handleActions(ActionEvent e)
-    {
+    public void handleActions(ActionEvent e) {
 
-        if (scrumMaster.isSelected())
-        {
+        if (scrumMaster.isSelected()) {
             lockProject();
             lockRequirement();
             lockTask();
@@ -255,24 +265,48 @@ public class ProjectController
             taskSave.setVisible(true);
             taskChange.setVisible(true);
 
-            if (e.getSource() == projectChange)
-            {
+            if (e.getSource() == projectChange) {
                 unlockProject();
                 projectSave.setDisable(false);
             }
-            if (e.getSource() == requirementChange)
-            {
+            if (e.getSource() == requirementChange) {
                 unlockRequirement();
                 requirementSave.setDisable(false);
+                requirementAddClicked = false;
             }
-            if (e.getSource() == taskChange)
-            {
+            if (e.getSource() == taskChange) {
                 unlockTask();
                 taskSave.setDisable(false);
+                taskAddClicked = false;
 
             }
-            if (e.getSource() == projectSave)
-            {
+            if (e.getSource() == addRequirement) {
+                clearRequirement();
+                clearTask();
+                unlockRequirement();
+                taskListView.getItems().clear();
+                tabPane.getSelectionModel().select(requirementsInfo);
+                requirementsInfo.setDisable(false);
+                tasks.setDisable(false);
+                taskInfo.setDisable(true);
+
+                requirementAddClicked = true;
+                requirementChange.setVisible(false);
+
+
+            }
+            if (e.getSource() == addTask) {
+                clearTask();
+                unlockTask();
+                tabPane.getSelectionModel().select(taskInfo);
+                taskInfo.setDisable(false);
+                taskSave.setDisable(false);
+
+                taskAddClicked = true;
+                taskChange.setVisible(false);
+
+            }
+            if (e.getSource() == projectSave) {
                 String temp = productOwner.getText();
                 String[] stringArr = temp.split(" ");
                 String firstName = stringArr[0];
@@ -285,12 +319,11 @@ public class ProjectController
                                 Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
 
 
-                for (int i = 0; i < requirementListView.getItems().size(); i++)
-                {
+                for (int i = 0; i < requirementListView.getItems().size(); i++) {
                     project.addRequirement(requirementListView.getItems().get(i));
                 }
                 projectListView.getItems().set(projectListView.getSelectionModel().getSelectedIndex(),
-                    project);
+                        project);
                 String projectHoursWorkedString = project.getHoursWorked() + "";
                 projectHoursWorked.setText(projectHoursWorkedString);
 
@@ -306,8 +339,7 @@ public class ProjectController
                 taskInfo.setDisable(true);
                 tabPane.getSelectionModel().select(projects);
             }
-            if (e.getSource() == requirementSave)
-            {
+            if (e.getSource() == requirementSave) {
                 Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
                         requirementDescription.getText(), Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
                         new Deadline(Integer.parseInt(requirementDeadlineDd.getText()), Integer.parseInt(requirementDeadlineMm.getText()),
@@ -316,7 +348,12 @@ public class ProjectController
                     requirement.addTask(taskListView.getItems().get(i));
                 }
 
-                requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
+                if (requirementAddClicked) {
+                    requirementListView.getItems().add(requirement);
+                } else {
+                    requirementListView.getItems().set(requirementListView.getSelectionModel().getSelectedIndex(), requirement);
+                }
+
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
                 requirementHoursWorked.setText(requirementHoursWorkedString);
 
@@ -330,23 +367,28 @@ public class ProjectController
                 tasks.setDisable(true);
                 taskInfo.setDisable(true);
             }
-            if (e.getSource() == taskSave)
-            {
-                if(taskException()==true)
-                {
+            if (e.getSource() == taskSave) {
+                if (taskException() == true) {
                     Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
-                        Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
+                            Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
 
                     Task task = new Task(taskName.getText(), Integer.parseInt(taskID.getText()),
-                        taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
-                        taskStatus.getSelectionModel().getSelectedItem(),
-                        Integer.parseInt(taskHoursWorked.getText()), deadline,
-                        (Employee) respTeamMember.getSelectionModel().getSelectedItem());
+                            taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
+                            taskStatus.getSelectionModel().getSelectedItem(),
+                            Integer.parseInt(taskHoursWorked.getText()), deadline,
+                            (Employee) respTeamMember.getSelectionModel().getSelectedItem());
 
-
-                taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
+                    if (taskAddClicked) {
+                        taskListView.getItems().add(task);
+                        requirementSave.setDisable(false);
+                    }
+                    if (!taskAddClicked) {
+                        taskListView.getItems().set(taskListView.getSelectionModel().getSelectedIndex(), task);
+                        requirementSave.setDisable(true);
+                    }
                 }
                 taskSave.setDisable(true);
+                taskChange.setDisable(true);
 
                 clearTask();
                 tabPane.getSelectionModel().select(tasks);
@@ -354,32 +396,9 @@ public class ProjectController
 
 
             }
-            if (e.getSource() == addRequirement)
-            {
-                clearRequirement();
-                clearTask();
-                unlockRequirement();
-                taskListView.getItems().clear();
-                tabPane.getSelectionModel().select(requirementsInfo);
-                requirementsInfo.setDisable(false);
-                tasks.setDisable(false);
-                taskInfo.setDisable(true);
-
-
-            }
-            if (e.getSource() == addTask)
-            {
-                clearTask();
-                unlockTask();
-                tabPane.getSelectionModel().select(taskInfo);
-                taskInfo.setDisable(false);
-                taskSave.setDisable(false);
-
-            }
         }
 
-        if (projectCreator.isSelected())
-        {
+        if (projectCreator.isSelected()) {
             addProject.setVisible(true);
             addProject.setDisable(false);
             deleteProject.setVisible(false);
@@ -395,8 +414,7 @@ public class ProjectController
             taskSave.setVisible(true);
             taskChange.setVisible(false);
 
-            if (e.getSource() == addProject)
-            {
+            if (e.getSource() == addProject) {
                 clearProject();
                 clearRequirement();
                 clearTask();
@@ -410,8 +428,7 @@ public class ProjectController
                 tasks.setDisable(true);
                 taskInfo.setDisable(true);
             }
-            if (e.getSource() == addRequirement)
-            {
+            if (e.getSource() == addRequirement) {
                 clearRequirement();
                 clearTask();
                 unlockRequirement();
@@ -423,8 +440,7 @@ public class ProjectController
 
 
             }
-            if (e.getSource() == addTask)
-            {
+            if (e.getSource() == addTask) {
                 clearTask();
                 unlockTask();
                 tabPane.getSelectionModel().select(taskInfo);
@@ -434,14 +450,13 @@ public class ProjectController
             }
             if (e.getSource() == taskSave) {
                 Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
-                    Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
+                        Integer.parseInt(taskDeadlineMm.getText()), Integer.parseInt(taskDeadlineYyyy.getText()));
 
                 Task task = new Task(taskName.getText(), Integer.parseInt(taskID.getText()),
-                    taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
-                    taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
-                    deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
-                if(taskException()==true)
-                {
+                        taskDescription.getText(), Integer.parseInt(taskEstimatedTime.getText()),
+                        taskStatus.getSelectionModel().getSelectedItem(), Integer.parseInt(taskHoursWorked.getText()),
+                        deadline, (Employee) respTeamMember.getSelectionModel().getSelectedItem());
+                if (taskException() == true) {
                     taskListView.getItems().add(task);
                     tabPane.getSelectionModel().select(tasks);
                     requirementSave.setDisable(false);
@@ -458,15 +473,14 @@ public class ProjectController
             }
             if (e.getSource() == requirementSave) {
                 Requirement requirement = new Requirement(requirementName.getText(), Integer.parseInt(requirementID.getText()),
-                    requirementDescription.getText(), Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
-                    new Deadline(Integer.parseInt(requirementDeadlineDd.getText()), Integer.parseInt(requirementDeadlineMm.getText()),
-                        Integer.parseInt(requirementDeadlineYyyy.getText())), requirementStatus.getSelectionModel().getSelectedItem().toString());
+                        requirementDescription.getText(), Integer.parseInt(requirementEstimatedTime.getText()), requirementPriorityInteger,
+                        new Deadline(Integer.parseInt(requirementDeadlineDd.getText()), Integer.parseInt(requirementDeadlineMm.getText()),
+                                Integer.parseInt(requirementDeadlineYyyy.getText())), requirementStatus.getSelectionModel().getSelectedItem().toString());
                 for (int i = 0; i < taskListView.getItems().size(); i++) {
                     requirement.addTask(taskListView.getItems().get(i));
                 }
                 String requirementHoursWorkedString = requirement.hoursWorkedOnRequirement() + "";
-                if(requirementException())
-                {
+                if (requirementException()) {
                     requirementListView.getItems().add(requirement);
                     requirementHoursWorked.setText(requirementHoursWorkedString);
                     tabPane.getSelectionModel().select(requirements);
@@ -495,13 +509,13 @@ public class ProjectController
                 String lastName = stringArr[1];
 
                 Project project = new Project(projectName.getText(),
-                    Integer.parseInt(projectID.getText()), projectDescription.getText(),
-                    Integer.parseInt(projectEstimatedTime.getText()),
-                    projectStatus.getSelectionModel().getSelectedItem().toString(),
-                    new Deadline(Integer.parseInt(projectDeadlineDd.getText()), Integer.parseInt(projectDeadlineMm.getText()),
-                        Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
+                        Integer.parseInt(projectID.getText()), projectDescription.getText(),
+                        Integer.parseInt(projectEstimatedTime.getText()),
+                        projectStatus.getSelectionModel().getSelectedItem().toString(),
+                        new Deadline(Integer.parseInt(projectDeadlineDd.getText()), Integer.parseInt(projectDeadlineMm.getText()),
+                                Integer.parseInt(projectDeadlineYyyy.getText())), new ProductOwner(firstName, lastName));
                 String projectHoursWorkedString = project.getHoursWorked() + "";
-                if(projectExceptions()){
+                if (projectExceptions()) {
                     projectListView.getItems().add(project);
                     for (int i = 0; i < requirementListView.getItems().size(); i++) {
                         project.addRequirement(requirementListView.getItems().get(i));
@@ -538,8 +552,7 @@ public class ProjectController
         }
 
 
-        if (teamMember.isSelected())
-        {
+        if (teamMember.isSelected()) {
             lockProject();
             lockRequirement();
             lockTask();
@@ -564,26 +577,24 @@ public class ProjectController
         if (e.getSource() == saveToPMS) {
 
             projectManagementSystem.addProject(projectListView.getItems()
-                .get(projectListView.getItems().size()-1));
+                    .get(projectListView.getItems().size() - 1));
 
             clearProject();
             adapter = new FileAdapter("ProjectManagementSystem.bin");
             adapter.saveToPMSFile(projectManagementSystem);
             System.out.println("Saved to file!");
 
-        }
+            //Other actions
 
-        //Other actions
+            //Other actions
 
 
-
-        if (taskListView.getItems().isEmpty())
-        {
-            requirementSave.setDisable(true);
-        }
-        if (requirementListView.getItems().isEmpty())
-        {
-            projectSave.setDisable(true);
+            if (taskListView.getItems().isEmpty()) {
+                requirementSave.setDisable(true);
+            }
+            if (requirementListView.getItems().isEmpty()) {
+                projectSave.setDisable(true);
+            }
         }
     }
 
