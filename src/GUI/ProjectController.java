@@ -171,6 +171,10 @@ public class ProjectController
             taskStatus.getSelectionModel().select(selectedTask.getStatus());
             taskDescription.setText(selectedTask.getDescription());
 
+            if (projectCreator.isSelected())
+            {
+                taskSave.setVisible(false);
+            }
             if (scrumMaster.isSelected()){
                 taskChange.setVisible(true);
                 taskChange.setDisable(false);
@@ -208,7 +212,10 @@ public class ProjectController
             requirementDeadlineYyyy.setText(selectedRequirement.getDeadline().getYear() + "");
             requirementStatus.getSelectionModel().select(selectedRequirement.getStatus());
             requirementDescription.setText(selectedRequirement.getDescription());
-
+            if (projectCreator.isSelected())
+            {
+                requirementSave.setVisible(false);
+            }
             if (scrumMaster.isSelected())
             {
                 requirementChange.setVisible(true);
@@ -258,6 +265,10 @@ public class ProjectController
             taskInfo.setDisable(true);
             tasks.setDisable(true);
             tabPane.getSelectionModel().select(projectInfo);
+            if (projectCreator.isSelected())
+            {
+                projectSave.setVisible(false);
+            }
         });
     }
 
@@ -812,21 +823,6 @@ public class ProjectController
         }
     private boolean taskException(){
         boolean truth = true;
-        for (int i = 0; i < taskListView.getItems().size(); i++)
-        {
-            if(taskName.getText().equals(taskListView.getItems().get(i).getName())){
-                taskNameLabel.setVisible(true);
-                taskName.clear();
-                truth = false;
-            }
-            if(Integer.parseInt(taskID.getText()) == taskListView.getItems().get(i).getID()){
-                taskIDLabel.setVisible(true);
-                taskID.clear();
-                truth=false;
-            }
-
-
-        }
         if(Integer.parseInt(taskID.getText())<1000 || Integer.parseInt(taskID.getText())>9999){
             taskIDLabel.setVisible(true);
             taskID.clear();
@@ -862,6 +858,20 @@ public class ProjectController
             taskDeadline.setVisible(true);
             taskDeadlineYyyy.clear();
             truth = false;
+        }
+        for (int i = 0; i < taskListView.getItems().size(); i++)
+        {
+            if(taskName.getText().equals(taskListView.getItems().get(i).getName())){
+                taskNameLabel.setVisible(true);
+                taskName.clear();
+                truth = false;
+            }
+            if(Integer.parseInt(taskID.getText()) == taskListView.getItems().get(i).getID()){
+                taskIDLabel.setVisible(true);
+                taskID.clear();
+                truth=false;
+            }
+
         }
         return truth;
 
