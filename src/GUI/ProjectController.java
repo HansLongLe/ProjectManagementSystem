@@ -698,6 +698,9 @@ public class ProjectController
                     taskInfo.setDisable(true);
                     tabPane.getSelectionModel().select(projects);
                     projectSave.setDisable(true);
+                    addProject.setDisable(false);
+                    addRequirement.setVisible(false);
+                    addTask.setVisible(false);
 
                     projNameLabel.setVisible(false);
                     projIDLabel.setVisible(false);
