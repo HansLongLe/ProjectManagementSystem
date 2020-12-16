@@ -17,6 +17,10 @@ public class FileAdapter
     this.fileName = fileName;
   }
 
+  /**
+   *  This method reads an object from a .bin file.
+   * @return an array list of Employees.
+   */
   public ArrayList<Employee> getAllEmployees()
   {
     ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -39,6 +43,11 @@ public class FileAdapter
     }
     return employees;
   }
+
+  /**
+   * This method writes an object of type ProjectManagmentSystem to a .bin file.
+   * @param pms - a ProjectManagementSystem object.
+   */
   public void saveToPMSFile(ProjectManagementSystem pms){
 
     try{
@@ -51,6 +60,11 @@ public class FileAdapter
       System.out.println("IO Error writing file");
     }
   }
+
+  /**
+   * This method reads the information froma .bin file.
+   * @return pms - a ProjectManagementSystem object.
+   */
   public ProjectManagementSystem loadPMS(){
     ProjectManagementSystem pms = new ProjectManagementSystem();
     try{
@@ -72,25 +86,6 @@ public class FileAdapter
     return pms;
   }
 
-  public ArrayList<Project> getAllProjects(){
-    ArrayList<Project> projects = new ArrayList<Project>();
-      try{
-        projects = ((ProjectManagementSystem)mfio.readObjectFromFile("ProjectManagementSystem.bin")).getProjects();
 
-      }
-      catch (FileNotFoundException e)
-      {
-        System.out.println("File not found");
-      }
-      catch (IOException e)
-      {
-        System.out.println("IO Error reading file");
-      }
-      catch (ClassNotFoundException e)
-      {
-        System.out.println("Class Not Found");
-      }
-      return projects;
-  }
 
 }

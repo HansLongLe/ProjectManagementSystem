@@ -4,7 +4,7 @@
     <estimatedTime>12</estimatedTime>
     <requirements>
       <estimatedTime>12</estimatedTime>
-      <name>req</name>
+      <name>reqA</name>
       <description>req</description>
       <ID>1234</ID>
       <priority>1</priority>
@@ -38,7 +38,7 @@
     </requirements>
     <name>project1</name>
     <description>project</description>
-    <ID>9999</ID>
+    <ID>9998</ID>
     <deadline>
       <month>12</month>
       <year>2020</year>
@@ -204,7 +204,7 @@
       <firstName>martin</firstName>
       <lastName>vosta</lastName>
     </productOwner>
-    <hoursWorked>0</hoursWorked>
+    <hoursWorked>270</hoursWorked>
     <status>Started</status>
   </projects>
   <projects>
@@ -295,7 +295,7 @@
       <status>Approved</status>
     </requirements>
     <name>ProjectCheckForXML</name>
-    <description>This is the project that must appear in xml)</description>
+    <description>This is the project that must appear in xml) and now I would like to see if changing works too</description>
     <ID>2001</ID>
     <deadline>
       <month>12</month>
