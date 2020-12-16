@@ -9,6 +9,11 @@ import java.io.IOException;
 
 public class PMSGUI extends Application
 {
+  /**
+   *
+   * @param window of type Stage where the GUI is presented
+   * @throws IOException
+   */
     public void start(Stage window) throws IOException
     {
       window.setTitle("Project Management System");
