@@ -130,13 +130,7 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-        try{
-            XmlJsonParser xjp = new XmlJsonParser();
-            xjp.toXml(projectManagementSystem, "pms.xml");
-        }
-        catch( ParserException e){
-            System.out.println("IO exception");
-        }
+
 
 
         if (priority1.isSelected())
@@ -731,6 +725,13 @@ public class ProjectController
             //Other actions
 
             //Other actions
+            try{
+                XmlJsonParser xjp = new XmlJsonParser();
+                xjp.toXml(projectManagementSystem, "pms.xml");
+            }
+            catch( ParserException ex){
+                System.out.println("IO exception");
+            }
 
 
             if (taskListView.getItems().isEmpty()) {
