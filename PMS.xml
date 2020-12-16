@@ -4,7 +4,7 @@
     <estimatedTime>12</estimatedTime>
     <requirements>
       <estimatedTime>12</estimatedTime>
-      <name>req</name>
+      <name>reqA</name>
       <description>req</description>
       <ID>1234</ID>
       <priority>1</priority>
@@ -38,7 +38,7 @@
     </requirements>
     <name>project1</name>
     <description>project</description>
-    <ID>9999</ID>
+    <ID>9998</ID>
     <deadline>
       <month>12</month>
       <year>2020</year>
@@ -204,7 +204,7 @@
       <firstName>martin</firstName>
       <lastName>vosta</lastName>
     </productOwner>
-    <hoursWorked>0</hoursWorked>
+    <hoursWorked>270</hoursWorked>
     <status>Started</status>
   </projects>
   <projects>
@@ -254,6 +254,57 @@
     <productOwner>
       <firstName>iana</firstName>
       <lastName>p</lastName>
+    </productOwner>
+    <hoursWorked>0</hoursWorked>
+    <status>Not started</status>
+  </projects>
+  <projects>
+    <estimatedTime>12</estimatedTime>
+    <requirements>
+      <estimatedTime>12</estimatedTime>
+      <name>requirement1</name>
+      <description>requiremeny 1</description>
+      <ID>1234</ID>
+      <priority>1</priority>
+      <deadline>
+        <month>12</month>
+        <year>2020</year>
+        <day>18</day>
+      </deadline>
+      <hoursWorked>0</hoursWorked>
+      <tasks>
+        <estimatedTime>12</estimatedTime>
+        <name>task1</name>
+        <description>task1</description>
+        <ID>1234</ID>
+        <deadline>
+          <month>12</month>
+          <year>2020</year>
+          <day>18</day>
+        </deadline>
+        <employee>
+          <firstName>Jan</firstName>
+          <lastName>Le</lastName>
+          <employeeID>304287</employeeID>
+          <position>ScrumMaster</position>
+          <salary>35000.0</salary>
+        </employee>
+        <hoursWorked>0</hoursWorked>
+        <status>Not started</status>
+      </tasks>
+      <status>Approved</status>
+    </requirements>
+    <name>ProjectCheckForXML</name>
+    <description>This is the project that must appear in xml) and now I would like to see if changing works too</description>
+    <ID>2001</ID>
+    <deadline>
+      <month>12</month>
+      <year>2020</year>
+      <day>18</day>
+    </deadline>
+    <productOwner>
+      <firstName>Martin</firstName>
+      <lastName>Vosta</lastName>
     </productOwner>
     <hoursWorked>0</hoursWorked>
     <status>Not started</status>

@@ -1,9 +1,9 @@
 package GUI;
 
 import MyFile.*;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -11,11 +11,6 @@ import Classes.*;
 import parser.ParserException;
 import parser.XmlJsonParser;
 
-import java.beans.XMLEncoder;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class ProjectController
 {
@@ -119,6 +114,9 @@ public class ProjectController
     private boolean taskAddClicked = false;
     ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
 
+    /**
+     * This method is activated when the GUI is opened.
+     */
     public void initialize()
     {
         adapter = new FileAdapter("employees.bin");
@@ -130,14 +128,7 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-        try{
-            XmlJsonParser xjp = new XmlJsonParser();
-            xjp.toXml(projectManagementSystem, "pms.xml");
-        }
-        catch( ParserException e){
-            System.out.println("IO exception");
-        }
-
+        numericOnly();
 
         if (priority1.isSelected())
         {
@@ -281,7 +272,9 @@ public class ProjectController
             showAlert();
         }
         if (scrumMaster.isSelected()) {
+
             lockProject();
+
             lockRequirement();
             lockTask();
 
@@ -429,6 +422,7 @@ public class ProjectController
                    tasks.setDisable(true);
                    taskInfo.setDisable(true);
 
+
             }
             if (e.getSource() == taskSave) {
                 Deadline deadline = new Deadline(Integer.parseInt(taskDeadlineDd.getText()),
@@ -537,26 +531,41 @@ public class ProjectController
         }
 
         if (projectCreator.isSelected()) {
-            addProject.setVisible(true);
-            addProject.setDisable(false);
-            deleteProject.setVisible(false);
 
-            projectSave.setVisible(true);
-            projectChange.setVisible(false);
+            if (e.getSource() == projectCreator)
+            {
+                lockProject();
+                lockRequirement();
+                lockTask();
+                addProject.setVisible(true);
+                addProject.setDisable(false);
+                saveToPMS.setVisible(true);
+                saveToPMS.setDisable(true);
+                deleteProject.setVisible(false);
 
-            addRequirement.setVisible(true);
-            requirementSave.setVisible(true);
-            requirementChange.setVisible(false);
+                projectSave.setVisible(false);
+                projectChange.setVisible(false);
 
-            addTask.setVisible(true);
-            taskSave.setVisible(true);
-            taskChange.setVisible(false);
+                addRequirement.setVisible(false);
+                deleteRequirement.setVisible(false);
+                requirementSave.setVisible(false);
+                requirementChange.setVisible(false);
+
+                addTask.setVisible(false);
+                deleteTask.setVisible(false);
+                taskSave.setVisible(false);
+                taskChange.setVisible(false);
+            }
+
 
             if (e.getSource() == addProject) {
                 clearProject();
                 clearRequirement();
                 clearTask();
                 unlockProject();
+
+                addRequirement.setVisible(true);
+
                 requirementListView.getItems().clear();
                 taskListView.getItems().clear();
                 tabPane.getSelectionModel().select(projectInfo);
@@ -565,6 +574,10 @@ public class ProjectController
                 requirementsInfo.setDisable(true);
                 tasks.setDisable(true);
                 taskInfo.setDisable(true);
+                projectSave.setVisible(true);
+                addProject.setDisable(true);
+
+
             }
             if (e.getSource() == addRequirement) {
                 clearRequirement();
@@ -575,7 +588,9 @@ public class ProjectController
                 requirementsInfo.setDisable(false);
                 tasks.setDisable(false);
                 taskInfo.setDisable(true);
-                //requirementSave.setDisable(false);
+                requirementSave.setVisible(true);
+                addTask.setVisible(true);
+                addRequirement.setDisable(true);
 
 
             }
@@ -585,6 +600,8 @@ public class ProjectController
                 tabPane.getSelectionModel().select(taskInfo);
                 taskInfo.setDisable(false);
                 taskSave.setDisable(false);
+                taskSave.setVisible(true);
+                addTask.setDisable(true);
 
             }
             if (e.getSource() == taskSave) {
@@ -611,6 +628,9 @@ public class ProjectController
                     taskHWorked.setVisible(false);
                     taskDeadline.setVisible(false);
                     requirementSave.setDisable(false);
+                    addTask.setVisible(true);
+                    addTask.setDisable(false);
+                    taskSave.setDisable(true);
 
                 }
             }
@@ -634,6 +654,8 @@ public class ProjectController
                     requirementsInfo.setDisable(true);
                     tasks.setDisable(true);
                     taskInfo.setDisable(true);
+                    addRequirement.setDisable(false);
+                    requirementSave.setDisable(true);
 
                     reqNameLabel.setVisible(false);
                     reqIDLabel.setVisible(false);
@@ -675,6 +697,10 @@ public class ProjectController
                     tasks.setDisable(true);
                     taskInfo.setDisable(true);
                     tabPane.getSelectionModel().select(projects);
+                    projectSave.setDisable(true);
+                    addProject.setDisable(false);
+                    addRequirement.setVisible(false);
+                    addTask.setVisible(false);
 
                     projNameLabel.setVisible(false);
                     projIDLabel.setVisible(false);
@@ -731,6 +757,13 @@ public class ProjectController
             //Other actions
 
             //Other actions
+            try{
+                XmlJsonParser xjp = new XmlJsonParser();
+                xjp.toXml(projectManagementSystem, "pms.xml");
+            }
+            catch( ParserException ex){
+                System.out.println("IO exception");
+            }
 
 
             if (taskListView.getItems().isEmpty()) {
@@ -743,7 +776,10 @@ public class ProjectController
         priority();
     }
 
-        public void loadProjects()
+    /**
+     * This method loads the existent projects into a .bin file.
+     */
+    public void loadProjects()
         {
             projectManagementSystem = adapter.loadPMS();
 
@@ -751,7 +787,10 @@ public class ProjectController
 
         }
 
-        public void InfoRespMember ()
+    /**
+     * This method load the Employees from the file into the ComboBox of employees.
+     */
+    public void InfoRespMember ()
         {
             ProjectManagementSystem projectManagementSystem = new ProjectManagementSystem();
             projectManagementSystem.getEmployees().addAll(adapter.getAllEmployees());
@@ -761,6 +800,9 @@ public class ProjectController
             }
         }
 
+    /**
+     * This method loads the 5 different statuses into the ComboBox of statuses.
+     */
         private void statusBox ()
         {
             taskStatus.getItems().clear();
@@ -777,6 +819,9 @@ public class ProjectController
 
     //CLEAR, LOCK, UNLOCK methods
 
+    /**
+     * This method clears all the information inside the text fields of a task tab.
+     */
         private void clearTask ()
         {
             taskName.clear();
@@ -791,7 +836,11 @@ public class ProjectController
             taskStatus.getSelectionModel().select("Not started");
             taskDescription.clear();
         }
-        private void clearRequirement ()
+
+    /**
+     * This method clears all the information inside the text fields of a requirement tab.
+     */
+    private void clearRequirement ()
         {
             taskListView.getItems().clear();
             requirementName.clear();
@@ -807,7 +856,11 @@ public class ProjectController
             requirementDescription.clear();
             requirementStatus.getSelectionModel().select("Not started");
         }
-        private void clearProject()
+
+    /**
+     * This method clears all the information inside the text fields of a project tab.
+     */
+    private void clearProject()
         {
             requirementListView.getItems().clear();
             projectName.clear();
@@ -821,6 +874,12 @@ public class ProjectController
             projectDescription.clear();
             projectStatus.getSelectionModel().select("Not started");
         }
+
+    /**
+     * This method is used to check the exceptions when the user is trying to save a task.
+     * @return truth(boolean).
+     */
+
     private boolean taskException(){
         boolean truth = true;
         if(Integer.parseInt(taskID.getText())<1000 || Integer.parseInt(taskID.getText())>9999){
@@ -874,8 +933,12 @@ public class ProjectController
 
         }
         return truth;
-
     }
+
+    /**
+     * This method is used to check the exceptions when the user is trying to save a requirement.
+     * @return truth(boolean).
+     */
     private boolean requirementException() {
         boolean truth = true;
         for (int i = 0; i < requirementListView.getItems().size(); i++) {
@@ -925,6 +988,11 @@ public class ProjectController
         }
         return truth;
     }
+
+    /**
+     * This method is used to check the exceptions when the user is trying to save a project.
+     * @return truth(boolean).
+     */
     private boolean projectExceptions(){
         boolean truth = true;
         for (int i = 0; i < projectListView.getItems().size(); i++)
@@ -977,6 +1045,9 @@ public class ProjectController
         return truth;
     }
 
+    /**
+     * This method sets all the text fields inside a project tab to uneditable.
+     */
     private void lockProject()
         {
             projectName.setEditable(false);
@@ -990,7 +1061,11 @@ public class ProjectController
             projectDeadlineYyyy.setEditable(false);
             projectDescription.setEditable(false);
         }
-        private void lockRequirement()
+
+    /**
+     * This methods sets all the text fields inside a requirement tab to uneditable.
+     */
+    private void lockRequirement()
         {
             requirementName.setEditable(false);
             requirementID.setEditable(false);
@@ -1005,7 +1080,11 @@ public class ProjectController
             requirementDeadlineYyyy.setEditable(false);
             requirementDescription.setEditable(false);
         }
-        private void lockTask()
+
+    /**
+     * this method sets all the text fields inside a task tab to uneditable.
+     */
+    private void lockTask()
         {
             taskName.setEditable(false);
             taskID.setEditable(false);
@@ -1018,7 +1097,11 @@ public class ProjectController
             taskDescription.setEditable(false);
             taskEstimatedTime.setEditable(false);
         }
-        private void unlockProject()
+
+    /**
+     * This method sets all the text fields ina project tab to editable.
+     */
+    private void unlockProject()
         {
             projectName.setEditable(true);
             projectID.setEditable(true);
@@ -1030,7 +1113,11 @@ public class ProjectController
             projectDeadlineYyyy.setEditable(true);
             projectDescription.setEditable(true);
         }
-        private void unlockRequirement()
+
+    /**
+     * This method sets all the text fields inside a requirement tab to editable.
+     */
+    private void unlockRequirement()
         {
             requirementName.setEditable(true);
             requirementID.setEditable(true);
@@ -1045,7 +1132,11 @@ public class ProjectController
             requirementDescription.setEditable(true);
             //requirementSave.setDisable(false);
         }
-        private void unlockTask()
+
+    /**
+     * This method sets all the text fields inside a task tab to editable.
+     */
+    private void unlockTask()
         {
             taskName.setEditable(true);
             taskID.setEditable(true);
@@ -1059,6 +1150,10 @@ public class ProjectController
             taskEstimatedTime.setEditable(true);
 
         }
+
+    /**
+     * This method works when the menu item "About" is chosen in the "Help" menu.
+     */
     public void showAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About the software");
@@ -1066,6 +1161,10 @@ public class ProjectController
         alert.setContentText("SEP 1 program");
         alert.showAndWait();
     }
+
+    /**
+     * This method assignes the chosen priority for the requirement.
+     */
     public void priority(){
     if (priority1.isSelected())
     {
@@ -1079,5 +1178,135 @@ public class ProjectController
     {
         requirementPriorityInteger = 3;
     }
+}
+    public void numericOnly(){
+    taskHoursWorked.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d{0,9}")) {
+                taskHoursWorked.setText(oldValue);
+            }
+        }
+    });
+    taskID.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d{0,9}")) {
+                taskID.setText(oldValue);
+            }
+        }
+    });
+    taskEstimatedTime.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d{0,9}")) {
+                taskEstimatedTime.setText(oldValue);
+            }
+        }
+    });
+        taskDeadlineDd.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    taskDeadlineDd.setText(oldValue);
+                }
+            }
+        });
+        taskDeadlineMm.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    taskDeadlineMm.setText(oldValue);
+                }
+            }
+        });
+        taskDeadlineYyyy.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    taskDeadlineYyyy.setText(oldValue);
+                }
+            }
+        });
+        requirementID.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementID.setText(oldValue);
+                }
+            }
+        });
+        requirementEstimatedTime.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementEstimatedTime.setText(oldValue);
+                }
+            }
+        });
+        requirementDeadlineDd.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementDeadlineDd.setText(oldValue);
+                }
+            }
+        });
+        requirementDeadlineMm.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementDeadlineMm.setText(oldValue);
+                }
+            }
+        });
+        requirementDeadlineYyyy.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementDeadlineYyyy.setText(oldValue);
+                }
+            }
+        });
+        projectID.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectID.setText(oldValue);
+                }
+            }
+        });
+        projectEstimatedTime.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectEstimatedTime.setText(oldValue);
+                }
+            }
+        });
+        projectDeadlineDd.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectDeadlineDd.setText(oldValue);
+                }
+            }
+        });
+        projectDeadlineMm.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectDeadlineMm.setText(oldValue);
+                }
+            }
+        });
+        projectDeadlineYyyy.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectDeadlineYyyy.setText(oldValue);
+                }
+            }
+        });
 }
 }
