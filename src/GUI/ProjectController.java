@@ -531,26 +531,41 @@ public class ProjectController
         }
 
         if (projectCreator.isSelected()) {
-            addProject.setVisible(true);
-            addProject.setDisable(false);
-            deleteProject.setVisible(false);
 
-            projectSave.setVisible(true);
-            projectChange.setVisible(false);
+            if (e.getSource() == projectCreator)
+            {
+                lockProject();
+                lockRequirement();
+                lockTask();
+                addProject.setVisible(true);
+                addProject.setDisable(false);
+                saveToPMS.setVisible(true);
+                saveToPMS.setDisable(true);
+                deleteProject.setVisible(false);
 
-            addRequirement.setVisible(true);
-            requirementSave.setVisible(true);
-            requirementChange.setVisible(false);
+                projectSave.setVisible(false);
+                projectChange.setVisible(false);
 
-            addTask.setVisible(true);
-            taskSave.setVisible(true);
-            taskChange.setVisible(false);
+                addRequirement.setVisible(false);
+                deleteRequirement.setVisible(false);
+                requirementSave.setVisible(false);
+                requirementChange.setVisible(false);
+
+                addTask.setVisible(false);
+                deleteTask.setVisible(false);
+                taskSave.setVisible(false);
+                taskChange.setVisible(false);
+            }
+
 
             if (e.getSource() == addProject) {
                 clearProject();
                 clearRequirement();
                 clearTask();
                 unlockProject();
+
+                addRequirement.setVisible(true);
+
                 requirementListView.getItems().clear();
                 taskListView.getItems().clear();
                 tabPane.getSelectionModel().select(projectInfo);
@@ -559,6 +574,10 @@ public class ProjectController
                 requirementsInfo.setDisable(true);
                 tasks.setDisable(true);
                 taskInfo.setDisable(true);
+                projectSave.setVisible(true);
+                addProject.setDisable(true);
+
+
             }
             if (e.getSource() == addRequirement) {
                 clearRequirement();
@@ -569,7 +588,9 @@ public class ProjectController
                 requirementsInfo.setDisable(false);
                 tasks.setDisable(false);
                 taskInfo.setDisable(true);
-                //requirementSave.setDisable(false);
+                requirementSave.setVisible(true);
+                addTask.setVisible(true);
+                addRequirement.setDisable(true);
 
 
             }
@@ -579,6 +600,8 @@ public class ProjectController
                 tabPane.getSelectionModel().select(taskInfo);
                 taskInfo.setDisable(false);
                 taskSave.setDisable(false);
+                taskSave.setVisible(true);
+                addTask.setDisable(true);
 
             }
             if (e.getSource() == taskSave) {
@@ -605,6 +628,9 @@ public class ProjectController
                     taskHWorked.setVisible(false);
                     taskDeadline.setVisible(false);
                     requirementSave.setDisable(false);
+                    addTask.setVisible(true);
+                    addTask.setDisable(false);
+                    taskSave.setDisable(true);
 
                 }
             }
@@ -628,6 +654,8 @@ public class ProjectController
                     requirementsInfo.setDisable(true);
                     tasks.setDisable(true);
                     taskInfo.setDisable(true);
+                    addRequirement.setDisable(false);
+                    requirementSave.setDisable(true);
 
                     reqNameLabel.setVisible(false);
                     reqIDLabel.setVisible(false);
@@ -669,6 +697,7 @@ public class ProjectController
                     tasks.setDisable(true);
                     taskInfo.setDisable(true);
                     tabPane.getSelectionModel().select(projects);
+                    projectSave.setDisable(true);
 
                     projNameLabel.setVisible(false);
                     projIDLabel.setVisible(false);
