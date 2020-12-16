@@ -1,6 +1,7 @@
 package GUI;
 
 import MyFile.*;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -130,8 +131,7 @@ public class ProjectController
         requirementStatus.getSelectionModel().select("Not started");
         projectStatus.getSelectionModel().select("Not started");
 
-
-
+        numericOnly();
 
         if (priority1.isSelected())
         {
@@ -1112,5 +1112,135 @@ public class ProjectController
     {
         requirementPriorityInteger = 3;
     }
+}
+    public void numericOnly(){
+    taskHoursWorked.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d{0,9}")) {
+                taskHoursWorked.setText(oldValue);
+            }
+        }
+    });
+    taskID.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d{0,9}")) {
+                taskID.setText(oldValue);
+            }
+        }
+    });
+    taskEstimatedTime.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d{0,9}")) {
+                taskEstimatedTime.setText(oldValue);
+            }
+        }
+    });
+        taskDeadlineDd.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    taskDeadlineDd.setText(oldValue);
+                }
+            }
+        });
+        taskDeadlineMm.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    taskDeadlineMm.setText(oldValue);
+                }
+            }
+        });
+        taskDeadlineYyyy.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    taskDeadlineYyyy.setText(oldValue);
+                }
+            }
+        });
+        requirementID.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementID.setText(oldValue);
+                }
+            }
+        });
+        requirementEstimatedTime.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementEstimatedTime.setText(oldValue);
+                }
+            }
+        });
+        requirementDeadlineDd.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementDeadlineDd.setText(oldValue);
+                }
+            }
+        });
+        requirementDeadlineMm.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementDeadlineMm.setText(oldValue);
+                }
+            }
+        });
+        requirementDeadlineYyyy.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    requirementDeadlineYyyy.setText(oldValue);
+                }
+            }
+        });
+        projectID.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectID.setText(oldValue);
+                }
+            }
+        });
+        projectEstimatedTime.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectEstimatedTime.setText(oldValue);
+                }
+            }
+        });
+        projectDeadlineDd.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectDeadlineDd.setText(oldValue);
+                }
+            }
+        });
+        projectDeadlineMm.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectDeadlineMm.setText(oldValue);
+                }
+            }
+        });
+        projectDeadlineYyyy.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,9}")) {
+                    projectDeadlineYyyy.setText(oldValue);
+                }
+            }
+        });
 }
 }
