@@ -829,7 +829,7 @@ public class ProjectController
             taskID.clear();
             truth = false;
         }
-        if(respTeamMember == null){
+        if(respTeamMember.getSelectionModel().getSelectedItem() == null){
             taskEmployee.setVisible(true);
             truth = false;
         }
@@ -877,50 +877,49 @@ public class ProjectController
         return truth;
 
     }
-    private boolean requirementException(){
+    private boolean requirementException() {
         boolean truth = true;
-        for (int i = 0; i < requirementListView.getItems().size(); i++)
-        {
-            if(requirementName.getText().equals(requirementListView.getItems().get(i).getName())){
+        for (int i = 0; i < requirementListView.getItems().size(); i++) {
+            if (requirementName.getText().equals(requirementListView.getItems().get(i).getName())) {
                 reqNameLabel.setVisible(true);
                 requirementName.clear();
                 truth = false;
             }
 
-            if(Integer.parseInt(requirementID.getText()) == requirementListView.getItems().get(i).getID()){
+            if (Integer.parseInt(requirementID.getText()) == requirementListView.getItems().get(i).getID()) {
                 reqIDLabel.setVisible(true);
                 requirementID.clear();
-                truth=false;
+                truth = false;
             }
 
         }
-        if(Integer.parseInt(requirementID.getText())<1000 || Integer.parseInt(requirementID.getText())>9999){
+        if (Integer.parseInt(requirementID.getText()) < 1000 || Integer.parseInt(requirementID.getText()) > 9999) {
             reqIDLabel.setVisible(true);
             requirementID.clear();
             truth = false;
         }
 
-        if(priority1.isSelected()==false && priority2.isSelected()==false && priority3.isSelected()==false){
+        if (priority1.isSelected() == false && priority2.isSelected() == false && priority3.isSelected() == false) {
             reqPriority.setVisible(true);
 
         }
-        if(Integer.parseInt(requirementEstimatedTime.getText())<0){
+        if (Integer.parseInt(requirementEstimatedTime.getText()) < 0) {
             reqETime.setVisible(true);
             requirementEstimatedTime.clear();
         }
-        if(Integer.parseInt(requirementDeadlineDd.getText())<1 || Integer.parseInt(requirementDeadlineDd.getText())>31){
+        if (Integer.parseInt(requirementDeadlineDd.getText()) < 1 || Integer.parseInt(requirementDeadlineDd.getText()) > 31) {
             reqDeadline.setVisible(true);
             requirementDeadlineDd.clear();
             truth = false;
         }
 
-        if(Integer.parseInt(requirementDeadlineMm.getText())<1 || Integer.parseInt(requirementDeadlineMm.getText())>12){
+        if (Integer.parseInt(requirementDeadlineMm.getText()) < 1 || Integer.parseInt(requirementDeadlineMm.getText()) > 12) {
             reqDeadline.setVisible(true);
             requirementDeadlineMm.clear();
             truth = false;
         }
 
-        if(Integer.parseInt(requirementDeadlineYyyy.getText())<2020){
+        if (Integer.parseInt(requirementDeadlineYyyy.getText()) < 2020) {
             reqDeadline.setVisible(true);
             requirementDeadlineYyyy.clear();
             truth = false;
