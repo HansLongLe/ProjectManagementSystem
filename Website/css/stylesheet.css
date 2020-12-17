@@ -1,0 +1,167 @@
+body {
+    background-color: skyblue;
+}
+
+/*This is the styling for the Services page*/
+html,
+body {
+    height: 100%;
+}
+
+.bg-custom {
+    background-color: lightgray;
+}
+
+#serviceContainer {
+    background-color: skyblue;
+}
+
+#services {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+}
+
+#textService {
+    position: absolute;
+    background-color: RGB(200, 200, 200, 0.9);
+    border-color: black;
+    border-style: solid;
+    padding: 5px;
+
+}
+
+#serviceImages {
+    height: 100%;
+    width: 100%;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 3px;
+}
+
+/*This is the styling for the Team Members page*/
+#pictureJan {
+    width: 100px;
+    height: 125px;
+}
+
+
+#pictureMartin {
+    width: 100px;
+    height: 125px;
+}
+
+#pictureAndrei {
+    width: 100px;
+    height: 125px;
+}
+
+#pictureIana {
+    width: 120px;
+    height: 150px;
+}
+
+#logo {
+    width: 200px;
+    height: 100px;
+}
+
+#email {
+    color: indianred;
+    text-decoration: underline;
+}
+
+#info {
+    font-size: 150%;
+}
+
+/*This is the styling for the Projects page*/
+table,
+td,
+th {
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    text-align: center;
+    color: dimgrey;
+}
+
+td {
+    padding: 2%;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: 50px;
+    color: aliceblue;
+    text-align: center;
+    padding-bottom: 10px;
+    background-color: darkgray;
+}
+
+/*This is the styling for the News page*/
+
+#picCarousel {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    height: 10.5%;
+    background-color: gray;
+    text-align: center;
+    font-size: 15px;
+}
+
+h6 {
+    display: inline-block;
+    justify-content: space-around;
+    color: darkblue;
+}
+
+/*This is the styling for the index page*/
+
+#name {
+    justify-content: center;
+    font-family: "Courier", monospace;
+    color: skyblue;
+}
+
+#aboutPicture {
+    width: 444px;
+    height: 300px;
+    padding: 44px;
+}
+
+.col-md-7 {
+    border-style: dashed;
+}
+
+#textIndex {
+    margin-bottom: 10vh;
+}
+
+#footer {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: gray;
+}
+
+#footerBigger {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: gray;
+}
