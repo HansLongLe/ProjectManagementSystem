@@ -119,13 +119,6 @@ public class Task implements Serializable
                 deadline == newTask.deadline;
     }
 
-    public void assignEmployee(Employee employee)
-    {
-        if (!(this.employee.equals(employee) ))
-        {
-            this.employee = employee;
-        }
-    }
 
     public String toString()
     {
