@@ -1306,6 +1306,7 @@ public class ProjectController
                 proTruth = false;
             }
         }
+
         if (!projectDeadlineYyyy.getText().isEmpty())
         {
             if(Integer.parseInt(taskDeadlineYyyy.getText())<2020){
