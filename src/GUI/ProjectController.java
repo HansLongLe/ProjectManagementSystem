@@ -1064,29 +1064,15 @@ public class ProjectController
             taskEstimatedTime.clear();
             taskTruth = false;
         }
-        if (taskDeadlineDd.getText().length() == 1) {
-            if (taskDeadlineDd.getText().charAt(0) == '0') {
+        if (!taskDeadlineDd.getText().isEmpty())
+        {
+            if (Integer.parseInt(taskDeadlineDd.getText()) < 1 || Integer.parseInt(taskDeadlineDd.getText()) >31){
                 taskDeadline.setVisible(true);
                 taskDeadlineDd.clear();
                 taskTruth = false;
             }
         }
-        if (taskDeadlineDd.getText().length() == 2) {
-            if (taskDeadlineDd.getText().charAt(0) == '4' || taskDeadlineDd.getText().charAt(0) == '5'
-                    || taskDeadlineDd.getText().charAt(0) == '6' || taskDeadlineDd.getText().charAt(0) == '7' || taskDeadlineDd.getText().charAt(0) == '8'
-                    || taskDeadlineDd.getText().charAt(0) == '9' )
-                {
-                    taskDeadline.setVisible(true);
-                    taskDeadlineDd.clear();
-                    taskTruth = false;
-                }
-            if (taskDeadlineDd.getText().charAt(0) == '3' && (taskDeadlineDd.getText().charAt(1) != '0' && taskDeadlineDd.getText().charAt(1) != '1'))
-            {
-                taskDeadline.setVisible(true);
-                taskDeadlineDd.clear();
-                taskTruth = false;
-            }
-            }
+
         if (taskDeadlineDd.getText().isEmpty()) {
             taskDeadline.setVisible(true);
             taskDeadlineDd.clear();
@@ -1098,34 +1084,29 @@ public class ProjectController
             taskDeadlineMm.clear();
             taskTruth = false;
         }
-        if (taskDeadlineMm.getText().length() == 1) {
-            if (taskDeadlineMm.getText().charAt(0) == '0') {
-                taskDeadline.setVisible(true);
-                taskDeadlineMm.clear();
-                taskTruth = false;
-            }
-        }
-        if (taskDeadlineMm.getText().length() == 2)
+        if (!taskDeadlineMm.getText().isEmpty())
         {
-            if(taskDeadlineMm.getText().charAt(0) != '1' && (taskDeadlineMm.getText().charAt(1) != '0' || taskDeadlineMm.getText().charAt(1) != '1' || taskDeadlineMm.getText().charAt(1) != '2') ) {
+            if(Integer.parseInt(taskDeadlineMm.getText())<1 || Integer.parseInt(taskDeadlineMm.getText())>12) {
                 taskDeadline.setVisible(true);
                 taskDeadlineMm.clear();
                 taskTruth = false;
             }
         }
-
-        if(taskDeadlineYyyy.getText().isEmpty() || taskDeadlineYyyy.getText().charAt(0) =='0' || taskDeadlineYyyy.getText().charAt(0) =='1'){
-
-                    taskDeadline.setVisible(true);
-                    taskDeadlineYyyy.clear();
-            taskTruth = false;
+        if (!taskDeadlineYyyy.getText().isEmpty())
+        {
+            if(Integer.parseInt(taskDeadlineYyyy.getText())<2020){
+                taskDeadline.setVisible(true);
+                taskDeadlineYyyy.clear();
+                taskTruth = false;
+            }
         }
-        if (taskDeadlineYyyy.getText().length()<4)
+        if (taskDeadlineYyyy.getText().isEmpty())
         {
             taskDeadline.setVisible(true);
             taskDeadlineYyyy.clear();
             taskTruth = false;
         }
+
         if (taskName.getText().isEmpty())
         {
             taskNameLabel.setVisible(true);
@@ -1140,12 +1121,14 @@ public class ProjectController
                     taskName.clear();
                     taskTruth = false;
                 }
-
-                if (Integer.parseInt(taskID.getText()) == taskListView.getItems().get(i).getID())
+                if (!taskID.getText().isEmpty())
                 {
-                    taskIDLabel.setVisible(true);
-                    taskID.clear();
-                    taskTruth = false;
+                    if (Integer.parseInt(taskID.getText()) == taskListView.getItems().get(i).getID())
+                    {
+                        taskIDLabel.setVisible(true);
+                        taskID.clear();
+                        taskTruth = false;
+                    }
                 }
             }
         }
@@ -1185,29 +1168,15 @@ public class ProjectController
             requirementEstimatedTime.clear();
             reqTruth = false;
         }
-        if (requirementDeadlineDd.getText().length() == 1) {
-            if (requirementDeadlineDd.getText().charAt(0) == '0') {
+        if (!requirementDeadlineDd.getText().isEmpty())
+        {
+            if (Integer.parseInt(requirementDeadlineDd.getText()) < 1 || Integer.parseInt(requirementDeadlineDd.getText()) >31){
                 reqDeadline.setVisible(true);
                 requirementDeadlineDd.clear();
                 reqTruth = false;
             }
         }
-        if (requirementDeadlineDd.getText().length() == 2) {
-            if (requirementDeadlineDd.getText().charAt(0) == '4' || requirementDeadlineDd.getText().charAt(0) == '5'
-                    || requirementDeadlineDd.getText().charAt(0) == '6' || requirementDeadlineDd.getText().charAt(0) == '7' || requirementDeadlineDd.getText().charAt(0) == '8'
-                    || requirementDeadlineDd.getText().charAt(0) == '9' )
-            {
-                reqDeadline.setVisible(true);
-                requirementDeadlineDd.clear();
-                reqTruth = false;
-            }
-            if (requirementDeadlineDd.getText().charAt(0) == '3' && (requirementDeadlineDd.getText().charAt(1) != '0' && requirementDeadlineDd.getText().charAt(1) != '1'))
-            {
-                reqDeadline.setVisible(true);
-                requirementDeadlineDd.clear();
-                reqTruth = false;
-            }
-        }
+
         if (requirementDeadlineDd.getText().isEmpty()) {
             reqDeadline.setVisible(true);
             requirementDeadlineDd.clear();
@@ -1219,29 +1188,23 @@ public class ProjectController
             requirementDeadlineMm.clear();
             reqTruth = false;
         }
-        if (requirementDeadlineMm.getText().length() == 1) {
-            if (requirementDeadlineMm.getText().charAt(0) == '0') {
+        if (!requirementDeadlineMm.getText().isEmpty())
+        {
+            if(Integer.parseInt(requirementDeadlineMm.getText())<1 || Integer.parseInt(requirementDeadlineMm.getText())>12) {
                 reqDeadline.setVisible(true);
                 requirementDeadlineMm.clear();
                 reqTruth = false;
             }
         }
-        if (requirementDeadlineMm.getText().length() == 2)
+        if (!requirementDeadlineYyyy.getText().isEmpty())
         {
-            if(requirementDeadlineMm.getText().charAt(0) != '1' && (requirementDeadlineMm.getText().charAt(1) != '0' || requirementDeadlineMm.getText().charAt(1) != '1' || requirementDeadlineMm.getText().charAt(1) != '2') ) {
+            if(Integer.parseInt(requirementDeadlineYyyy.getText())<2020){
                 reqDeadline.setVisible(true);
-                requirementDeadlineMm.clear();
-                reqTruth= false;
+                requirementDeadlineYyyy.clear();
+                reqTruth = false;
             }
         }
-
-        if(requirementDeadlineYyyy.getText().isEmpty() || requirementDeadlineYyyy.getText().charAt(0) =='0' || requirementDeadlineYyyy.getText().charAt(0) =='1'){
-
-            reqDeadline.setVisible(true);
-            requirementDeadlineYyyy.clear();
-            reqTruth = false;
-        }
-        if (requirementDeadlineYyyy.getText().length()<4)
+        if (requirementDeadlineYyyy.getText().isEmpty())
         {
             reqDeadline.setVisible(true);
             requirementDeadlineYyyy.clear();
@@ -1262,10 +1225,13 @@ public class ProjectController
                     requirementName.clear();
                     reqTruth = false;
                 }
-                if (Integer.parseInt(requirementID.getText()) == requirementListView.getItems().get(i).getID()) {
-                    reqIDLabel.setVisible(true);
-                    requirementID.clear();
-                    reqTruth = false;
+                if (!requirementID.getText().isEmpty())
+                {
+                    if (Integer.parseInt(requirementID.getText()) == requirementListView.getItems().get(i).getID()) {
+                        reqIDLabel.setVisible(true);
+                        requirementID.clear();
+                        reqTruth = false;
+                    }
                 }
             }
         }
@@ -1312,29 +1278,15 @@ public class ProjectController
             projectEstimatedTime.clear();
             proTruth = false;
         }
-        if (projectDeadlineDd.getText().length() == 1) {
-            if (projectDeadlineDd.getText().charAt(0) == '0') {
+        if (!projectDeadlineDd.getText().isEmpty())
+        {
+            if (Integer.parseInt(projectDeadlineDd.getText()) < 1 || Integer.parseInt(projectDeadlineDd.getText()) >31){
                 projDeadline.setVisible(true);
                 projectDeadlineDd.clear();
                 proTruth = false;
             }
         }
-        if (projectDeadlineDd.getText().length() == 2) {
-            if (projectDeadlineDd.getText().charAt(0) == '4' || projectDeadlineDd.getText().charAt(0) == '5'
-                    || projectDeadlineDd.getText().charAt(0) == '6' || projectDeadlineDd.getText().charAt(0) == '7' || projectDeadlineDd.getText().charAt(0) == '8'
-                    || projectDeadlineDd.getText().charAt(0) == '9' )
-            {
-                projDeadline.setVisible(true);
-                projectDeadlineDd.clear();
-                proTruth = false;
-            }
-            if (projectDeadlineDd.getText().charAt(0) == '3' && (projectDeadlineDd.getText().charAt(1) != '0' && projectDeadlineDd.getText().charAt(1) != '1'))
-            {
-                projDeadline.setVisible(true);
-                projectDeadlineDd.clear();
-                proTruth = false;
-            }
-        }
+
         if (projectDeadlineDd.getText().isEmpty()) {
             projDeadline.setVisible(true);
             projectDeadlineDd.clear();
@@ -1346,31 +1298,24 @@ public class ProjectController
             projectDeadlineMm.clear();
             proTruth = false;
         }
-        if (projectDeadlineMm.getText().length() == 1) {
-            if (projectDeadlineMm.getText().charAt(0) == '0') {
+        if (!projectDeadlineMm.getText().isEmpty())
+        {
+            if(Integer.parseInt(projectDeadlineMm.getText())<1 || Integer.parseInt(projectDeadlineMm.getText())>12) {
                 projDeadline.setVisible(true);
                 projectDeadlineMm.clear();
                 proTruth = false;
             }
         }
-        if (projectDeadlineMm.getText().length() == 2)
+
+        if (!projectDeadlineYyyy.getText().isEmpty())
         {
-            if(projectDeadlineMm.getText().charAt(0) != '1' && (projectDeadlineMm.getText().charAt(1) != '0'
-                    || projectDeadlineMm.getText().charAt(1) != '1' || projectDeadlineMm.getText().charAt(1) != '2') ) {
+            if(Integer.parseInt(taskDeadlineYyyy.getText())<2020){
                 projDeadline.setVisible(true);
-                projectDeadlineMm.clear();
-                proTruth= false;
+                projectDeadlineYyyy.clear();
+                proTruth = false;
             }
         }
-
-        if(projectDeadlineYyyy.getText().isEmpty() || projectDeadlineYyyy.getText().charAt(0) =='0'
-                || projectDeadlineYyyy.getText().charAt(0) =='1'){
-
-            projDeadline.setVisible(true);
-            projectDeadlineYyyy.clear();
-            proTruth = false;
-        }
-        if (projectDeadlineYyyy.getText().length()<4)
+        if (projectDeadlineYyyy.getText().isEmpty())
         {
             projDeadline.setVisible(true);
             projectDeadlineYyyy.clear();
@@ -1384,17 +1329,19 @@ public class ProjectController
         }
         for (int i = 0; i < projectListView.getItems().size(); i++)
         {
-            if (i != projectListView.getSelectionModel().getSelectedIndex())
-            {
+            if (i != projectListView.getSelectionModel().getSelectedIndex()) {
                 if (projectName.getText().equals(projectListView.getItems().get(i).getName())) {
                     projNameLabel.setVisible(true);
                     projectName.clear();
                     proTruth = false;
                 }
-                if (Integer.parseInt(projectID.getText()) == projectListView.getItems().get(i).getID()) {
-                    projIDLabel.setVisible(true);
-                    projectID.clear();
-                    proTruth = false;
+                if (!projectID.getText().isEmpty())
+                {
+                    if (Integer.parseInt(projectID.getText()) == projectListView.getItems().get(i).getID()) {
+                        projIDLabel.setVisible(true);
+                        projectID.clear();
+                        proTruth = false;
+                    }
                 }
             }
         }
