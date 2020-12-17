@@ -34,12 +34,9 @@ public class Requirement implements Serializable
     {
         tasks.add(task);
     }
-    public void removeTask(Task task)
-    {
-        tasks.remove(task);
-    }
 
-    public ArrayList<Task> getTask()
+
+    public ArrayList<Task> getTasks()
     {
         return tasks;
     }

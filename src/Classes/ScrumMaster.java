@@ -1,10 +1,5 @@
 package Classes;
 
-import Classes.Employee;
-import Classes.Project;
-import Classes.ProjectManagementSystem;
-import Classes.Requirement;
-
 import java.io.Serializable;
 
 public class ScrumMaster extends Employee implements Serializable
@@ -55,11 +50,11 @@ public class ScrumMaster extends Employee implements Serializable
    */
   public void changeTask(Task newTask, String name)
   {
-    for (int i=0; i<projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTask().size(); i++)
+    for (int i = 0; i<projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTasks().size(); i++)
     {
-      if (projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTask().get(i).getName().equals(name))
+      if (projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTasks().get(i).getName().equals(name))
       {
-        projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTask().set(i, newTask);
+        projectManagementSystem.getProjects().get(i).getRequirements().get(i).getTasks().set(i, newTask);
       }
     }
   }
