@@ -88,12 +88,12 @@
                                           <Insets left="70.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projNameLabel" text="Name exists" textFill="RED" visible="false">
+                                    <Label fx:id="projNameLabel" text="Name exist or is empty" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="83.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -118,7 +118,7 @@
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="83.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -143,7 +143,7 @@
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="83.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -168,12 +168,12 @@
                                           <Insets bottom="5.0" left="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="projETime" text="Higher than 0!" textFill="RED" visible="false">
+                                    <Label fx:id="projETime" text="Cant be emty" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="40.0" />
+                                          <Insets left="25.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -238,12 +238,12 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="projDeadline" text="Wrong date!" textFill="RED" visible="false">
+                                    <Label fx:id="projDeadline" text="Set correct date!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="80.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -305,7 +305,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement">
+                                    <Button fx:id="addRequirement" mnemonicParsing="false" onAction="#handleActions" text="Add Requirement" visible="false">
                                        <HBox.margin>
                                           <Insets left="470.0" right="10.0" />
                                        </HBox.margin>
@@ -332,12 +332,12 @@
                                           <Insets left="69.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqNameLabel" text="Name exists" textFill="RED" visible="false">
+                                    <Label fx:id="reqNameLabel" text="Name exist or is empty" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="75.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -362,7 +362,7 @@
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="80.0" />
+                                          <Insets left="75.0" />
                                        </HBox.margin>
                                        <padding>
                                           <Insets right="10.0" />
@@ -403,7 +403,7 @@
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="90.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -428,12 +428,12 @@
                                           <Insets bottom="5.0" left="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="reqETime" text="Higher than 0!" textFill="RED" visible="false">
+                                    <Label fx:id="reqETime" text="Set esimated time!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="35.0" />
+                                          <Insets left="17.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -498,12 +498,12 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="reqDeadline" text="Wrong date!" textFill="RED" visible="false">
+                                    <Label fx:id="reqDeadline" text="Set correct date!" textFill="RED" visible="false">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="90.0" />
+                                          <Insets left="70.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -582,12 +582,12 @@
                                     </Label>
                                     <TextField fx:id="taskName">
                                        <HBox.margin>
-                                          <Insets left="105.0" top="2.0" />
+                                          <Insets left="107.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskNameLabel" text="Name exists" textFill="RED" visible="false">
+                                    <Label fx:id="taskNameLabel" text="Name exists or is empty" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="90.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
@@ -607,19 +607,16 @@
                                     </Label>
                                     <TextField fx:id="taskID">
                                        <HBox.margin>
-                                          <Insets left="123.0" top="2.0" />
+                                          <Insets left="125.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
                                     <Label fx:id="taskIDLabel" text="ID must be **** or it exists" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="80.0" />
+                                          <Insets left="90.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
                                        </font>
-                                       <padding>
-                                          <Insets right="20.0" />
-                                       </padding>
                                     </Label>
                                  </children>
                                  <VBox.margin>
@@ -628,19 +625,19 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="3.0" prefWidth="594.0">
                                  <children>
-                                    <Label text="Responsible team member:">
+                                    <Label prefHeight="17.0" prefWidth="160.0" text="Responsible team member:">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ComboBox fx:id="respTeamMember" prefHeight="26.0" prefWidth="240.0" promptText="Choose employee">
+                                    <ComboBox fx:id="respTeamMember" prefHeight="25.0" prefWidth="221.0" promptText="Choose employee">
                                        <HBox.margin>
-                                          <Insets left="34.0" />
+                                          <Insets left="5.0" />
                                        </HBox.margin>
                                     </ComboBox>
-                                    <Label fx:id="taskEmployee" text="Choose an employee" textFill="RED" visible="false">
+                                    <Label fx:id="taskEmployee" text="Choose an employee!" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="70.0" />
+                                          <Insets left="18.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
@@ -660,7 +657,7 @@
                                     </Label>
                                     <TextField fx:id="taskEstimatedTime">
                                        <HBox.margin>
-                                          <Insets bottom="10.0" left="82.0" top="2.0" />
+                                          <Insets bottom="10.0" left="83.0" top="2.0" />
                                        </HBox.margin>
                                     </TextField>
                                     <Label text="in days">
@@ -668,9 +665,9 @@
                                           <Insets bottom="5.0" left="20.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="taskETime" text="Higher than 0!" textFill="RED" visible="false">
+                                    <Label fx:id="taskETime" text="Set estimated time!" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="45.0" />
+                                          <Insets left="32.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
@@ -687,12 +684,12 @@
                                     </Label>
                                     <TextField fx:id="taskHoursWorked">
                                        <HBox.margin>
-                                          <Insets left="86.0" />
+                                          <Insets left="88.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskHWorked" text="Higher than 0!" textFill="RED" visible="false">
+                                    <Label fx:id="taskHWorked" text="Set worked hours!" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="90.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
@@ -712,7 +709,7 @@
                                     </Label>
                                     <ComboBox fx:id="taskStatus" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Not Started">
                                        <HBox.margin>
-                                          <Insets bottom="10.0" left="105.0" />
+                                          <Insets bottom="10.0" left="104.0" />
                                        </HBox.margin>
                                     </ComboBox>
                                  </children>
@@ -749,9 +746,9 @@
                                           <Insets right="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <Label fx:id="taskDeadline" text="Wrong date!" textFill="RED" visible="false">
+                                    <Label fx:id="taskDeadline" text="Set correct date!" textFill="RED" visible="false">
                                        <HBox.margin>
-                                          <Insets left="100.0" />
+                                          <Insets left="88.0" />
                                        </HBox.margin>
                                        <font>
                                           <Font size="15.0" />
