@@ -3,12 +3,20 @@ package GUI;
 import MyFile.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import Classes.*;
 import parser.ParserException;
 import parser.XmlJsonParser;
+
+import java.beans.XMLEncoder;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProjectController
 {
@@ -220,9 +228,9 @@ public class ProjectController
 
             taskListView.getItems().clear();
             clearTask();
-            for (int i = 0; i < selectedRequirement.getTasks().size(); i++)
+            for (int i = 0; i < selectedRequirement.getTask().size(); i++)
             {
-                taskListView.getItems().add(selectedRequirement.getTasks().get(i));
+                taskListView.getItems().add(selectedRequirement.getTask().get(i));
             }
             taskInfo.setDisable(true);
             requirementSave.setDisable(true);
@@ -516,7 +524,7 @@ public class ProjectController
 
                 lockTask();
 
-                requirementListView.getSelectionModel().getSelectedItem().getTasks().remove(taskListView.getSelectionModel().getSelectedItem());
+                requirementListView.getSelectionModel().getSelectedItem().getTask().remove(taskListView.getSelectionModel().getSelectedItem());
                 taskListView.getItems().remove(taskListView.getSelectionModel().getSelectedIndex());
 
                 taskInfo.setDisable(true);
@@ -684,6 +692,7 @@ public class ProjectController
                     taskSave.setDisable(true);
 
                     tabPane.getSelectionModel().select(tasks);
+
                 }
             }
 
@@ -725,7 +734,7 @@ public class ProjectController
             if (e.getSource() == projectSave)
             {
                 projectExceptions();
-                if (proTruth == true)
+                if (proTruth)
                 {
                 String temp = productOwner.getText();
                 String[] stringArr = temp.split(" ");
@@ -770,6 +779,7 @@ public class ProjectController
 
                     tabPane.getSelectionModel().select(projects);
                 }
+
             }
             if (priority1.isSelected()) {
                 requirementPriorityInteger = 1;
@@ -1309,7 +1319,7 @@ public class ProjectController
 
         if (!projectDeadlineYyyy.getText().isEmpty())
         {
-            if(Integer.parseInt(taskDeadlineYyyy.getText())<2020){
+            if(Integer.parseInt(projectDeadlineYyyy.getText())<2020){
                 projDeadline.setVisible(true);
                 projectDeadlineYyyy.clear();
                 proTruth = false;
