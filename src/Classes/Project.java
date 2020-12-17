@@ -29,7 +29,9 @@ public class Project implements Serializable
   public void addRequirement(Requirement requirement){
     requirements.add(requirement);
   }
-
+  public void removeRequirement(Requirement requirement){
+    requirements.remove(requirement);
+  }
   public ProductOwner getProductOwner(){
     return productOwner;
   }
@@ -97,6 +99,11 @@ public class Project implements Serializable
   }
   return hoursWorked;
  }
+
+  public void setHoursWorked(int hoursWorked)
+  {
+    this.hoursWorked = hoursWorked;
+  }
 
   public ArrayList<Requirement> getRequirements()
   {
