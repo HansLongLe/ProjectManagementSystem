@@ -109,8 +109,11 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 
 Jan Le - 304287@via.dk
+<br/>
 Martin Vosta - 304372@via.dk
+<br/>
 Andrei Soldan - 304147@via.dk
+<br/>
 Iana Postolachi - 304119@via.dk
 
 Project Link: [https://github.com/IanaPostolachi/ProjectManagementSystem)
