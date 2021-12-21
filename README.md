@@ -35,6 +35,13 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -85,6 +92,30 @@ This section lists major frameworks/libraries used to bootstrap the project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+
+## Getting Started
+
+This section explains how to start the program and which programs are needed.
+
+### Prerequisites
+
+Current version can be run only using:
+Website:
+  Any open source text editor with a live preview (e.g * [Brackets](https://brackets.io/))
+ 
+ Software:
+  * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+
+### Installation
+
+Installation of the software
+
+ Clone the repo
+   ```sh
+   git clone https://github.com/IanaPostolachi/ProjectManagementSystem.git
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- CONTRIBUTING -->
