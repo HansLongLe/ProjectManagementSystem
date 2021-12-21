@@ -101,12 +101,11 @@ This section explains how to start the program and which programs are needed.
 
 Current version can be run only using:
 <br/>
+  Website:
 <br/>
-Website:
-<br/>
-  Any open source text editor with a live preview (e.g * [Brackets](https://brackets.io/))
+ * Any open source text editor with a live preview (e.g [Brackets](https://brackets.io/))
  
- Software:
+  Software:
   * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 ### Installation
