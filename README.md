@@ -10,6 +10,9 @@
 
 <br />
 <div align="center">
+   <a href="https://github.com/IanaPostolachi/ProjectManagementSystem">
+    <img src="Website/images/logo.png" alt="Logo">
+  </a>
   <h3 align="center">Project management system</h3>
 
   <p align="center">
