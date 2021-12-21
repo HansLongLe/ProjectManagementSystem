@@ -149,7 +149,7 @@ Andrei Soldan - 304147@via.dk
 <br/>
 Iana Postolachi - 304119@via.dk
 
-Project Link: [https://github.com/IanaPostolachi/ProjectManagementSystem)
+Project Link: [https://github.com/IanaPostolachi/ProjectManagementSystem](https://github.com/IanaPostolachi/ProjectManagementSystem)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
