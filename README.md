@@ -100,6 +100,7 @@ This section explains how to start the program and which programs are needed.
 ### Prerequisites
 
 Current version can be run only using:
+<br/>
 Website:
   Any open source text editor with a live preview (e.g * [Brackets](https://brackets.io/))
  
