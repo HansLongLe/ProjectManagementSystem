@@ -144,8 +144,8 @@ Project Link: [https://github.com/IanaPostolachi/ProjectManagementSystem](https:
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Bootstrap](https://www.w3schools.com/bootstrap5/index.php)
-* [JQuery](https://www.w3schools.com/jquERy/default.asp)
+* [Bootstrap W3School](https://www.w3schools.com/bootstrap5/index.php)
+* [JQuery W3School](https://www.w3schools.com/jquERy/default.asp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
