@@ -128,7 +128,7 @@ Installation of the software
 <!-- CONTACT -->
 ## Contact
 
-Jan Le - 304287@via.dk
+Jan Le - Hanslongle@gmail.com
 <br/>
 Martin Vosta - 304372@via.dk
 <br/>
