@@ -105,10 +105,10 @@ Current version can be run only using:
 <br/>
   Website:
 <br/>
- * [Git](https://git-scm.com/)
  * Any open source text editor with a live preview (e.g [Brackets](https://brackets.io/))
  
   Software:
+  * [Git](https://git-scm.com/)
   * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 ### Installation
