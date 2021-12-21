@@ -4,6 +4,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Pull requests][pull-shield]][pull-url]
 
 
 
@@ -160,3 +161,5 @@ Project Link: [https://github.com/IanaPostolachi/ProjectManagementSystem](https:
 [stars-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/stargazers
 [issues-shield]: https://img.shields.io/github/issues/IanaPostolachi/ProjectManagementSystem.svg?style=for-the-badge
 [issues-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/issues
+[pull-shield]: https://img.shields.io/github/issues-pr/IanaPostolachi/ProjectManagementSystem.svg?style=for-the-badge
+[pull-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/pulls
