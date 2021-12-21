@@ -1,0 +1,140 @@
+<div id="top"></div>
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
+
+
+
+<br />
+<div align="center">
+  <h3 align="center">Project management system</h3>
+
+  <p align="center">
+    The project aims to create a website and a project management system for the imaginary company Color IT. The project has been created as a part of VIA university education for the first semester
+    <br />
+    <br />
+    ·
+    <a href="https://github.com/IanaPostolachi/ProjectManagementSystem/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/IanaPostolachi/ProjectManagementSystem/issues">Request Feature</a>
+  </p>
+</div>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+## About The Project
+
+
+There are about 45508 companies listed in stock exchanges around the world
+(Prahbu, n.d.). Today’s consumerism society requires these companies not only to
+serve the customer appropriately, but also to do many other “background” actions,
+such as: storing the data that the users input, sorting documents in files or databases,
+improving their products, etc. (Doddi, n.d.). Therefore, there have been made countless
+software products, that simplify the tasks companies need to make. Although these
+software systems might be helpful, they lack in different aspects, such as incorrect data
+edits, incorrect coding/implementation of business rules, difficulty in understanding or
+usage, and so on. (Rice, n.d.) Even though some companies decide to bear with the
+inconveniences, others may decide to build their own software systems.
+
+Color-IT company is a small company that deals with private customers. This
+company is working in IT domain and creates programs for customers. Currently,
+Color-IT does not have a project management system, which is an inconvenience for
+them. Usually, their customers have no programming skills. Instead, they are
+accustomed with system domain and sometimes have an idea about future systems.
+When dealing with customers, the Color-IT company formulate a list of requirements in
+form of user stories.
+
+The purpose is to create a Project Management System that is going to
+organize data about workers and projects’ information. The system is going to have
+different actions (deleting and adding requirements, assign requirements to workers,
+change status of the projects, etc.) for managing the data and will have different actors
+with different functions (project creator, scrum master, members of the group) to use
+these actions.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+### Built With
+
+This section lists major frameworks/libraries used to bootstrap the project.
+
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Jan Le - 304287@via.dk
+Martin Vosta - 304372@via.dk
+Andrei Soldan - 304147@via.dk
+Iana Postolachi - 304119@via.dk
+
+Project Link: [https://github.com/IanaPostolachi/ProjectManagementSystem)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [Bootstrap](https://www.w3schools.com/bootstrap5/index.php)
+* [JQuery](https://www.w3schools.com/jquERy/default.asp)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/IanaPostolachi/ProjectManagementSystem.svg?style=for-the-badge
+[contributors-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/IanaPostolachi/ProjectManagementSystem.svg?style=for-the-badge
+[forks-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/network/members
+[stars-shield]: https://img.shields.io/github/stars/IanaPostolachi/ProjectManagementSystem.svg?style=for-the-badge
+[stars-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/stargazers
+[issues-shield]: https://img.shields.io/github/issues/IanaPostolachi/ProjectManagementSystem.svg?style=for-the-badge
+[issues-url]: https://github.com/IanaPostolachi/ProjectManagementSystem/issues
