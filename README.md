@@ -125,7 +125,12 @@ Installation of the software
 
 
 
-## ![Visualization of the codebase](./diagram.svg)
+## Codebase visualization
+
+![Visualization of the codebase](./diagram.svg)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- CONTACT -->
 ## Contact
 
