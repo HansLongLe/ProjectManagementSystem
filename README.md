@@ -125,6 +125,7 @@ Installation of the software
 
 
 
+## ![Visualization of the codebase](./diagram.svg)
 <!-- CONTACT -->
 ## Contact
 
